@@ -1,0 +1,197 @@
+<html>
+<head>
+<title>checkout.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bababa;}
+.s3 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+checkout.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;zh-CN&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">name</span><span class="s3">=&quot;viewport&quot; </span><span class="s2">content</span><span class="s3">=&quot;width=device-width, initial-scale=1.0&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;title&gt;</span><span class="s1">言禾收银台 - 统一支付</span><span class="s0">&lt;/title&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;style&gt;</span>
+        <span class="s1">:root { --primary: #004aad; --accent: #ff6b00; --bg-light: #f4f6f9; }</span>
+        <span class="s1">body { font-family: -apple-system, &quot;PingFang SC&quot;, sans-serif; background: var(--bg-light); padding-top: 70px; min-height: 100vh; }</span>
+        <span class="s1">.navbar-custom { background: #fff; box-shadow: 0 1px 5px rgba(0,0,0,0.05); height: 70px; }</span>
+        <span class="s1">.navbar-brand { font-weight: 900; color: var(--primary) !important; }</span>
+        <span class="s1">.checkout-container { max-width: 1000px; margin: 30px auto; padding: 0 15px; }</span>
+        <span class="s1">.pay-card { background: #fff; border-radius: 12px; padding: 25px; margin-bottom: 20px; border: 1px solid #eee; }</span>
+        <span class="s1">.product-info { display: flex; gap: 15px; }</span>
+        <span class="s1">.product-thumb { width: 80px; height: 80px; border-radius: 8px; object-fit: cover; }</span>
+        <span class="s1">.payment-method { display: flex; align-items: center; justify-content: space-between; padding: 15px; border: 2px solid #f0f0f0; border-radius: 10px; cursor: pointer; margin-bottom: 10px; transition: 0.2s; }</span>
+        <span class="s1">.payment-method.active { border-color: var(--primary); background: rgba(0, 74, 173, 0.02); }</span>
+        <span class="s1">.btn-pay { background: linear-gradient(135deg, #ff6b00 0%, #ff8f00 100%); color: #fff; border: none; width: 100%; padding: 15px; font-size: 18px; font-weight: bold; border-radius: 12px; transition: 0.3s; }</span>
+        <span class="s1">.btn-pay:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255, 107, 0, 0.3); color: #fff; }</span>
+        <span class="s1">.success-view { display: none; text-align: center; padding: 50px 20px; }</span>
+        <span class="s1">.success-icon { width: 80px; height: 80px; background: #28a745; color: #fff; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 40px; margin-bottom: 20px; }</span>
+
+        <span class="s1">/* 演示控制条 */</span>
+        <span class="s1">.demo-bar { background: #333; color: #fff; padding: 5px; text-align: center; font-size: 12px; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; }</span>
+        <span class="s1">.demo-btn { background: #555; color: #fff; border: 1px solid #777; padding: 2px 8px; margin: 0 5px; cursor: pointer; }</span>
+    <span class="s0">&lt;/style&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+
+    <span class="s0">&lt;nav </span><span class="s2">class</span><span class="s3">=&quot;navbar navbar-expand-lg fixed-top navbar-custom&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container-fluid px-4&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;a </span><span class="s2">class</span><span class="s3">=&quot;navbar-brand&quot; </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">言禾收银台</span><span class="s0">&lt;/a&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;ms-auto text-muted small&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-shield-lock-fill text-success&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">安全支付环境</span><span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/nav&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;checkout-container&quot; </span><span class="s2">id</span><span class="s3">=&quot;checkoutView&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-lg-8&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;pay-card&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h6 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-3 border-bottom pb-2&quot;</span><span class="s0">&gt;</span><span class="s1">订单商品</span><span class="s0">&lt;/h6&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;product-info&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;img </span><span class="s2">id</span><span class="s3">=&quot;pImg&quot; </span><span class="s2">src</span><span class="s3">=&quot;&quot; </span><span class="s2">class</span><span class="s3">=&quot;product-thumb&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-1&quot; </span><span class="s2">id</span><span class="s3">=&quot;pTitle&quot;</span><span class="s0">&gt;</span><span class="s1">加载中...</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-muted small&quot; </span><span class="s2">id</span><span class="s3">=&quot;pDesc&quot;</span><span class="s0">&gt;</span><span class="s1">...</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;pay-card&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h6 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-3 border-bottom pb-2&quot;</span><span class="s0">&gt;</span><span class="s1">支付方式</span><span class="s0">&lt;/h6&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;payment-method active&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;selectPay(this)&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center gap-3&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-wechat text-success fs-4&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                            <span class="s0">&lt;div&gt;&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">微信支付</span><span class="s0">&lt;/div&gt;&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">推荐使用</span><span class="s0">&lt;/div&gt;&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-check-circle-fill text-primary fs-5&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;payment-method&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;selectPay(this)&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center gap-3&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-alipay text-primary fs-4&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                            <span class="s0">&lt;div&gt;&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">支付宝</span><span class="s0">&lt;/div&gt;&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">支持花呗</span><span class="s0">&lt;/div&gt;&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-circle text-muted fs-5&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-lg-4&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;pay-card&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h6 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-3 border-bottom pb-2&quot;</span><span class="s0">&gt;</span><span class="s1">结算明细</span><span class="s0">&lt;/h6&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;priceDetails&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+                    <span class="s0">&lt;hr&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex justify-content-between align-items-end mb-4&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">实付金额</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;fs-2 fw-bold text-danger&quot; </span><span class="s2">id</span><span class="s3">=&quot;totalPrice&quot;</span><span class="s0">&gt;</span><span class="s1">¥ 0.00</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn-pay&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;handlePay()&quot; </span><span class="s2">id</span><span class="s3">=&quot;btnPay&quot;</span><span class="s0">&gt;</span><span class="s1">立即支付</span><span class="s0">&lt;/button&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container success-view&quot; </span><span class="s2">id</span><span class="s3">=&quot;successView&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;success-icon&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-check-lg&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+        <span class="s0">&lt;h2 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-3&quot;</span><span class="s0">&gt;</span><span class="s1">支付成功！</span><span class="s0">&lt;/h2&gt;</span>
+        <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;text-muted mb-5&quot;</span><span class="s0">&gt;</span><span class="s1">权益已开通，您可以立即开始学习。</span><span class="s0">&lt;/p&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex justify-content-center gap-3&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-outline-secondary rounded-pill px-4&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;location.href='index_login.html'&quot;</span><span class="s0">&gt;</span><span class="s1">返回首页</span><span class="s0">&lt;/button&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-primary rounded-pill px-5 fw-bold&quot; </span><span class="s2">id</span><span class="s3">=&quot;btnBackCourse&quot;</span><span class="s0">&gt;</span><span class="s1">立刻去上课</span><span class="s0">&lt;/button&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;demo-bar&quot;</span><span class="s0">&gt;</span>
+        <span class="s1">评委视角切换：</span>
+        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;demo-btn&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;loadScenario('course')&quot;</span><span class="s0">&gt;</span><span class="s1">场景：买课程</span><span class="s0">&lt;/button&gt;</span>
+        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;demo-btn&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;loadScenario('vip')&quot;</span><span class="s0">&gt;</span><span class="s1">场景：买会员</span><span class="s0">&lt;/button&gt;</span>
+        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;demo-btn&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;loadScenario('task')&quot;</span><span class="s0">&gt;</span><span class="s1">场景：发任务</span><span class="s0">&lt;/button&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;script&gt;</span>
+        <span class="s1">// 场景数据配置</span>
+        <span class="s1">const scenarios = {</span>
+            <span class="s1">'course': {</span>
+                <span class="s1">img: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=200',</span>
+                <span class="s1">title: '单节解锁：04. 情景模拟：酒桌上的博弈',</span>
+                <span class="s1">desc: '含本节高清视频 + 课后 AI 练习 + 术语表下载',</span>
+                <span class="s1">priceHtml: `</span>
+                    <span class="s1">&lt;div class=&quot;d-flex justify-content-between mb-2 text-secondary&quot;&gt;&lt;span&gt;课程原价&lt;/span&gt;&lt;span&gt;¥ 199.00&lt;/span&gt;&lt;/div&gt;</span>
+                    <span class="s1">&lt;div class=&quot;d-flex justify-content-between mb-2 text-success&quot;&gt;&lt;span&gt;单节购买&lt;/span&gt;&lt;span&gt;¥ 99.00&lt;/span&gt;&lt;/div&gt;</span>
+                <span class="s1">`,</span>
+                <span class="s1">total: '¥ 99.00',</span>
+                <span class="s1">nextUrl: 'course_detail_unlocked.html' // 关键：支付后去哪里</span>
+            <span class="s1">},</span>
+            <span class="s1">'vip': {</span>
+                <span class="s1">img: 'https://images.unsplash.com/photo-1596797038530-2c107229654b?w=200',</span>
+                <span class="s1">title: '言禾 Pro 年度会员',</span>
+                <span class="s1">desc: '全站课程免费看 | 无限次 AI 纠音 | 任务接单免佣金',</span>
+                <span class="s1">priceHtml: `&lt;div class=&quot;d-flex justify-content-between mb-2 text-secondary&quot;&gt;&lt;span&gt;年费&lt;/span&gt;&lt;span&gt;¥ 298.00&lt;/span&gt;&lt;/div&gt;`,</span>
+                <span class="s1">total: '¥ 298.00',</span>
+                <span class="s1">nextUrl: 'profile.html'</span>
+            <span class="s1">},</span>
+            <span class="s1">'task': {</span>
+                <span class="s1">img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=200',</span>
+                <span class="s1">title: '托管赏金：法律文件翻译',</span>
+                <span class="s1">desc: '资金托管至平台担保账户，验收满意后打款',</span>
+                <span class="s1">priceHtml: `&lt;div class=&quot;d-flex justify-content-between mb-2 text-secondary&quot;&gt;&lt;span&gt;赏金&lt;/span&gt;&lt;span&gt;¥ 500.00&lt;/span&gt;&lt;/div&gt;`,</span>
+                <span class="s1">total: '¥ 500.00',</span>
+                <span class="s1">nextUrl: 'service.html'</span>
+            <span class="s1">}</span>
+        <span class="s1">};</span>
+
+        <span class="s1">// 默认加载逻辑 (支持 URL 参数 ?type=course)</span>
+        <span class="s1">const urlParams = new URLSearchParams(window.location.search);</span>
+        <span class="s1">const type = urlParams.get('type') || 'course'; // 默认是课程</span>
+        <span class="s1">loadScenario(type);</span>
+
+        <span class="s1">function loadScenario(key) {</span>
+            <span class="s1">const data = scenarios[key];</span>
+            <span class="s1">document.getElementById('pImg').src = data.img;</span>
+            <span class="s1">document.getElementById('pTitle').innerText = data.title;</span>
+            <span class="s1">document.getElementById('pDesc').innerText = data.desc;</span>
+            <span class="s1">document.getElementById('priceDetails').innerHTML = data.priceHtml;</span>
+            <span class="s1">document.getElementById('totalPrice').innerText = data.total;</span>
+            <span class="s1">document.getElementById('btnPay').innerText = `支付 ${data.total}`;</span>
+
+            <span class="s1">// 设置成功页的跳转目标</span>
+            <span class="s1">document.getElementById('btnBackCourse').onclick = function() {</span>
+                <span class="s1">window.location.href = data.nextUrl;</span>
+            <span class="s1">};</span>
+        <span class="s1">}</span>
+
+        <span class="s1">function selectPay(el) {</span>
+            <span class="s1">document.querySelectorAll('.payment-method').forEach(e =&gt; {</span>
+                <span class="s1">e.classList.remove('active');</span>
+                <span class="s1">e.querySelector('.bi-check-circle-fill')?.classList.replace('bi-check-circle-fill', 'bi-circle');</span>
+                <span class="s1">e.querySelector('.bi-check-circle-fill')?.classList.add('text-muted');</span>
+            <span class="s1">});</span>
+            <span class="s1">el.classList.add('active');</span>
+            <span class="s1">const icon = el.querySelector('.bi-circle, .bi-check-circle-fill');</span>
+            <span class="s1">icon.className = 'bi bi-check-circle-fill text-primary fs-5';</span>
+        <span class="s1">}</span>
+
+        <span class="s1">function handlePay() {</span>
+            <span class="s1">const btn = document.getElementById('btnPay');</span>
+            <span class="s1">btn.innerHTML = '&lt;span class=&quot;spinner-border spinner-border-sm&quot;&gt;&lt;/span&gt; 正在安全支付...';</span>
+            <span class="s1">setTimeout(() =&gt; {</span>
+                <span class="s1">document.getElementById('checkoutView').style.display = 'none';</span>
+                <span class="s1">document.querySelector('.demo-bar').style.display = 'none';</span>
+                <span class="s1">document.getElementById('successView').style.display = 'block';</span>
+            <span class="s1">}, 1500);</span>
+        <span class="s1">}</span>
+    <span class="s0">&lt;/script&gt;</span>
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span></pre>
+</body>
+</html>

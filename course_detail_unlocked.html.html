@@ -1,0 +1,176 @@
+<html>
+<head>
+<title>course_detail_unlocked.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bababa;}
+.s3 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+course_detail_unlocked.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;zh-CN&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">name</span><span class="s3">=&quot;viewport&quot; </span><span class="s2">content</span><span class="s3">=&quot;width=device-width, initial-scale=1.0&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;title&gt;</span><span class="s1">播放中 - 商务汉语谈判</span><span class="s0">&lt;/title&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;style&gt;</span>
+        <span class="s1">:root { --primary: #004aad; --bg-light: #f8faff; }</span>
+        <span class="s1">body { padding-top: 70px; background: var(--bg-light); font-family: -apple-system, sans-serif; }</span>
+        <span class="s1">.navbar-custom { background: #fff; height: 70px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }</span>
+        <span class="s1">.nav-avatar { width: 38px; height: 38px; border-radius: 50%; }</span>
+
+        <span class="s1">/* 视频容器 (解锁状态) */</span>
+        <span class="s1">.video-wrapper {</span>
+            <span class="s1">background: #000; width: 100%; aspect-ratio: 16/9; border-radius: 12px; overflow: hidden; position: relative;</span>
+            <span class="s1">display: flex; align-items: center; justify-content: center;</span>
+        <span class="s1">}</span>
+        <span class="s1">/* 模拟视频界面 */</span>
+        <span class="s1">.fake-video-ui {</span>
+            <span class="s1">width: 100%; height: 100%; background: linear-gradient(45deg, #111, #222);</span>
+            <span class="s1">position: relative; display: flex; flex-direction: column; justify-content: space-between;</span>
+        <span class="s1">}</span>
+        <span class="s1">.video-overlay-center {</span>
+            <span class="s1">position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);</span>
+            <span class="s1">color: #fff; text-align: center;</span>
+        <span class="s1">}</span>
+        <span class="s1">.progress-bar-video { height: 4px; background: rgba(255,255,255,0.2); width: 100%; position: absolute; bottom: 0; }</span>
+        <span class="s1">.progress-fill { width: 0%; height: 100%; background: var(--primary); animation: playProgress 30s linear forwards; }</span>
+
+        <span class="s1">@keyframes playProgress { to { width: 100%; } }</span>
+
+        <span class="s1">/* 目录样式 */</span>
+        <span class="s1">.playlist-box { background: #fff; border-radius: 12px; height: 100%; border: 1px solid #eee; overflow: hidden; display: flex; flex-direction: column; }</span>
+        <span class="s1">.chapter-item { padding: 15px; border-bottom: 1px solid #f9f9f9; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }</span>
+        <span class="s1">.chapter-item:hover { background: #f5faff; }</span>
+        <span class="s1">.chapter-item.active { background: #eef6ff; border-left: 4px solid var(--primary); }</span>
+        <span class="s1">.chapter-item.active .text-dark { color: var(--primary) !important; font-weight: bold; }</span>
+
+        <span class="s1">.badge-vip { background: linear-gradient(135deg, #ffd700, #ffaa00); color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 4px; }</span>
+    <span class="s0">&lt;/style&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+
+    <span class="s0">&lt;nav </span><span class="s2">class</span><span class="s3">=&quot;navbar navbar-expand-lg fixed-top navbar-custom&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container-fluid px-4&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;a </span><span class="s2">class</span><span class="s3">=&quot;navbar-brand fw-bold text-primary&quot; </span><span class="s2">href</span><span class="s3">=&quot;index_login.html&quot;</span><span class="s0">&gt;</span><span class="s1">言禾 YanHe</span><span class="s0">&lt;/a&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center ms-auto gap-3&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;education_login.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;btn btn-outline-secondary btn-sm rounded-pill px-3&quot;</span><span class="s0">&gt;</span><span class="s1">返回课程表</span><span class="s0">&lt;/a&gt;</span>
+                <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;https://api.dicebear.com/7.x/avataaars/svg?seed=LiHua&quot; </span><span class="s2">class</span><span class="s3">=&quot;nav-avatar border&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/nav&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;position-fixed top-0 start-50 translate-middle-x p-3&quot; </span><span class="s2">style</span><span class="s3">=&quot;z-index: 2000; margin-top: 80px;&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;unlockToast&quot; </span><span class="s2">class</span><span class="s3">=&quot;toast align-items-center text-white bg-success border-0 show&quot; </span><span class="s2">role</span><span class="s3">=&quot;alert&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;toast-body&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-check-circle-fill me-2&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">购买成功！本节视频已解锁。</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;button </span><span class="s2">type</span><span class="s3">=&quot;button&quot; </span><span class="s2">class</span><span class="s3">=&quot;btn-close btn-close-white me-2 m-auto&quot; </span><span class="s2">data-bs-dismiss</span><span class="s3">=&quot;toast&quot;</span><span class="s0">&gt;&lt;/button&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container py-4&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row g-4&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-lg-8&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;video-wrapper&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fake-video-ui&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;p-3 text-white text-shadow small&quot;</span><span class="s0">&gt;</span><span class="s1">04. 情景模拟：酒桌上的博弈</span><span class="s0">&lt;/div&gt;</span>
+
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;video-overlay-center&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-play-circle&quot; </span><span class="s2">style</span><span class="s3">=&quot;font-size: 50px; opacity: 0.8;&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mt-2&quot;</span><span class="s0">&gt;</span><span class="s1">正在播放...</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;progress-bar-video&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;progress-fill&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mt-4&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center justify-content-between&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;h2 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-0&quot;</span><span class="s0">&gt;</span><span class="s1">04. 情景模拟：酒桌上的博弈</span><span class="s0">&lt;/h2&gt;</span>
+                        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-primary rounded-pill px-4&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;alert('AI 助教已启动！')&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-robot&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">提问 AI</span><span class="s0">&lt;/button&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-muted small mt-2&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;span&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-unlock-fill text-success&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">已购买</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;mx-2&quot;</span><span class="s0">&gt;</span><span class="s1">|</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;span&gt;</span><span class="s1">18:20</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;hr&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;bg-light p-3 rounded small text-secondary&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;strong&gt;</span><span class="s1">本节重点：</span><span class="s0">&lt;/strong&gt;</span>
+                        <span class="s0">&lt;ul&gt;</span>
+                            <span class="s0">&lt;li&gt;</span><span class="s1">如何委婉地拒绝劝酒？ (Polite Refusal)</span><span class="s0">&lt;/li&gt;</span>
+                            <span class="s0">&lt;li&gt;</span><span class="s1">敬酒的顺序与措辞 (Toasting Etiquette)</span><span class="s0">&lt;/li&gt;</span>
+                            <span class="s0">&lt;li&gt;</span><span class="s1">“给面子”在商务谈判中的实际应用。</span><span class="s0">&lt;/li&gt;</span>
+                        <span class="s0">&lt;/ul&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-lg-4&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;playlist-box&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;p-3 border-bottom bg-light fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">课程目录</span><span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;overflow-auto&quot; </span><span class="s2">style</span><span class="s3">=&quot;max-height: 500px;&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;chapter-item text-muted&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;small&quot;</span><span class="s0">&gt;</span><span class="s1">01. 导论：谈判思维</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-check-circle-fill text-success&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;chapter-item text-muted&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;small&quot;</span><span class="s0">&gt;</span><span class="s1">02. 核心词汇：报价</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-check-circle-fill text-success&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;chapter-item text-muted&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;small&quot;</span><span class="s0">&gt;</span><span class="s1">03. 情景：初次见面</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-check-circle-fill text-success&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;chapter-item active&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div&gt;</span>
+                                <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-play-fill text-primary&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                                <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;small text-dark&quot;</span><span class="s0">&gt;</span><span class="s1">04. 情景：酒桌博弈</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;badge-vip&quot;</span><span class="s0">&gt;</span><span class="s1">已解锁</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;chapter-item&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;small&quot;</span><span class="s0">&gt;</span><span class="s1">05. 文化：面子工程</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-lock-fill text-muted&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;chapter-item&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;small&quot;</span><span class="s0">&gt;</span><span class="s1">06. 合同条款解析</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-lock-fill text-muted&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;script </span><span class="s2">src</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js&quot;</span><span class="s0">&gt;&lt;/script&gt;</span>
+    <span class="s0">&lt;script&gt;</span>
+        <span class="s1">// 自动消失 Toast</span>
+        <span class="s1">setTimeout(() =&gt; {</span>
+            <span class="s1">var toastEl = document.getElementById('unlockToast');</span>
+            <span class="s1">var toast = new bootstrap.Toast(toastEl);</span>
+            <span class="s1">toast.hide();</span>
+        <span class="s1">}, 3000);</span>
+    <span class="s0">&lt;/script&gt;</span>
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span></pre>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<html>
+<head>
+<title>review_en.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bababa;}
+.s3 { color: #6aab73;}
+.s4 { color: #56a8f5;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+review_en.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;en&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">name</span><span class="s3">=&quot;viewport&quot; </span><span class="s2">content</span><span class="s3">=&quot;width=device-width, initial-scale=1.0&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;title&gt;</span><span class="s1">Smart Review - YanHe</span><span class="s0">&lt;/title&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&amp;display=swap&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;style&gt;</span>
+        <span class="s1">:root { --primary: #0052cc; --dark: #091e42; --bg-light: #f4f5f7; --success: #36b37e; --danger: #de350b; --warning: #ffab00; }</span>
+        <span class="s1">body {</span>
+            <span class="s1">font-family: 'Inter', sans-serif;</span>
+            <span class="s1">background: var(--bg-light);</span>
+            <span class="s1">height: 100vh; overflow: hidden; /* Prevent scrolling for immersive feel */</span>
+            <span class="s1">display: flex; flex-direction: column;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* Minimal Header */</span>
+        <span class="s1">.review-header {</span>
+            <span class="s1">padding: 15px 30px; background: #fff; border-bottom: 1px solid #ebecf0;</span>
+            <span class="s1">display: flex; justify-content: space-between; align-items: center; height: 70px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.close-btn { color: #5e6c84; font-size: 1.5rem; cursor: pointer; transition: 0.2s; }</span>
+        <span class="s1">.close-btn:hover { color: var(--dark); transform: scale(1.1); }</span>
+
+        <span class="s1">/* Progress Bar */</span>
+        <span class="s1">.progress-container { width: 300px; }</span>
+        <span class="s1">.progress-custom { height: 8px; background: #ebecf0; border-radius: 4px; overflow: hidden; }</span>
+        <span class="s1">.progress-bar-custom { height: 100%; background: var(--success); width: 20%; transition: width 0.5s ease; }</span>
+        <span class="s1">.progress-text { font-size: 0.8rem; color: #6b778c; text-align: center; margin-top: 5px; font-weight: 600; }</span>
+
+        <span class="s1">/* Main Stage */</span>
+        <span class="s1">.review-stage {</span>
+            <span class="s1">flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;</span>
+            <span class="s1">perspective: 1000px; /* Essential for 3D flip */</span>
+            <span class="s1">padding-bottom: 80px; /* Space for footer */</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* Flashcard Container */</span>
+        <span class="s1">.flashcard {</span>
+            <span class="s1">width: 100%; max-width: 600px; height: 350px; cursor: pointer;</span>
+            <span class="s1">position: relative; transform-style: preserve-3d; transition: transform 0.6s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.flashcard.flipped { transform: rotateY(180deg); }</span>
+
+        <span class="s1">/* Card Faces */</span>
+        <span class="s1">.card-face {</span>
+            <span class="s1">position: absolute; width: 100%; height: 100%; backface-visibility: hidden;</span>
+            <span class="s1">border-radius: 16px; background: #fff; box-shadow: 0 10px 40px rgba(9, 30, 66, 0.08);</span>
+            <span class="s1">display: flex; flex-direction: column; align-items: center; justify-content: center;</span>
+            <span class="s1">border: 1px solid #ebecf0; padding: 40px; text-align: center;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* Front Face */</span>
+        <span class="s1">.card-front { z-index: 2; }</span>
+        <span class="s1">.word-lg { font-size: 3.5rem; font-weight: 800; color: var(--dark); margin-bottom: 20px; }</span>
+        <span class="s1">.hint-text { color: #6b778c; font-size: 0.9rem; font-style: italic; }</span>
+
+        <span class="s1">/* Back Face */</span>
+        <span class="s1">.card-back { transform: rotateY(180deg); background: #fdfdfd; }</span>
+        <span class="s1">.pinyin { font-size: 1.5rem; color: var(--primary); font-weight: 600; margin-bottom: 10px; }</span>
+        <span class="s1">.meaning { font-size: 1.8rem; font-weight: 700; color: #42526e; margin-bottom: 20px; }</span>
+        <span class="s1">.example-box { background: #f4f5f7; padding: 15px; border-radius: 8px; width: 100%; text-align: left; }</span>
+        <span class="s1">.example-cn { font-size: 1.1rem; font-weight: 600; margin-bottom: 4px; }</span>
+        <span class="s1">.example-en { font-size: 0.9rem; color: #6b778c; }</span>
+
+        <span class="s1">/* Bottom Controls */</span>
+        <span class="s1">.control-bar {</span>
+            <span class="s1">position: fixed; bottom: 0; left: 0; right: 0; height: 100px;</span>
+            <span class="s1">background: #fff; border-top: 1px solid #ebecf0;</span>
+            <span class="s1">display: flex; align-items: center; justify-content: center; gap: 15px;</span>
+            <span class="s1">box-shadow: 0 -5px 20px rgba(0,0,0,0.03); z-index: 10;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* Grading Buttons */</span>
+        <span class="s1">.btn-grade {</span>
+            <span class="s1">border: none; padding: 0; width: 120px; height: 50px; border-radius: 8px;</span>
+            <span class="s1">font-weight: 700; font-size: 0.9rem; color: #fff; transition: 0.2s;</span>
+            <span class="s1">display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.2;</span>
+        <span class="s1">}</span>
+        <span class="s1">.btn-grade:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.15); }</span>
+
+        <span class="s1">.btn-again { background: #ff5630; border-bottom: 4px solid #de350b; }</span>
+        <span class="s1">.btn-hard { background: #ffab00; border-bottom: 4px solid #ff8b00; }</span>
+        <span class="s1">.btn-good { background: var(--primary); border-bottom: 4px solid #0043a8; }</span>
+        <span class="s1">.btn-easy { background: var(--success); border-bottom: 4px solid #228c60; }</span>
+
+        <span class="s1">.grade-sub { font-size: 0.7rem; opacity: 0.8; font-weight: 400; }</span>
+
+        <span class="s1">/* Initial State: Only Show &quot;Show Answer&quot; button */</span>
+        <span class="s1">.grading-actions { display: none; gap: 15px; }</span>
+        <span class="s1">.btn-show {</span>
+            <span class="s1">background: var(--dark); color: #fff; padding: 15px 60px; border-radius: 50px;</span>
+            <span class="s1">font-weight: 700; font-size: 1.1rem; border: none; box-shadow: 0 8px 20px rgba(9,30,66,0.2);</span>
+            <span class="s1">transition: 0.2s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.btn-show:hover { transform: scale(1.05); }</span>
+
+        <span class="s1">/* Keyboard Hint */</span>
+        <span class="s1">.kb-hint { position: absolute; bottom: 120px; color: #97a0af; font-size: 0.8rem; display: flex; align-items: center; gap: 5px; }</span>
+        <span class="s1">.key-cap { border: 1px solid #dfe1e6; padding: 2px 6px; border-radius: 4px; font-weight: 700; background: #fff; }</span>
+
+        <span class="s1">/* Audio Icon */</span>
+        <span class="s1">.btn-audio {</span>
+            <span class="s1">position: absolute; top: 20px; right: 20px; font-size: 1.5rem; color: #dfe1e6;</span>
+            <span class="s1">cursor: pointer; transition: 0.2s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.btn-audio:hover { color: var(--primary); }</span>
+
+        <span class="s1">/* Success View */</span>
+        <span class="s1">.success-overlay {</span>
+            <span class="s1">position: fixed; inset: 0; background: #fff; z-index: 100;</span>
+            <span class="s1">display: none; align-items: center; justify-content: center; flex-direction: column;</span>
+        <span class="s1">}</span>
+        <span class="s1">.success-icon { font-size: 5rem; color: var(--success); animation: popIn 0.5s; }</span>
+    <span class="s0">&lt;/style&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;review-header&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center gap-3&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;education_en.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;close-btn&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-x-lg&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/a&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">Daily Review</span><span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;progress-container&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;progress-custom&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;progress-bar-custom&quot; </span><span class="s2">id</span><span class="s3">=&quot;progressBar&quot; </span><span class="s2">style</span><span class="s3">=&quot;width: 20%&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;progress-text&quot; </span><span class="s2">id</span><span class="s3">=&quot;progressText&quot;</span><span class="s0">&gt;</span><span class="s1">2 / 10</span><span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center gap-2 text-warning fw-bold&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-fire&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">5 Day Streak</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;review-stage&quot;</span><span class="s0">&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;flashcard&quot; </span><span class="s2">id</span><span class="s3">=&quot;flashcard&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;flipCard()&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card-face card-front&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;btn-audio&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;event.stopPropagation(); playAudio()&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-volume-up-fill&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted text-uppercase mb-3 fw-bold tracking-wide&quot;</span><span class="s0">&gt;</span><span class="s1">Business Term</span><span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;word-lg&quot; </span><span class="s2">id</span><span class="s3">=&quot;cardFront&quot;</span><span class="s0">&gt;</span><span class="s1">合同</span><span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;hint-text&quot;</span><span class="s0">&gt;</span><span class="s1">Tap to flip</span><span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card-face card-back&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;btn-audio&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;event.stopPropagation(); playAudio()&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-volume-up-fill&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;pinyin&quot; </span><span class="s2">id</span><span class="s3">=&quot;cardPinyin&quot;</span><span class="s0">&gt;</span><span class="s1">Hé Tong</span><span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;meaning&quot; </span><span class="s2">id</span><span class="s3">=&quot;cardMeaning&quot;</span><span class="s0">&gt;</span><span class="s1">Contract</span><span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;example-box&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;example-cn&quot; </span><span class="s2">id</span><span class="s3">=&quot;cardExCn&quot;</span><span class="s0">&gt;</span><span class="s1">我们需要签署一份新的合同。</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;example-en&quot; </span><span class="s2">id</span><span class="s3">=&quot;cardExEn&quot;</span><span class="s0">&gt;</span><span class="s1">We need to sign a new contract.</span><span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;kb-hint d-none d-md-flex&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;key-cap&quot;</span><span class="s0">&gt;</span><span class="s1">Space</span><span class="s0">&lt;/span&gt; </span><span class="s1">to flip</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;control-bar&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn-show&quot; </span><span class="s2">id</span><span class="s3">=&quot;btnShow&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;flipCard()&quot;</span><span class="s0">&gt;</span><span class="s1">Show Answer</span><span class="s0">&lt;/button&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;grading-actions&quot; </span><span class="s2">id</span><span class="s3">=&quot;gradingActions&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn-grade btn-again&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;nextCard('again')&quot;</span><span class="s0">&gt;</span>
+                <span class="s1">Again</span>
+                <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;grade-sub&quot;</span><span class="s0">&gt;</span><span class="s4">&amp;lt; </span><span class="s1">1m</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/button&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn-grade btn-hard&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;nextCard('hard')&quot;</span><span class="s0">&gt;</span>
+                <span class="s1">Hard</span>
+                <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;grade-sub&quot;</span><span class="s0">&gt;</span><span class="s1">2d</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/button&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn-grade btn-good&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;nextCard('good')&quot;</span><span class="s0">&gt;</span>
+                <span class="s1">Good</span>
+                <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;grade-sub&quot;</span><span class="s0">&gt;</span><span class="s1">4d</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/button&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn-grade btn-easy&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;nextCard('easy')&quot;</span><span class="s0">&gt;</span>
+                <span class="s1">Easy</span>
+                <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;grade-sub&quot;</span><span class="s0">&gt;</span><span class="s1">7d</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/button&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;success-overlay&quot; </span><span class="s2">id</span><span class="s3">=&quot;successScreen&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-check-circle-fill success-icon&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+        <span class="s0">&lt;h2 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mt-4 mb-2&quot;</span><span class="s0">&gt;</span><span class="s1">Session Complete!</span><span class="s0">&lt;/h2&gt;</span>
+        <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;text-muted mb-4&quot;</span><span class="s0">&gt;</span><span class="s1">You've reviewed 10 cards today. +50 XP</span><span class="s0">&lt;/p&gt;</span>
+        <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;education_en.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;btn btn-dark rounded-pill px-5 py-3 fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">Back to Dashboard</span><span class="s0">&lt;/a&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;script&gt;</span>
+        <span class="s1">// Mock Data (AI Generated)</span>
+        <span class="s1">const cards = [</span>
+            <span class="s1">{ front: &quot;合同&quot;, pinyin: &quot;Hé Tong&quot;, meaning: &quot;Contract&quot;, exCn: &quot;我们需要签署一份新的合同。&quot;, exEn: &quot;We need to sign a new contract.&quot; },</span>
+            <span class="s1">{ front: &quot;谈判&quot;, pinyin: &quot;Tán Pàn&quot;, meaning: &quot;Negotiation&quot;, exCn: &quot;谈判进行得很顺利。&quot;, exEn: &quot;The negotiation went very smoothly.&quot; },</span>
+            <span class="s1">{ front: &quot;预算&quot;, pinyin: &quot;Yù Suàn&quot;, meaning: &quot;Budget&quot;, exCn: &quot;这个项目的预算是多少？&quot;, exEn: &quot;What is the budget for this project?&quot; }</span>
+        <span class="s1">];</span>
+
+        <span class="s1">let currentIndex = 0;</span>
+        <span class="s1">let isFlipped = false;</span>
+
+        <span class="s1">// Init</span>
+        <span class="s1">updateCard();</span>
+
+        <span class="s1">function flipCard() {</span>
+            <span class="s1">const card = document.getElementById('flashcard');</span>
+            <span class="s1">const btnShow = document.getElementById('btnShow');</span>
+            <span class="s1">const grading = document.getElementById('gradingActions');</span>
+
+            <span class="s1">if (!isFlipped) {</span>
+                <span class="s1">// Flip to back</span>
+                <span class="s1">card.classList.add('flipped');</span>
+                <span class="s1">isFlipped = true;</span>
+
+                <span class="s1">// Show grading buttons</span>
+                <span class="s1">btnShow.style.display = 'none';</span>
+                <span class="s1">grading.style.display = 'flex';</span>
+
+                <span class="s1">// Update Hint</span>
+                <span class="s1">document.querySelector('.kb-hint').innerHTML = 'Press &lt;span class=&quot;key-cap&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;key-cap&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;key-cap&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;key-cap&quot;&gt;4&lt;/span&gt; to grade';</span>
+            <span class="s1">} else {</span>
+                <span class="s1">// Optional: Flip back logic if needed, but usually SRS goes forward</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">function nextCard(difficulty) {</span>
+            <span class="s1">// Animation out could go here</span>
+            <span class="s1">currentIndex++;</span>
+
+            <span class="s1">if (currentIndex &gt;= cards.length) {</span>
+                <span class="s1">// Finish</span>
+                <span class="s1">document.getElementById('successScreen').style.display = 'flex';</span>
+                <span class="s1">return;</span>
+            <span class="s1">}</span>
+
+            <span class="s1">// Reset UI</span>
+            <span class="s1">const card = document.getElementById('flashcard');</span>
+            <span class="s1">const btnShow = document.getElementById('btnShow');</span>
+            <span class="s1">const grading = document.getElementById('gradingActions');</span>
+
+            <span class="s1">// Instant flip back (no anim) to prepare for next card</span>
+            <span class="s1">card.style.transition = 'none';</span>
+            <span class="s1">card.classList.remove('flipped');</span>
+            <span class="s1">setTimeout(() =&gt; { card.style.transition = 'transform 0.6s'; }, 50);</span>
+
+            <span class="s1">isFlipped = false;</span>
+            <span class="s1">btnShow.style.display = 'block';</span>
+            <span class="s1">grading.style.display = 'none';</span>
+            <span class="s1">document.querySelector('.kb-hint').innerHTML = '&lt;span class=&quot;key-cap&quot;&gt;Space&lt;/span&gt; to flip';</span>
+
+            <span class="s1">// Update Progress</span>
+            <span class="s1">updateProgress();</span>
+
+            <span class="s1">// Load new data</span>
+            <span class="s1">setTimeout(() =&gt; {</span>
+                <span class="s1">updateCard();</span>
+            <span class="s1">}, 150);</span>
+        <span class="s1">}</span>
+
+        <span class="s1">function updateCard() {</span>
+            <span class="s1">const data = cards[currentIndex];</span>
+            <span class="s1">document.getElementById('cardFront').innerText = data.front;</span>
+            <span class="s1">document.getElementById('cardPinyin').innerText = data.pinyin;</span>
+            <span class="s1">document.getElementById('cardMeaning').innerText = data.meaning;</span>
+            <span class="s1">document.getElementById('cardExCn').innerText = data.exCn;</span>
+            <span class="s1">document.getElementById('cardExEn').innerText = data.exEn;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">function updateProgress() {</span>
+            <span class="s1">const pct = ((currentIndex) / cards.length) * 100; // Visual fix</span>
+            <span class="s1">document.getElementById('progressBar').style.width = pct + '%';</span>
+            <span class="s1">document.getElementById('progressText').innerText = (currentIndex + 1) + ' / ' + cards.length;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">function playAudio() {</span>
+            <span class="s1">// Simulating audio</span>
+            <span class="s1">alert('🔊 Playing pronunciation audio...');</span>
+        <span class="s1">}</span>
+
+        <span class="s1">// Keyboard Shortcuts</span>
+        <span class="s1">document.addEventListener('keydown', (e) =&gt; {</span>
+            <span class="s1">if (e.code === 'Space') {</span>
+                <span class="s1">e.preventDefault(); // Prevent scroll</span>
+                <span class="s1">if(!isFlipped) flipCard();</span>
+            <span class="s1">}</span>
+            <span class="s1">if (isFlipped) {</span>
+                <span class="s1">if (e.key === '1') nextCard('again');</span>
+                <span class="s1">if (e.key === '2') nextCard('hard');</span>
+                <span class="s1">if (e.key === '3') nextCard('good');</span>
+                <span class="s1">if (e.key === '4') nextCard('easy');</span>
+            <span class="s1">}</span>
+        <span class="s1">});</span>
+    <span class="s0">&lt;/script&gt;</span>
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span></pre>
+</body>
+</html>

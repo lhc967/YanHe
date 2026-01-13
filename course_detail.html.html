@@ -1,0 +1,303 @@
+<html>
+<head>
+<title>course_detail.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bababa;}
+.s3 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+course_detail.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;zh-CN&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">name</span><span class="s3">=&quot;viewport&quot; </span><span class="s2">content</span><span class="s3">=&quot;width=device-width, initial-scale=1.0&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;title&gt;</span><span class="s1">课程播放 - 商务汉语谈判</span><span class="s0">&lt;/title&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;style&gt;</span>
+        <span class="s1">:root { --primary: #004aad; --accent: #ff6b00; --bg-light: #f8faff; }</span>
+        <span class="s1">body { padding-top: 70px; background: var(--bg-light); font-family: -apple-system, &quot;PingFang SC&quot;, sans-serif; }</span>
+
+        <span class="s1">/* 导航栏保持一致 */</span>
+        <span class="s1">.navbar-custom { background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.05); height: 70px; z-index: 1000; }</span>
+        <span class="s1">.navbar-brand { font-weight: 900; color: var(--primary) !important; }</span>
+        <span class="s1">.nav-avatar { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 1px solid #eee; }</span>
+
+        <span class="s1">/* 视频播放区 */</span>
+        <span class="s1">.video-container {</span>
+            <span class="s1">background: #000; width: 100%; aspect-ratio: 16/9; border-radius: 12px; overflow: hidden; position: relative;</span>
+            <span class="s1">box-shadow: 0 10px 30px rgba(0,0,0,0.1);</span>
+        <span class="s1">}</span>
+        <span class="s1">.video-placeholder { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }</span>
+        <span class="s1">.play-btn-overlay {</span>
+            <span class="s1">position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;</span>
+            <span class="s1">background: rgba(0,0,0,0.3); color: #fff; cursor: pointer; transition: 0.3s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.play-btn-overlay:hover { background: rgba(0,0,0,0.5); }</span>
+
+        <span class="s1">/* 锁定遮罩 */</span>
+        <span class="s1">.lock-overlay {</span>
+            <span class="s1">position: absolute; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);</span>
+            <span class="s1">display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff;</span>
+            <span class="s1">z-index: 10; display: none; /* 默认隐藏 */</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* 目录区 */</span>
+        <span class="s1">.playlist-card { background: #fff; border-radius: 12px; border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; }</span>
+        <span class="s1">.playlist-header { padding: 20px; border-bottom: 1px solid #eee; }</span>
+        <span class="s1">.video-tabs { display: flex; gap: 10px; margin-top: 10px; }</span>
+        <span class="s1">.v-tab {</span>
+            <span class="s1">font-size: 13px; padding: 4px 12px; border-radius: 20px; background: #f5f5f5; color: #666; cursor: pointer; transition: 0.2s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.v-tab.active { background: var(--primary); color: #fff; }</span>
+
+        <span class="s1">.chapter-list { flex: 1; overflow-y: auto; padding: 0; max-height: 500px; }</span>
+        <span class="s1">.chapter-item {</span>
+            <span class="s1">padding: 15px 20px; border-bottom: 1px solid #f9f9f9; cursor: pointer; transition: 0.2s;</span>
+            <span class="s1">display: flex; justify-content: space-between; align-items: center;</span>
+        <span class="s1">}</span>
+        <span class="s1">.chapter-item:hover { background: #f0f7ff; }</span>
+        <span class="s1">.chapter-item.active { background: #eef4ff; border-left: 4px solid var(--primary); }</span>
+        <span class="s1">.chapter-item.locked { opacity: 0.7; }</span>
+
+        <span class="s1">.tag-free { font-size: 10px; background: #e6f9ed; color: #28a745; padding: 2px 6px; border-radius: 4px; font-weight: bold; }</span>
+        <span class="s1">.tag-paid { font-size: 10px; background: #fff0f0; color: #dc3545; padding: 2px 6px; border-radius: 4px; font-weight: bold; }</span>
+    <span class="s0">&lt;/style&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+
+    <span class="s0">&lt;nav </span><span class="s2">class</span><span class="s3">=&quot;navbar navbar-expand-lg fixed-top navbar-custom&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container-fluid px-4&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;a </span><span class="s2">class</span><span class="s3">=&quot;navbar-brand&quot; </span><span class="s2">href</span><span class="s3">=&quot;index_login.html&quot;</span><span class="s0">&gt;</span><span class="s1">言禾 YanHe</span><span class="s0">&lt;/a&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center ms-auto gap-3&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;education_login.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;btn btn-outline-secondary btn-sm rounded-pill px-3&quot;</span><span class="s0">&gt;</span><span class="s1">返回课程表</span><span class="s0">&lt;/a&gt;</span>
+                <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;https://api.dicebear.com/7.x/avataaars/svg?seed=LiHua&quot; </span><span class="s2">class</span><span class="s3">=&quot;nav-avatar&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/nav&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container py-4&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row g-4&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-lg-8&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;video-container&quot; </span><span class="s2">id</span><span class="s3">=&quot;videoArea&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;img </span><span class="s2">id</span><span class="s3">=&quot;videoCover&quot; </span><span class="s2">src</span><span class="s3">=&quot;https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&quot; </span><span class="s2">class</span><span class="s3">=&quot;video-placeholder&quot;</span><span class="s0">&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;play-btn-overlay&quot; </span><span class="s2">id</span><span class="s3">=&quot;playBtn&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;startVideo()&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-play-circle-fill&quot; </span><span class="s2">style</span><span class="s3">=&quot;font-size: 60px;&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mt-2 fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">点击开始学习</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;lock-overlay&quot; </span><span class="s2">id</span><span class="s3">=&quot;lockMask&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-lock-fill&quot; </span><span class="s2">style</span><span class="s3">=&quot;font-size: 50px; margin-bottom: 15px;&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                        <span class="s0">&lt;h4 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">本节为高阶付费内容</span><span class="s0">&lt;/h4&gt;</span>
+                        <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;text-white-50 mb-4&quot;</span><span class="s0">&gt;</span><span class="s1">解锁本章及后续所有情景剧视频</span><span class="s0">&lt;/p&gt;</span>
+                        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-danger rounded-pill px-5 fw-bold&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;goToPay(99)&quot;</span><span class="s0">&gt;</span>
+                            <span class="s1">解锁本节 (¥ 99)</span>
+                        <span class="s0">&lt;/button&gt;</span>
+                        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-link text-white small mt-2&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;previewFree()&quot;</span><span class="s0">&gt;</span><span class="s1">试看 30 秒</span><span class="s0">&lt;/button&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mt-4&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h2 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold&quot; </span><span class="s2">id</span><span class="s3">=&quot;lessonTitle&quot;</span><span class="s0">&gt;</span><span class="s1">01. 课程导论：中国人的谈判思维</span><span class="s0">&lt;/h2&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex gap-3 text-muted small mt-2&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;span&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-eye&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">1.2w 次观看</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;span&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-star-fill text-warning&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">4.9 分</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;span&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-clock&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">15:00</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;hr&gt;</span>
+                    <span class="s0">&lt;h5 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mt-4&quot;</span><span class="s0">&gt;</span><span class="s1">课程简介</span><span class="s0">&lt;/h5&gt;</span>
+                    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;text-secondary&quot;</span><span class="s0">&gt;</span><span class="s1">本课程专为具备中级汉语水平的学习者设计，结合真实的商务场景，深度解析中国商业环境中的谈判策略与语言艺术。</span><span class="s0">&lt;/p&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-lg-4&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;playlist-card&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;playlist-header&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;h5 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold m-0&quot;</span><span class="s0">&gt;</span><span class="s1">课程目录</span><span class="s0">&lt;/h5&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;video-tabs&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;v-tab active&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;filterType('all', this)&quot;</span><span class="s0">&gt;</span><span class="s1">全部</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;v-tab&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;filterType('grammar', this)&quot;</span><span class="s0">&gt;</span><span class="s1">精讲课</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;v-tab&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;filterType('scenario', this)&quot;</span><span class="s0">&gt;</span><span class="s1">情景剧</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;v-tab&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;filterType('culture', this)&quot;</span><span class="s0">&gt;</span><span class="s1">文化角</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;chapter-list&quot; </span><span class="s2">id</span><span class="s3">=&quot;chapterList&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">style</span><span class="s3">=&quot;position: fixed; bottom: 30px; right: 30px; z-index: 1050;&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-primary rounded-circle shadow-lg d-flex align-items-center justify-content-center&quot;</span>
+                <span class="s2">style</span><span class="s3">=&quot;width: 60px; height: 60px; font-size: 24px;&quot;</span>
+                <span class="s2">onclick</span><span class="s3">=&quot;toggleAiChat()&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-robot&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+        <span class="s0">&lt;/button&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card shadow-lg&quot; </span><span class="s2">id</span><span class="s3">=&quot;aiChatBox&quot; </span><span class="s2">style</span><span class="s3">=&quot;position: fixed; bottom: 100px; right: 30px; width: 350px; height: 500px; z-index: 1050; display: none; border-radius: 16px; border: none;&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card-header bg-primary text-white d-flex justify-content-between align-items-center&quot; </span><span class="s2">style</span><span class="s3">=&quot;border-radius: 16px 16px 0 0;&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;fw-bold&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-robot me-2&quot;</span><span class="s0">&gt;&lt;/i&gt;</span><span class="s1">AI 助教</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">type</span><span class="s3">=&quot;button&quot; </span><span class="s2">class</span><span class="s3">=&quot;btn-close btn-close-white btn-sm&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;toggleAiChat()&quot;</span><span class="s0">&gt;&lt;/button&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card-body bg-light overflow-auto&quot; </span><span class="s2">id</span><span class="s3">=&quot;chatBody&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-start mb-3&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;bg-white p-2 rounded shadow-sm small text-dark&quot; </span><span class="s2">style</span><span class="s3">=&quot;max-width: 80%;&quot;</span><span class="s0">&gt;</span>
+                    <span class="s1">你好！我是言禾 AI 助教。关于这节课有什么不懂的词汇，可以随时问我哦！</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card-footer bg-white&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;input-group&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control border-0 bg-light&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;输入问题...&quot; </span><span class="s2">id</span><span class="s3">=&quot;chatInput&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-link text-primary&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;sendMessage()&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-send-fill&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/button&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;script&gt;</span>
+        <span class="s1">// 模拟课程数据</span>
+        <span class="s1">const chapters = [</span>
+            <span class="s1">{ id: 1, title: &quot;01. 导论：中国人的谈判思维&quot;, type: &quot;grammar&quot;, isPaid: false, duration: &quot;15:00&quot; },</span>
+            <span class="s1">{ id: 2, title: &quot;02. 核心词汇：报价与还价&quot;, type: &quot;grammar&quot;, isPaid: false, duration: &quot;22:30&quot; },</span>
+            <span class="s1">{ id: 3, title: &quot;03. 情景模拟：初次见面寒暄&quot;, type: &quot;scenario&quot;, isPaid: true, price: 99, duration: &quot;10:45&quot; },</span>
+            <span class="s1">{ id: 4, title: &quot;04. 情景模拟：酒桌上的博弈&quot;, type: &quot;scenario&quot;, isPaid: true, price: 99, duration: &quot;18:20&quot; },</span>
+            <span class="s1">{ id: 5, title: &quot;05. 文化：面子工程&quot;, type: &quot;culture&quot;, isPaid: true, price: 199, duration: &quot;12:00&quot; },</span>
+            <span class="s1">{ id: 6, title: &quot;06. 合同条款深度解析&quot;, type: &quot;grammar&quot;, isPaid: true, price: 199, duration: &quot;35:00&quot; }</span>
+        <span class="s1">];</span>
+
+        <span class="s1">// 初始化渲染</span>
+        <span class="s1">renderChapters(chapters);</span>
+
+        <span class="s1">function renderChapters(data) {</span>
+            <span class="s1">const list = document.getElementById('chapterList');</span>
+            <span class="s1">list.innerHTML = '';</span>
+            <span class="s1">data.forEach((item, index) =&gt; {</span>
+                <span class="s1">const badge = item.isPaid</span>
+                    <span class="s1">? `&lt;span class=&quot;tag-paid&quot;&gt;&lt;i class=&quot;bi bi-lock-fill&quot;&gt;&lt;/i&gt; 付费&lt;/span&gt;`</span>
+                    <span class="s1">: `&lt;span class=&quot;tag-free&quot;&gt;免费&lt;/span&gt;`;</span>
+
+                <span class="s1">const activeClass = index === 0 ? 'active' : ''; // 默认选中第一个</span>
+
+                <span class="s1">list.innerHTML += `</span>
+                    <span class="s1">&lt;div class=&quot;chapter-item ${activeClass} ${item.isPaid ? 'locked' : ''}&quot; onclick=&quot;playChapter(${item.id}, '${item.title}', ${item.isPaid}, ${item.price})&quot;&gt;</span>
+                        <span class="s1">&lt;div&gt;</span>
+                            <span class="s1">&lt;div class=&quot;small fw-bold mb-1 text-dark&quot;&gt;${item.title}&lt;/div&gt;</span>
+                            <span class="s1">&lt;div class=&quot;text-muted&quot; style=&quot;font-size: 11px;&quot;&gt;</span>
+                                <span class="s1">&lt;i class=&quot;bi bi-play-circle&quot;&gt;&lt;/i&gt; ${item.duration}</span>
+                            <span class="s1">&lt;/div&gt;</span>
+                        <span class="s1">&lt;/div&gt;</span>
+                        <span class="s1">&lt;div class=&quot;text-end&quot;&gt;</span>
+                            <span class="s1">${badge}</span>
+                        <span class="s1">&lt;/div&gt;</span>
+                    <span class="s1">&lt;/div&gt;</span>
+                <span class="s1">`;</span>
+            <span class="s1">});</span>
+        <span class="s1">}</span>
+
+        <span class="s1">// 筛选逻辑</span>
+        <span class="s1">function filterType(type, btn) {</span>
+            <span class="s1">document.querySelectorAll('.v-tab').forEach(el =&gt; el.classList.remove('active'));</span>
+            <span class="s1">btn.classList.add('active');</span>
+
+            <span class="s1">if(type === 'all') {</span>
+                <span class="s1">renderChapters(chapters);</span>
+            <span class="s1">} else {</span>
+                <span class="s1">const filtered = chapters.filter(c =&gt; c.type === type);</span>
+                <span class="s1">renderChapters(filtered);</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">// 播放逻辑</span>
+        <span class="s1">function playChapter(id, title, isPaid, price) {</span>
+            <span class="s1">document.querySelectorAll('.chapter-item').forEach(el =&gt; el.classList.remove('active'));</span>
+            <span class="s1">event.currentTarget.classList.add('active');</span>
+
+            <span class="s1">document.getElementById('lessonTitle').innerText = title;</span>
+
+            <span class="s1">if(isPaid) {</span>
+                <span class="s1">// 显示付费遮罩</span>
+                <span class="s1">document.getElementById('playBtn').style.display = 'none';</span>
+                <span class="s1">document.getElementById('lockMask').style.display = 'flex';</span>
+                <span class="s1">// 更新按钮价格</span>
+                <span class="s1">document.querySelector('.btn-danger').innerText = `解锁本节 (¥ ${price})`;</span>
+                <span class="s1">document.querySelector('.btn-danger').setAttribute('onclick', `goToPay(${price})`);</span>
+            <span class="s1">} else {</span>
+                <span class="s1">// 免费播放</span>
+                <span class="s1">document.getElementById('lockMask').style.display = 'none';</span>
+                <span class="s1">document.getElementById('playBtn').style.display = 'flex';</span>
+                <span class="s1">// 模拟重置播放器</span>
+                <span class="s1">document.getElementById('videoCover').style.opacity = '0.8';</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">function startVideo() {</span>
+            <span class="s1">document.getElementById('playBtn').style.display = 'none';</span>
+            <span class="s1">document.getElementById('videoCover').style.opacity = '0';</span>
+            <span class="s1">// 这里可以插入真实 video 标签</span>
+            <span class="s1">alert('视频开始播放...');</span>
+        <span class="s1">}</span>
+
+        <span class="s1">function goToPay(price) {</span>
+            <span class="s1">// 跳转到 checkout.html 并带上价格参数（模拟）</span>
+            <span class="s1">// 在 checkout.html 中你需要写一段 JS 来读取这个参数并更新显示价格</span>
+            <span class="s1">window.location.href = `checkout.html?price=${price}&amp;course=商务汉语`;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">function previewFree() {</span>
+            <span class="s1">alert('试看模式启动：播放前 30 秒...');</span>
+            <span class="s1">document.getElementById('lockMask').style.display = 'none';</span>
+        <span class="s1">}</span>
+
+        <span class="s1">// --- AI 聊天逻辑 ---</span>
+        <span class="s1">function toggleAiChat() {</span>
+            <span class="s1">const chat = document.getElementById('aiChatBox');</span>
+            <span class="s1">chat.style.display = chat.style.display === 'none' ? 'block' : 'none';</span>
+        <span class="s1">}</span>
+
+        <span class="s1">function sendMessage() {</span>
+            <span class="s1">const input = document.getElementById('chatInput');</span>
+            <span class="s1">const body = document.getElementById('chatBody');</span>
+            <span class="s1">if(!input.value) return;</span>
+
+            <span class="s1">// 用户消息</span>
+            <span class="s1">body.innerHTML += `</span>
+                <span class="s1">&lt;div class=&quot;d-flex align-items-end justify-content-end mb-3&quot;&gt;</span>
+                    <span class="s1">&lt;div class=&quot;bg-primary text-white p-2 rounded shadow-sm small text-start&quot; style=&quot;max-width: 80%;&quot;&gt;</span>
+                        <span class="s1">${input.value}</span>
+                    <span class="s1">&lt;/div&gt;</span>
+                <span class="s1">&lt;/div&gt;</span>
+            <span class="s1">`;</span>
+
+            <span class="s1">// 模拟回复</span>
+            <span class="s1">setTimeout(() =&gt; {</span>
+                <span class="s1">body.innerHTML += `</span>
+                    <span class="s1">&lt;div class=&quot;d-flex align-items-start mb-3&quot;&gt;</span>
+                        <span class="s1">&lt;div class=&quot;bg-white p-2 rounded shadow-sm small text-dark&quot; style=&quot;max-width: 80%;&quot;&gt;</span>
+                            <span class="s1">这是一个很好的问题！&quot;${input.value}&quot; 在商务场景中通常表示...</span>
+                        <span class="s1">&lt;/div&gt;</span>
+                    <span class="s1">&lt;/div&gt;</span>
+                <span class="s1">`;</span>
+                <span class="s1">body.scrollTop = body.scrollHeight; // 滚动到底部</span>
+            <span class="s1">}, 800);</span>
+
+            <span class="s1">input.value = '';</span>
+            <span class="s1">body.scrollTop = body.scrollHeight;</span>
+        <span class="s1">}</span>
+    <span class="s0">&lt;/script&gt;</span>
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span></pre>
+</body>
+</html>

@@ -1,0 +1,396 @@
+<html>
+<head>
+<title>index_en_login.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bababa;}
+.s3 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+index_en_login.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;en&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">name</span><span class="s3">=&quot;viewport&quot; </span><span class="s2">content</span><span class="s3">=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;title&gt;</span><span class="s1">YanHe - Master Chinese, Connect Globally (Logged In)</span><span class="s0">&lt;/title&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&amp;display=swap&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;style&gt;</span>
+        <span class="s1">/* --- 1. Global Western Style --- */</span>
+        <span class="s1">:root {</span>
+            <span class="s1">--primary: #0052cc; /* Classic Tech Blue */</span>
+            <span class="s1">--dark: #091e42;</span>
+            <span class="s1">--text: #42526e;</span>
+            <span class="s1">--bg-light: #ffffff;</span>
+            <span class="s1">--bg-section: #f4f5f7;</span>
+        <span class="s1">}</span>
+        <span class="s1">body {</span>
+            <span class="s1">font-family: 'Inter', sans-serif;</span>
+            <span class="s1">color: var(--dark);</span>
+            <span class="s1">padding-top: 76px; /* Space for fixed navbar */</span>
+            <span class="s1">background-color: var(--bg-light);</span>
+            <span class="s1">overflow-x: hidden;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* --- 2. Navbar (Responsive) --- */</span>
+        <span class="s1">.navbar-custom {</span>
+            <span class="s1">background: rgba(255,255,255,0.98);</span>
+            <span class="s1">border-bottom: 1px solid #ebecf0;</span>
+            <span class="s1">height: 76px;</span>
+            <span class="s1">box-shadow: 0 1px 3px rgba(0,0,0,0.05);</span>
+        <span class="s1">}</span>
+        <span class="s1">.navbar-brand {</span>
+            <span class="s1">font-weight: 900; font-size: 1.6rem; color: var(--primary) !important; letter-spacing: -0.5px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.nav-link {</span>
+            <span class="s1">font-weight: 600; color: #505f79 !important; margin: 0 8px; font-size: 0.95rem;</span>
+        <span class="s1">}</span>
+        <span class="s1">.nav-link:hover { color: var(--primary) !important; }</span>
+
+        <span class="s1">/* --- New: User Dropdown Styles (Western Style) --- */</span>
+        <span class="s1">.user-avatar {</span>
+            <span class="s1">width: 40px; height: 40px; border-radius: 50%; object-fit: cover;</span>
+            <span class="s1">border: 2px solid var(--primary); padding: 2px; transition: all 0.2s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.user-avatar:hover { border-color: #0747a6; opacity: 0.9; }</span>
+
+        <span class="s1">.dropdown-menu-custom {</span>
+            <span class="s1">border: 1px solid #ebecf0; box-shadow: 0 8px 24px rgba(9, 30, 66, 0.15);</span>
+            <span class="s1">border-radius: 8px; margin-top: 15px !important; min-width: 240px; padding: 8px 0;</span>
+        <span class="s1">}</span>
+        <span class="s1">.dropdown-menu-custom .dropdown-item {</span>
+            <span class="s1">padding: 10px 20px; font-weight: 500; color: var(--text); font-size: 0.9rem; transition: 0.1s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.dropdown-menu-custom .dropdown-item:hover {</span>
+            <span class="s1">background: #f4f5f7; color: var(--primary);</span>
+        <span class="s1">}</span>
+        <span class="s1">.dropdown-menu-custom .dropdown-item i {</span>
+            <span class="s1">margin-right: 12px; width: 16px; text-align: center; color: #505f79;</span>
+        <span class="s1">}</span>
+        <span class="s1">.dropdown-menu-custom .dropdown-item:hover i { color: var(--primary); }</span>
+
+        <span class="s1">.dropdown-header-custom {</span>
+            <span class="s1">padding: 12px 20px; border-bottom: 1px solid #ebecf0; margin-bottom: 8px;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* Mobile Menu Adjustments */</span>
+        <span class="s1">@media (max-width: 991px) {</span>
+            <span class="s1">.navbar-collapse {</span>
+                <span class="s1">background: #fff; padding: 20px; border-radius: 0 0 12px 12px;</span>
+                <span class="s1">box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 1px solid #eee;</span>
+            <span class="s1">}</span>
+            <span class="s1">.nav-item { margin-bottom: 10px; }</span>
+            <span class="s1">.d-flex.align-items-center { flex-direction: column; align-items: flex-start !important; width: 100%; margin-top: 15px; }</span>
+            <span class="s1">/* User profile in mobile menu */</span>
+            <span class="s1">.user-profile-mobile { width: 100%; display: flex; align-items: center; padding: 10px 0; border-top: 1px solid #eee; margin-top: 10px; }</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* --- 3. Hero Section --- */</span>
+        <span class="s1">.hero { padding: 80px 0; background: #fff; }</span>
+        <span class="s1">.hero-badge {</span>
+            <span class="s1">display: inline-block; background: #deebff; color: var(--primary);</span>
+            <span class="s1">font-size: 0.8rem; font-weight: 700; padding: 6px 12px; border-radius: 4px; margin-bottom: 20px;</span>
+            <span class="s1">text-transform: uppercase; letter-spacing: 0.5px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.hero-title {</span>
+            <span class="s1">font-size: 3.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 24px; color: var(--dark); letter-spacing: -1px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.hero-text { font-size: 1.25rem; color: #6b778c; margin-bottom: 40px; line-height: 1.6; }</span>
+
+        <span class="s1">.hero-btns { display: flex; gap: 15px; flex-wrap: wrap; }</span>
+        <span class="s1">.btn-hero-primary {</span>
+            <span class="s1">background: var(--primary); color: #fff; padding: 14px 32px; border-radius: 6px;</span>
+            <span class="s1">font-weight: 600; text-decoration: none; transition: 0.2s; font-size: 1.1rem;</span>
+        <span class="s1">}</span>
+        <span class="s1">.btn-hero-primary:hover { background: #0747a6; color: #fff; transform: translateY(-2px); }</span>
+        <span class="s1">.btn-hero-outline {</span>
+            <span class="s1">background: #fff; color: var(--primary); border: 2px solid #ebecf0; padding: 12px 30px;</span>
+            <span class="s1">border-radius: 6px; font-weight: 600; text-decoration: none; transition: 0.2s; font-size: 1.1rem;</span>
+        <span class="s1">}</span>
+        <span class="s1">.btn-hero-outline:hover { border-color: var(--primary); background: #f4f5f7; }</span>
+
+        <span class="s1">@media (max-width: 768px) {</span>
+            <span class="s1">.hero { padding: 40px 0; text-align: center; }</span>
+            <span class="s1">.hero-title { font-size: 2.5rem; }</span>
+            <span class="s1">.hero-text { font-size: 1.1rem; }</span>
+            <span class="s1">.hero-btns { justify-content: center; }</span>
+            <span class="s1">.btn-hero-primary, .btn-hero-outline { width: 100%; } /* Full width buttons on mobile */</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* --- 4. Stats (Social Proof) --- */</span>
+        <span class="s1">.stats-section { border-top: 1px solid #ebecf0; border-bottom: 1px solid #ebecf0; padding: 40px 0; background: #fafbfc; }</span>
+        <span class="s1">.stat-item { text-align: center; }</span>
+        <span class="s1">.stat-num { font-size: 2.5rem; font-weight: 900; color: var(--dark); display: block; margin-bottom: 5px; }</span>
+        <span class="s1">.stat-label { font-size: 0.9rem; color: #6b778c; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }</span>
+
+        <span class="s1">@media (max-width: 768px) {</span>
+            <span class="s1">.stat-num { font-size: 2rem; }</span>
+            <span class="s1">.stat-item { margin-bottom: 20px; } /* Stack on mobile */</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* --- 5. Features Grid --- */</span>
+        <span class="s1">.features-section { padding: 80px 0; }</span>
+        <span class="s1">.section-header { text-align: center; margin-bottom: 60px; max-width: 700px; margin-left: auto; margin-right: auto; }</span>
+        <span class="s1">.section-title { font-weight: 800; font-size: 2.5rem; margin-bottom: 15px; color: var(--dark); }</span>
+        <span class="s1">.section-sub { font-size: 1.1rem; color: #6b778c; }</span>
+
+        <span class="s1">.feature-card {</span>
+            <span class="s1">background: #fff; border: 1px solid #ebecf0; border-radius: 8px; padding: 32px;</span>
+            <span class="s1">height: 100%; transition: all 0.3s; cursor: pointer; display: block; text-decoration: none; color: inherit;</span>
+        <span class="s1">}</span>
+        <span class="s1">.feature-card:hover {</span>
+            <span class="s1">transform: translateY(-8px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); border-color: transparent;</span>
+        <span class="s1">}</span>
+        <span class="s1">.icon-wrapper {</span>
+            <span class="s1">width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center;</span>
+            <span class="s1">font-size: 28px; margin-bottom: 24px;</span>
+        <span class="s1">}</span>
+        <span class="s1">/* Icon Colors */</span>
+        <span class="s1">.bg-blue { background: #e6effc; color: #0052cc; }</span>
+        <span class="s1">.bg-green { background: #e3fcef; color: #006644; }</span>
+        <span class="s1">.bg-orange { background: #fff7d6; color: #ff991f; }</span>
+        <span class="s1">.bg-purple { background: #eae6ff; color: #403294; }</span>
+
+        <span class="s1">.card-title { font-weight: 700; font-size: 1.25rem; margin-bottom: 12px; }</span>
+        <span class="s1">.card-text { color: #6b778c; line-height: 1.6; font-size: 0.95rem; margin-bottom: 20px; }</span>
+        <span class="s1">.link-text { color: var(--primary); font-weight: 600; display: flex; align-items: center; gap: 6px; }</span>
+
+        <span class="s1">/* --- 6. CTA Section --- */</span>
+        <span class="s1">.cta-section {</span>
+            <span class="s1">background: var(--dark); color: #fff; padding: 80px 0; text-align: center;</span>
+        <span class="s1">}</span>
+        <span class="s1">.cta-btn {</span>
+            <span class="s1">background: #fff; color: var(--dark); padding: 14px 40px; border-radius: 50px;</span>
+            <span class="s1">font-weight: 700; text-decoration: none; margin-top: 30px; display: inline-block; transition: 0.2s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.cta-btn:hover { background: #f4f5f7; transform: scale(1.05); color: var(--primary); }</span>
+
+        <span class="s1">/* Footer */</span>
+        <span class="s1">.footer { padding: 60px 0 30px; background: #fff; border-top: 1px solid #ebecf0; font-size: 0.9rem; }</span>
+        <span class="s1">.footer-logo { font-weight: 900; font-size: 1.2rem; color: var(--primary); margin-bottom: 20px; display: block; text-decoration: none; }</span>
+        <span class="s1">.footer-link { display: block; color: #505f79; text-decoration: none; margin-bottom: 12px; transition: 0.2s; }</span>
+        <span class="s1">.footer-link:hover { color: var(--primary); }</span>
+    <span class="s0">&lt;/style&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+
+    <span class="s0">&lt;nav </span><span class="s2">class</span><span class="s3">=&quot;navbar navbar-expand-lg fixed-top navbar-custom&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;a </span><span class="s2">class</span><span class="s3">=&quot;navbar-brand&quot; </span><span class="s2">href</span><span class="s3">=&quot;index_en_login.html&quot;</span><span class="s0">&gt;</span><span class="s1">YanHe</span><span class="s0">&lt;/a&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;navbar-toggler border-0&quot; </span><span class="s2">type</span><span class="s3">=&quot;button&quot; </span><span class="s2">data-bs-toggle</span><span class="s3">=&quot;collapse&quot; </span><span class="s2">data-bs-target</span><span class="s3">=&quot;#navContent&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-list fs-2 text-dark&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+            <span class="s0">&lt;/button&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;collapse navbar-collapse&quot; </span><span class="s2">id</span><span class="s3">=&quot;navContent&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;ul </span><span class="s2">class</span><span class="s3">=&quot;navbar-nav mx-auto&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;li </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;nav-link&quot; </span><span class="s2">href</span><span class="s3">=&quot;education_en.html&quot;</span><span class="s0">&gt;</span><span class="s1">Courses</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                    <span class="s0">&lt;li </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;nav-link&quot; </span><span class="s2">href</span><span class="s3">=&quot;service_en.html&quot;</span><span class="s0">&gt;</span><span class="s1">Freelance</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                    <span class="s0">&lt;li </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;nav-link&quot; </span><span class="s2">href</span><span class="s3">=&quot;story_en.html&quot;</span><span class="s0">&gt;</span><span class="s1">Community</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                    <span class="s0">&lt;li </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;nav-link&quot; </span><span class="s2">href</span><span class="s3">=&quot;culture_en.html&quot;</span><span class="s0">&gt;</span><span class="s1">Dialect Map</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                <span class="s0">&lt;/ul&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center gap-3&quot;</span><span class="s0">&gt;</span>
+
+                    <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;index_login.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;nav-link px-0 fw-bold&quot; </span><span class="s2">style</span><span class="s3">=&quot;font-size: 0.9rem;&quot;</span><span class="s0">&gt;</span><span class="s1">🇨🇳 中文</span><span class="s0">&lt;/a&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;dropdown&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot; </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center text-decoration-none dropdown-toggle hide-arrow&quot; </span><span class="s2">id</span><span class="s3">=&quot;userDropdown&quot; </span><span class="s2">data-bs-toggle</span><span class="s3">=&quot;dropdown&quot; </span><span class="s2">aria-expanded</span><span class="s3">=&quot;false&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=100&amp;q=80&quot;</span>
+                                 <span class="s2">alt</span><span class="s3">=&quot;User&quot; </span><span class="s2">class</span><span class="s3">=&quot;user-avatar shadow-sm&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;d-none d-lg-inline ms-2 fw-bold&quot; </span><span class="s2">style</span><span class="s3">=&quot;color:var(--dark)&quot;</span><span class="s0">&gt;</span><span class="s1">YanHe Li</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;/a&gt;</span>
+
+                        <span class="s0">&lt;ul </span><span class="s2">class</span><span class="s3">=&quot;dropdown-menu dropdown-menu-end dropdown-menu-custom&quot; </span><span class="s2">aria-labelledby</span><span class="s3">=&quot;userDropdown&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;li&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;dropdown-header-custom&quot;</span><span class="s0">&gt;</span>
+                                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold&quot; </span><span class="s2">style</span><span class="s3">=&quot;color: var(--dark)&quot;</span><span class="s0">&gt;</span><span class="s1">YanHe Li</span><span class="s0">&lt;/div&gt;</span>
+                                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">Student Verified</span><span class="s0">&lt;/div&gt;</span>
+                                <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;/li&gt;</span>
+
+                            <span class="s0">&lt;li&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;dropdown-item&quot; </span><span class="s2">href</span><span class="s3">=&quot;profile.html&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-person-badge&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Profile</span>
+                            <span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+
+                            <span class="s0">&lt;li&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;dropdown-item&quot; </span><span class="s2">href</span><span class="s3">=&quot;learning.html&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-mortarboard&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">My Learning</span>
+                            <span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+
+                            <span class="s0">&lt;li&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;dropdown-item&quot; </span><span class="s2">href</span><span class="s3">=&quot;favorites.html&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-star&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Favorites</span>
+                            <span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+
+                             <span class="s0">&lt;li&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;dropdown-item&quot; </span><span class="s2">href</span><span class="s3">=&quot;following.html&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-people&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Following</span>
+                            <span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+
+                            <span class="s0">&lt;li&gt;&lt;hr </span><span class="s2">class</span><span class="s3">=&quot;dropdown-divider&quot; </span><span class="s2">style</span><span class="s3">=&quot;border-color: #ebecf0;&quot;</span><span class="s0">&gt;&lt;/li&gt;</span>
+
+                            <span class="s0">&lt;li&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;dropdown-item&quot; </span><span class="s2">href</span><span class="s3">=&quot;settings.html&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-gear&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Settings</span>
+                            <span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                            <span class="s0">&lt;li&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;dropdown-item text-danger&quot; </span><span class="s2">href</span><span class="s3">=&quot;index_en.html&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-box-arrow-right&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Log out</span>
+                            <span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                        <span class="s0">&lt;/ul&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/nav&gt;</span>
+
+    <span class="s0">&lt;section </span><span class="s2">class</span><span class="s3">=&quot;hero&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row align-items-center&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-lg-6&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;hero-badge&quot;</span><span class="s0">&gt;</span><span class="s1">YanHe Platform 2026</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;h1 </span><span class="s2">class</span><span class="s3">=&quot;hero-title&quot;</span><span class="s0">&gt;</span>
+                        <span class="s1">Learn Chinese.</span><span class="s0">&lt;br&gt;</span>
+                        <span class="s0">&lt;span </span><span class="s2">style</span><span class="s3">=&quot;color: var(--primary);&quot;</span><span class="s0">&gt;</span><span class="s1">Unlock Your Future.</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;/h1&gt;</span>
+                    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;hero-text&quot;</span><span class="s0">&gt;</span>
+                        <span class="s1">The all-in-one platform for language learning, cultural immersion, and freelance opportunities. Powered by AI &amp; GIS technology.</span>
+                    <span class="s0">&lt;/p&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;hero-btns&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;learning.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;btn-hero-primary&quot;</span><span class="s0">&gt;</span><span class="s1">Resume Learning</span><span class="s0">&lt;/a&gt;</span>
+                        <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;service_en.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;btn-hero-outline&quot;</span><span class="s0">&gt;</span><span class="s1">Go to Task Hub</span><span class="s0">&lt;/a&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mt-4 text-muted small d-flex gap-3 justify-content-lg-start justify-content-center&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;span&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-check-circle-fill text-success&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Premium Member</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;span&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-lightning-charge-fill text-warning&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Level 4 Progress</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-lg-6 d-none d-lg-block text-center&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80&quot;</span>
+                         <span class="s2">class</span><span class="s3">=&quot;img-fluid rounded-4 shadow-lg&quot;</span>
+                         <span class="s2">style</span><span class="s3">=&quot;transform: perspective(1000px) rotateY(-5deg);&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/section&gt;</span>
+
+    <span class="s0">&lt;section </span><span class="s2">class</span><span class="s3">=&quot;stats-section&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row gy-4&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-6 col-md-3 stat-item&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;stat-num&quot;</span><span class="s0">&gt;</span><span class="s1">28+</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;stat-label&quot;</span><span class="s0">&gt;</span><span class="s1">Countries</span><span class="s0">&lt;/span&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-6 col-md-3 stat-item&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;stat-num&quot;</span><span class="s0">&gt;</span><span class="s1">12k</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;stat-label&quot;</span><span class="s0">&gt;</span><span class="s1">Experts</span><span class="s0">&lt;/span&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-6 col-md-3 stat-item&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;stat-num&quot;</span><span class="s0">&gt;</span><span class="s1">80k+</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;stat-label&quot;</span><span class="s0">&gt;</span><span class="s1">Tasks Done</span><span class="s0">&lt;/span&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-6 col-md-3 stat-item&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;stat-num&quot;</span><span class="s0">&gt;</span><span class="s1">4.9/5</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;stat-label&quot;</span><span class="s0">&gt;</span><span class="s1">User Rating</span><span class="s0">&lt;/span&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/section&gt;</span>
+
+    <span class="s0">&lt;section </span><span class="s2">class</span><span class="s3">=&quot;features-section&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;section-header&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;h2 </span><span class="s2">class</span><span class="s3">=&quot;section-title&quot;</span><span class="s0">&gt;</span><span class="s1">Why Choose YanHe?</span><span class="s0">&lt;/h2&gt;</span>
+                <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;section-sub&quot;</span><span class="s0">&gt;</span><span class="s1">We combine advanced AI with authentic cultural content to provide a unique learning experience.</span><span class="s0">&lt;/p&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row g-4&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-6 col-lg-3&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;education_en.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;feature-card&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;icon-wrapper bg-blue&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-mortarboard-fill&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+                        <span class="s0">&lt;h4 </span><span class="s2">class</span><span class="s3">=&quot;card-title&quot;</span><span class="s0">&gt;</span><span class="s1">Edu Cloud</span><span class="s0">&lt;/h4&gt;</span>
+                        <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;card-text&quot;</span><span class="s0">&gt;</span><span class="s1">AI-assisted learning paths tailored to your HSK level and business needs.</span><span class="s0">&lt;/p&gt;</span>
+                        <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;link-text&quot;</span><span class="s0">&gt;</span><span class="s1">Browse Courses </span><span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-arrow-right&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/span&gt;</span>
+                    <span class="s0">&lt;/a&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-6 col-lg-3&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;service_en.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;feature-card&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;icon-wrapper bg-orange&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-briefcase-fill&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+                        <span class="s0">&lt;h4 </span><span class="s2">class</span><span class="s3">=&quot;card-title&quot;</span><span class="s0">&gt;</span><span class="s1">Task Hub</span><span class="s0">&lt;/h4&gt;</span>
+                        <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;card-text&quot;</span><span class="s0">&gt;</span><span class="s1">Find translation gigs and language jobs. Secure payment escrow included.</span><span class="s0">&lt;/p&gt;</span>
+                        <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;link-text&quot;</span><span class="s0">&gt;</span><span class="s1">Find Work </span><span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-arrow-right&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/span&gt;</span>
+                    <span class="s0">&lt;/a&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-6 col-lg-3&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;story_en.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;feature-card&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;icon-wrapper bg-purple&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-people-fill&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+                        <span class="s0">&lt;h4 </span><span class="s2">class</span><span class="s3">=&quot;card-title&quot;</span><span class="s0">&gt;</span><span class="s1">Community</span><span class="s0">&lt;/h4&gt;</span>
+                        <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;card-text&quot;</span><span class="s0">&gt;</span><span class="s1">Connect with peers, share your stories, and discover authentic China.</span><span class="s0">&lt;/p&gt;</span>
+                        <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;link-text&quot;</span><span class="s0">&gt;</span><span class="s1">Join Discussion </span><span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-arrow-right&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/span&gt;</span>
+                    <span class="s0">&lt;/a&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-6 col-lg-3&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;culture_en.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;feature-card&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;icon-wrapper bg-green&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-map-fill&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+                        <span class="s0">&lt;h4 </span><span class="s2">class</span><span class="s3">=&quot;card-title&quot;</span><span class="s0">&gt;</span><span class="s1">Dialect Atlas</span><span class="s0">&lt;/h4&gt;</span>
+                        <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;card-text&quot;</span><span class="s0">&gt;</span><span class="s1">Immersive 3D map to explore regional dialects and cultural heritage.</span><span class="s0">&lt;/p&gt;</span>
+                        <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;link-text&quot;</span><span class="s0">&gt;</span><span class="s1">Launch Map </span><span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-arrow-right&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/span&gt;</span>
+                    <span class="s0">&lt;/a&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/section&gt;</span>
+
+    <span class="s0">&lt;section </span><span class="s2">class</span><span class="s3">=&quot;cta-section&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;h2 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold display-6&quot;</span><span class="s0">&gt;</span><span class="s1">Ready to continue?</span><span class="s0">&lt;/h2&gt;</span>
+            <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;lead opacity-75 mt-3&quot;</span><span class="s0">&gt;</span><span class="s1">Your next lesson is waiting for you.</span><span class="s0">&lt;/p&gt;</span>
+            <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;education_en.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;cta-btn&quot;</span><span class="s0">&gt;</span><span class="s1">Go to Dashboard</span><span class="s0">&lt;/a&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/section&gt;</span>
+
+    <span class="s0">&lt;footer </span><span class="s2">class</span><span class="s3">=&quot;footer&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-lg-4 mb-4&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot; </span><span class="s2">class</span><span class="s3">=&quot;footer-logo&quot;</span><span class="s0">&gt;</span><span class="s1">YanHe</span><span class="s0">&lt;/a&gt;</span>
+                    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">Empowering global communication through Chinese language and culture.</span><span class="s0">&lt;/p&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-6 col-lg-2&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h6 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-3&quot;</span><span class="s0">&gt;</span><span class="s1">Product</span><span class="s0">&lt;/h6&gt;</span>
+                    <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;education_en.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;footer-link&quot;</span><span class="s0">&gt;</span><span class="s1">Courses</span><span class="s0">&lt;/a&gt;</span>
+                    <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;service_en.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;footer-link&quot;</span><span class="s0">&gt;</span><span class="s1">Jobs</span><span class="s0">&lt;/a&gt;</span>
+                    <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;culture_en.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;footer-link&quot;</span><span class="s0">&gt;</span><span class="s1">Map</span><span class="s0">&lt;/a&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-6 col-lg-2&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h6 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-3&quot;</span><span class="s0">&gt;</span><span class="s1">Company</span><span class="s0">&lt;/h6&gt;</span>
+                    <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot; </span><span class="s2">class</span><span class="s3">=&quot;footer-link&quot;</span><span class="s0">&gt;</span><span class="s1">About Us</span><span class="s0">&lt;/a&gt;</span>
+                    <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot; </span><span class="s2">class</span><span class="s3">=&quot;footer-link&quot;</span><span class="s0">&gt;</span><span class="s1">Careers</span><span class="s0">&lt;/a&gt;</span>
+                    <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot; </span><span class="s2">class</span><span class="s3">=&quot;footer-link&quot;</span><span class="s0">&gt;</span><span class="s1">Contact</span><span class="s0">&lt;/a&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-lg-4&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h6 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-3&quot;</span><span class="s0">&gt;</span><span class="s1">Subscribe</span><span class="s0">&lt;/h6&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;input-group&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;email&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;Email address&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-primary&quot; </span><span class="s2">type</span><span class="s3">=&quot;button&quot;</span><span class="s0">&gt;</span><span class="s1">Join</span><span class="s0">&lt;/button&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;border-top pt-4 mt-4 text-center text-muted small&quot;</span><span class="s0">&gt;</span>
+                <span class="s1">© 2026 YanHe Inc. All rights reserved.</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/footer&gt;</span>
+
+    <span class="s0">&lt;script </span><span class="s2">src</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js&quot;</span><span class="s0">&gt;&lt;/script&gt;</span>
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span></pre>
+</body>
+</html>

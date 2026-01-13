@@ -1,0 +1,319 @@
+<html>
+<head>
+<title>review.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bababa;}
+.s3 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+review.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;zh-CN&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">name</span><span class="s3">=&quot;viewport&quot; </span><span class="s2">content</span><span class="s3">=&quot;width=device-width, initial-scale=1.0&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;title&gt;</span><span class="s1">智能复习 - 言禾 YanHe</span><span class="s0">&lt;/title&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;style&gt;</span>
+        <span class="s1">:root { --primary: #004aad; --dark: #333; --bg-light: #f8faff; --success: #28a745; --danger: #dc3545; --warning: #ffc107; }</span>
+        <span class="s1">body {</span>
+            <span class="s1">font-family: -apple-system, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif;</span>
+            <span class="s1">background: var(--bg-light);</span>
+            <span class="s1">height: 100vh; overflow: hidden; /* 沉浸式，禁止滚动 */</span>
+            <span class="s1">display: flex; flex-direction: column;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* 极简头部 */</span>
+        <span class="s1">.review-header {</span>
+            <span class="s1">padding: 15px 30px; background: #fff; border-bottom: 1px solid #eee;</span>
+            <span class="s1">display: flex; justify-content: space-between; align-items: center; height: 70px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.close-btn { color: #999; font-size: 1.5rem; cursor: pointer; transition: 0.2s; }</span>
+        <span class="s1">.close-btn:hover { color: var(--dark); transform: rotate(90deg); }</span>
+
+        <span class="s1">/* 进度条 */</span>
+        <span class="s1">.progress-container { width: 300px; }</span>
+        <span class="s1">.progress-custom { height: 8px; background: #eee; border-radius: 4px; overflow: hidden; }</span>
+        <span class="s1">.progress-bar-custom { height: 100%; background: var(--success); width: 20%; transition: width 0.5s ease; }</span>
+        <span class="s1">.progress-text { font-size: 12px; color: #999; text-align: center; margin-top: 5px; font-weight: bold; }</span>
+
+        <span class="s1">/* 主舞台区 */</span>
+        <span class="s1">.review-stage {</span>
+            <span class="s1">flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;</span>
+            <span class="s1">perspective: 1000px; /* 3D 翻转必须 */</span>
+            <span class="s1">padding-bottom: 80px; /* 给底部留空 */</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* 卡片容器 */</span>
+        <span class="s1">.flashcard {</span>
+            <span class="s1">width: 100%; max-width: 600px; height: 380px; cursor: pointer;</span>
+            <span class="s1">position: relative; transform-style: preserve-3d; transition: transform 0.6s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.flashcard.flipped { transform: rotateY(180deg); }</span>
+
+        <span class="s1">/* 卡片正反面通用 */</span>
+        <span class="s1">.card-face {</span>
+            <span class="s1">position: absolute; width: 100%; height: 100%; backface-visibility: hidden;</span>
+            <span class="s1">border-radius: 16px; background: #fff; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);</span>
+            <span class="s1">display: flex; flex-direction: column; align-items: center; justify-content: center;</span>
+            <span class="s1">border: 1px solid #eee; padding: 40px; text-align: center;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* 正面 */</span>
+        <span class="s1">.card-front { z-index: 2; }</span>
+        <span class="s1">.word-lg { font-size: 3.5rem; font-weight: 800; color: var(--dark); margin-bottom: 20px; font-family: Arial, sans-serif; }</span>
+        <span class="s1">.hint-text { color: #999; font-size: 14px; }</span>
+
+        <span class="s1">/* 背面 */</span>
+        <span class="s1">.card-back { transform: rotateY(180deg); background: #fdfdfd; }</span>
+        <span class="s1">.phonetic { font-size: 1.2rem; color: #666; margin-bottom: 10px; font-family: Arial, sans-serif; }</span>
+        <span class="s1">.meaning { font-size: 2rem; font-weight: 900; color: var(--primary); margin-bottom: 25px; }</span>
+        <span class="s1">.example-box { background: #f8f9fa; padding: 15px; border-radius: 8px; width: 100%; text-align: left; border-left: 4px solid var(--primary); }</span>
+        <span class="s1">.example-en { font-size: 1.1rem; font-weight: 600; margin-bottom: 4px; color: #333; }</span>
+        <span class="s1">.example-cn { font-size: 0.9rem; color: #666; }</span>
+
+        <span class="s1">/* 底部控制栏 */</span>
+        <span class="s1">.control-bar {</span>
+            <span class="s1">position: fixed; bottom: 0; left: 0; right: 0; height: 100px;</span>
+            <span class="s1">background: #fff; border-top: 1px solid #eee;</span>
+            <span class="s1">display: flex; align-items: center; justify-content: center; gap: 15px;</span>
+            <span class="s1">box-shadow: 0 -5px 20px rgba(0,0,0,0.02); z-index: 10;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* 艾宾浩斯按钮 */</span>
+        <span class="s1">.btn-grade {</span>
+            <span class="s1">border: none; padding: 0; width: 110px; height: 55px; border-radius: 8px;</span>
+            <span class="s1">font-weight: bold; font-size: 15px; color: #fff; transition: 0.2s;</span>
+            <span class="s1">display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.2;</span>
+        <span class="s1">}</span>
+        <span class="s1">.btn-grade:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.15); }</span>
+
+        <span class="s1">.btn-again { background: #ff6b6b; border-bottom: 4px solid #e03131; }</span>
+        <span class="s1">.btn-hard { background: #ff922b; border-bottom: 4px solid #e8590c; }</span>
+        <span class="s1">.btn-good { background: #51cf66; border-bottom: 4px solid #2f9e44; }</span>
+        <span class="s1">.btn-easy { background: #339af0; border-bottom: 4px solid #1c7ed6; }</span>
+
+        <span class="s1">.grade-sub { font-size: 12px; opacity: 0.8; font-weight: normal; }</span>
+
+        <span class="s1">/* 初始状态：只显示“查看答案” */</span>
+        <span class="s1">.grading-actions { display: none; gap: 15px; }</span>
+        <span class="s1">.btn-show {</span>
+            <span class="s1">background: var(--dark); color: #fff; padding: 15px 80px; border-radius: 50px;</span>
+            <span class="s1">font-weight: bold; font-size: 18px; border: none; box-shadow: 0 8px 20px rgba(0,0,0,0.1);</span>
+            <span class="s1">transition: 0.2s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.btn-show:hover { transform: scale(1.05); }</span>
+
+        <span class="s1">/* 键盘提示 */</span>
+        <span class="s1">.kb-hint { position: absolute; bottom: 120px; color: #adb5bd; font-size: 13px; display: flex; align-items: center; gap: 5px; }</span>
+        <span class="s1">.key-cap { border: 1px solid #dee2e6; padding: 2px 8px; border-radius: 4px; font-weight: bold; background: #fff; box-shadow: 0 2px 0 #eee; }</span>
+
+        <span class="s1">/* 发音图标 */</span>
+        <span class="s1">.btn-audio {</span>
+            <span class="s1">position: absolute; top: 20px; right: 20px; font-size: 1.5rem; color: #ddd;</span>
+            <span class="s1">cursor: pointer; transition: 0.2s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.btn-audio:hover { color: var(--primary); }</span>
+
+        <span class="s1">/* 成功结算页 */</span>
+        <span class="s1">.success-overlay {</span>
+            <span class="s1">position: fixed; inset: 0; background: #fff; z-index: 100;</span>
+            <span class="s1">display: none; align-items: center; justify-content: center; flex-direction: column;</span>
+        <span class="s1">}</span>
+        <span class="s1">.success-icon { font-size: 80px; color: var(--success); animation: popIn 0.5s; margin-bottom: 20px; }</span>
+        <span class="s1">@keyframes popIn { from{transform:scale(0);} to{transform:scale(1);} }</span>
+    <span class="s0">&lt;/style&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;review-header&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center gap-3&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;education.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;close-btn&quot; </span><span class="s2">title</span><span class="s3">=&quot;退出复习&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-x-lg&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/a&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">每日智能复习</span><span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;progress-container&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;progress-custom&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;progress-bar-custom&quot; </span><span class="s2">id</span><span class="s3">=&quot;progressBar&quot; </span><span class="s2">style</span><span class="s3">=&quot;width: 20%&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;progress-text&quot; </span><span class="s2">id</span><span class="s3">=&quot;progressText&quot;</span><span class="s0">&gt;</span><span class="s1">2 / 10</span><span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center gap-2 text-warning fw-bold&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-fire&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">坚持 5 天</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;review-stage&quot;</span><span class="s0">&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;flashcard&quot; </span><span class="s2">id</span><span class="s3">=&quot;flashcard&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;flipCard()&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card-face card-front&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;btn-audio&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;event.stopPropagation(); playAudio()&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-volume-up-fill&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted text-uppercase mb-3 fw-bold tracking-wide&quot;</span><span class="s0">&gt;</span><span class="s1">商务核心词汇</span><span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;word-lg&quot; </span><span class="s2">id</span><span class="s3">=&quot;cardFront&quot;</span><span class="s0">&gt;</span><span class="s1">Negotiation</span><span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;hint-text&quot;</span><span class="s0">&gt;</span><span class="s1">点击翻转查看释义</span><span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card-face card-back&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;btn-audio&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;event.stopPropagation(); playAudio()&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-volume-up-fill&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;phonetic&quot; </span><span class="s2">id</span><span class="s3">=&quot;cardPhonetic&quot;</span><span class="s0">&gt;</span><span class="s1">/nɪˌɡoʊʃiˈeɪʃn/</span><span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;meaning&quot; </span><span class="s2">id</span><span class="s3">=&quot;cardMeaning&quot;</span><span class="s0">&gt;</span><span class="s1">谈判；协商</span><span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;example-box&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;example-en&quot; </span><span class="s2">id</span><span class="s3">=&quot;cardExEn&quot;</span><span class="s0">&gt;</span><span class="s1">The negotiation went very smoothly.</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;example-cn&quot; </span><span class="s2">id</span><span class="s3">=&quot;cardExCn&quot;</span><span class="s0">&gt;</span><span class="s1">谈判进行得非常顺利。</span><span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;kb-hint d-none d-md-flex&quot;</span><span class="s0">&gt;</span>
+            <span class="s1">按 </span><span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;key-cap&quot;</span><span class="s0">&gt;</span><span class="s1">空格</span><span class="s0">&lt;/span&gt; </span><span class="s1">翻转</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;control-bar&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn-show&quot; </span><span class="s2">id</span><span class="s3">=&quot;btnShow&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;flipCard()&quot;</span><span class="s0">&gt;</span><span class="s1">查看答案</span><span class="s0">&lt;/button&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;grading-actions&quot; </span><span class="s2">id</span><span class="s3">=&quot;gradingActions&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn-grade btn-again&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;nextCard('again')&quot;</span><span class="s0">&gt;</span>
+                <span class="s1">重来</span>
+                <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;grade-sub&quot;</span><span class="s0">&gt;</span><span class="s1">1分钟</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/button&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn-grade btn-hard&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;nextCard('hard')&quot;</span><span class="s0">&gt;</span>
+                <span class="s1">困难</span>
+                <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;grade-sub&quot;</span><span class="s0">&gt;</span><span class="s1">2天</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/button&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn-grade btn-good&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;nextCard('good')&quot;</span><span class="s0">&gt;</span>
+                <span class="s1">良好</span>
+                <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;grade-sub&quot;</span><span class="s0">&gt;</span><span class="s1">4天</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/button&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn-grade btn-easy&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;nextCard('easy')&quot;</span><span class="s0">&gt;</span>
+                <span class="s1">容易</span>
+                <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;grade-sub&quot;</span><span class="s0">&gt;</span><span class="s1">7天</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/button&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;success-overlay&quot; </span><span class="s2">id</span><span class="s3">=&quot;successScreen&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;success-icon&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-check-circle-fill&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+        <span class="s0">&lt;h2 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-2&quot;</span><span class="s0">&gt;</span><span class="s1">今日任务完成！</span><span class="s0">&lt;/h2&gt;</span>
+        <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;text-muted mb-5&quot;</span><span class="s0">&gt;</span><span class="s1">您今天复习了 10 个单词，记忆指数 +5%</span><span class="s0">&lt;/p&gt;</span>
+        <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;education.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;btn btn-dark rounded-pill px-5 py-3 fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">返回控制台</span><span class="s0">&lt;/a&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;script&gt;</span>
+        <span class="s1">// 模拟数据 (英汉模式)</span>
+        <span class="s1">const cards = [</span>
+            <span class="s1">{ front: &quot;Negotiation&quot;, phonetic: &quot;/nɪˌɡoʊʃiˈeɪʃn/&quot;, meaning: &quot;谈判；协商&quot;, exEn: &quot;The negotiation went very smoothly.&quot;, exCn: &quot;谈判进行得非常顺利。&quot; },</span>
+            <span class="s1">{ front: &quot;Budget&quot;, phonetic: &quot;/ˈbʌdʒɪt/&quot;, meaning: &quot;预算&quot;, exEn: &quot;We need to cut the budget.&quot;, exCn: &quot;我们需要削减预算。&quot; },</span>
+            <span class="s1">{ front: &quot;Contract&quot;, phonetic: &quot;/ˈkɑːntrækt/&quot;, meaning: &quot;合同；契约&quot;, exEn: &quot;Please sign the contract here.&quot;, exCn: &quot;请在这里签署合同。&quot; }</span>
+        <span class="s1">];</span>
+
+        <span class="s1">let currentIndex = 0;</span>
+        <span class="s1">let isFlipped = false;</span>
+
+        <span class="s1">// 初始化</span>
+        <span class="s1">updateCard();</span>
+
+        <span class="s1">function flipCard() {</span>
+            <span class="s1">const card = document.getElementById('flashcard');</span>
+            <span class="s1">const btnShow = document.getElementById('btnShow');</span>
+            <span class="s1">const grading = document.getElementById('gradingActions');</span>
+
+            <span class="s1">if (!isFlipped) {</span>
+                <span class="s1">// 翻转</span>
+                <span class="s1">card.classList.add('flipped');</span>
+                <span class="s1">isFlipped = true;</span>
+
+                <span class="s1">// 切换按钮</span>
+                <span class="s1">btnShow.style.display = 'none';</span>
+                <span class="s1">grading.style.display = 'flex';</span>
+
+                <span class="s1">// 更新提示</span>
+                <span class="s1">document.querySelector('.kb-hint').innerHTML = '按 &lt;span class=&quot;key-cap&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;key-cap&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;key-cap&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;key-cap&quot;&gt;4&lt;/span&gt; 评分';</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">function nextCard(difficulty) {</span>
+            <span class="s1">// 这里可以接入后端 API 记录艾宾浩斯数据</span>
+            <span class="s1">console.log(`Card ${currentIndex} rated: ${difficulty}`);</span>
+
+            <span class="s1">currentIndex++;</span>
+
+            <span class="s1">if (currentIndex &gt;= cards.length) {</span>
+                <span class="s1">// 完成</span>
+                <span class="s1">document.getElementById('successScreen').style.display = 'flex';</span>
+                <span class="s1">return;</span>
+            <span class="s1">}</span>
+
+            <span class="s1">// 重置 UI</span>
+            <span class="s1">const card = document.getElementById('flashcard');</span>
+            <span class="s1">const btnShow = document.getElementById('btnShow');</span>
+            <span class="s1">const grading = document.getElementById('gradingActions');</span>
+
+            <span class="s1">// 瞬间复位 (无动画)</span>
+            <span class="s1">card.style.transition = 'none';</span>
+            <span class="s1">card.classList.remove('flipped');</span>
+            <span class="s1">setTimeout(() =&gt; { card.style.transition = 'transform 0.6s'; }, 50);</span>
+
+            <span class="s1">isFlipped = false;</span>
+            <span class="s1">btnShow.style.display = 'block';</span>
+            <span class="s1">grading.style.display = 'none';</span>
+            <span class="s1">document.querySelector('.kb-hint').innerHTML = '按 &lt;span class=&quot;key-cap&quot;&gt;空格&lt;/span&gt; 翻转';</span>
+
+            <span class="s1">// 更新进度</span>
+            <span class="s1">updateProgress();</span>
+
+            <span class="s1">// 延迟加载数据</span>
+            <span class="s1">setTimeout(() =&gt; {</span>
+                <span class="s1">updateCard();</span>
+            <span class="s1">}, 150);</span>
+        <span class="s1">}</span>
+
+        <span class="s1">function updateCard() {</span>
+            <span class="s1">const data = cards[currentIndex];</span>
+            <span class="s1">document.getElementById('cardFront').innerText = data.front;</span>
+            <span class="s1">document.getElementById('cardPhonetic').innerText = data.phonetic;</span>
+            <span class="s1">document.getElementById('cardMeaning').innerText = data.meaning;</span>
+            <span class="s1">document.getElementById('cardExEn').innerText = data.exEn;</span>
+            <span class="s1">document.getElementById('cardExCn').innerText = data.exCn;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">function updateProgress() {</span>
+            <span class="s1">const pct = ((currentIndex) / cards.length) * 100;</span>
+            <span class="s1">document.getElementById('progressBar').style.width = pct + '%';</span>
+            <span class="s1">document.getElementById('progressText').innerText = (currentIndex + 1) + ' / ' + cards.length;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">function playAudio() {</span>
+            <span class="s1">alert('🔊 正在播放单词发音...');</span>
+        <span class="s1">}</span>
+
+        <span class="s1">// 键盘快捷键监听</span>
+        <span class="s1">document.addEventListener('keydown', (e) =&gt; {</span>
+            <span class="s1">if (e.code === 'Space') {</span>
+                <span class="s1">e.preventDefault();</span>
+                <span class="s1">if(!isFlipped) flipCard();</span>
+            <span class="s1">}</span>
+            <span class="s1">if (isFlipped) {</span>
+                <span class="s1">if (e.key === '1') nextCard('again');</span>
+                <span class="s1">if (e.key === '2') nextCard('hard');</span>
+                <span class="s1">if (e.key === '3') nextCard('good');</span>
+                <span class="s1">if (e.key === '4') nextCard('easy');</span>
+            <span class="s1">}</span>
+        <span class="s1">});</span>
+    <span class="s0">&lt;/script&gt;</span>
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span></pre>
+</body>
+</html>

@@ -1,0 +1,368 @@
+<html>
+<head>
+<title>service.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bababa;}
+.s3 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+service.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;zh-CN&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">name</span><span class="s3">=&quot;viewport&quot; </span><span class="s2">content</span><span class="s3">=&quot;width=device-width, initial-scale=1.0&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;title&gt;</span><span class="s1">任务大厅 - 言禾 YanHe</span><span class="s0">&lt;/title&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot; </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;style&gt;</span>
+        <span class="s1">/* --- 全局变量 --- */</span>
+        <span class="s1">:root { --primary: #004aad; --accent: #ff6b00; --bg-light: #f8faff; }</span>
+        <span class="s1">body { font-family: -apple-system, &quot;PingFang SC&quot;, sans-serif; padding-top: 70px; background: var(--bg-light); }</span>
+
+        <span class="s1">/* 导航栏 */</span>
+        <span class="s1">.navbar-custom { background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); box-shadow: 0 4px 20px rgba(0,0,0,0.03); height: 70px; z-index: 1000; }</span>
+        <span class="s1">.navbar-brand { font-weight: 900; font-size: 1.5rem; color: var(--primary); letter-spacing: -0.5px; }</span>
+        <span class="s1">.nav-link { font-weight: 600; color: #555 !important; padding: 8px 18px !important; border-radius: 30px; transition: 0.3s; }</span>
+        <span class="s1">.nav-link:hover { color: var(--primary) !important; background: rgba(0, 74, 173, 0.06); }</span>
+        <span class="s1">.nav-link.active { color: #fff !important; background: var(--primary); box-shadow: 0 4px 10px rgba(0, 74, 173, 0.3); }</span>
+
+        <span class="s1">/* 用户下拉 */</span>
+        <span class="s1">.user-avatar { width: 40px; height: 40px; border: 2px solid var(--primary); padding: 2px; object-fit: cover; }</span>
+        <span class="s1">.dropdown-menu-custom { border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-radius: 12px; margin-top: 15px !important; min-width: 220px; padding: 10px; }</span>
+        <span class="s1">.dropdown-menu-custom .dropdown-item { padding: 10px 15px; border-radius: 8px; font-size: 14px; font-weight: 500; color: #555; transition: 0.2s; }</span>
+        <span class="s1">.dropdown-menu-custom .dropdown-item:hover { background: #f0f7ff; color: var(--primary); }</span>
+
+        <span class="s1">/* Hero 区域 &amp; 切换开关 */</span>
+        <span class="s1">.service-hero { background: linear-gradient(180deg, #fff 0%, #f0f7ff 100%); padding: 40px 0 20px; text-align: center; }</span>
+
+        <span class="s1">.role-switch-container {</span>
+            <span class="s1">background: #eef4fc; border-radius: 50px; padding: 5px; display: inline-flex; position: relative;</span>
+            <span class="s1">box-shadow: inset 0 2px 6px rgba(0,0,0,0.05); margin-bottom: 25px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.role-btn {</span>
+            <span class="s1">padding: 10px 35px; border-radius: 40px; border: none; font-weight: bold; font-size: 15px;</span>
+            <span class="s1">background: transparent; color: #666; transition: 0.3s; cursor: pointer; position: relative; z-index: 2;</span>
+        <span class="s1">}</span>
+        <span class="s1">.role-btn.active { background: var(--primary); color: #fff; box-shadow: 0 4px 12px rgba(0, 74, 173, 0.3); }</span>
+
+        <span class="s1">/* 搜索框 */</span>
+        <span class="s1">.search-box-custom { max-width: 600px; margin: 0 auto; background: #fff; border-radius: 50px; padding: 5px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; }</span>
+        <span class="s1">.search-input { border: none; flex: 1; padding: 10px 20px; border-radius: 50px; outline: none; }</span>
+        <span class="s1">.search-btn { border-radius: 50px; padding: 8px 30px; font-weight: bold; }</span>
+
+        <span class="s1">/* --- 创作者视图 (Creator) 样式 --- */</span>
+        <span class="s1">.task-card {</span>
+            <span class="s1">background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 15px; border: 1px solid rgba(0,0,0,0.02);</span>
+            <span class="s1">box-shadow: 0 2px 8px rgba(0,0,0,0.02); transition: 0.2s; cursor: pointer; position: relative; overflow: hidden;</span>
+        <span class="s1">}</span>
+        <span class="s1">.task-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.06); border-color: var(--primary); }</span>
+        <span class="s1">.price-tag { color: var(--accent); font-weight: 800; font-size: 1.2rem; }</span>
+
+        <span class="s1">/* 进度条 (限制人数) */</span>
+        <span class="s1">.limit-bar-bg { height: 6px; background: #f0f0f0; border-radius: 3px; overflow: hidden; width: 100px; margin-top: 5px; }</span>
+        <span class="s1">.limit-bar-fill { height: 100%; background: #28a745; }</span>
+
+        <span class="s1">.sidebar-card { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }</span>
+        <span class="s1">.rank-item { display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; font-size: 14px; }</span>
+        <span class="s1">.rank-num { width: 20px; height: 20px; background: #eee; color: #666; border-radius: 4px; text-align: center; line-height: 20px; font-size: 12px; font-weight: bold; margin-right: 10px; }</span>
+        <span class="s1">.rank-item:nth-child(1) .rank-num { background: #ffd700; color: #fff; }</span>
+        <span class="s1">.rank-item:nth-child(2) .rank-num { background: #c0c0c0; color: #fff; }</span>
+        <span class="s1">.rank-item:nth-child(3) .rank-num { background: #cd7f32; color: #fff; }</span>
+
+        <span class="s1">/* --- 需求方视图 (Client) 样式 --- */</span>
+        <span class="s1">.client-action-card {</span>
+            <span class="s1">background: #fff; border-radius: 16px; padding: 40px; text-align: center; height: 100%;</span>
+            <span class="s1">border: 2px solid transparent; transition: 0.3s; cursor: pointer;</span>
+        <span class="s1">}</span>
+        <span class="s1">.client-action-card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,74,173,0.1); }</span>
+        <span class="s1">.action-icon-lg { width: 80px; height: 80px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 20px; }</span>
+
+        <span class="s1">.market-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px dashed #eee; font-size: 14px; color: #555; }</span>
+        <span class="s1">.market-row:last-child { border-bottom: none; }</span>
+
+        <span class="s1">/* 隐藏类 */</span>
+        <span class="s1">.d-none-custom { display: none !important; }</span>
+    <span class="s0">&lt;/style&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+
+    <span class="s0">&lt;nav </span><span class="s2">class</span><span class="s3">=&quot;navbar navbar-expand-lg fixed-top navbar-custom&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container-fluid px-4&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;a </span><span class="s2">class</span><span class="s3">=&quot;navbar-brand&quot; </span><span class="s2">href</span><span class="s3">=&quot;index_login.html&quot;</span><span class="s0">&gt;</span><span class="s1">言禾 YanHe</span><span class="s0">&lt;/a&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;navbar-toggler border-0&quot; </span><span class="s2">type</span><span class="s3">=&quot;button&quot; </span><span class="s2">data-bs-toggle</span><span class="s3">=&quot;collapse&quot; </span><span class="s2">data-bs-target</span><span class="s3">=&quot;#navContent&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-list fs-5&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+            <span class="s0">&lt;/button&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;collapse navbar-collapse&quot; </span><span class="s2">id</span><span class="s3">=&quot;navContent&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;ul </span><span class="s2">class</span><span class="s3">=&quot;navbar-nav mx-auto gap-1&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;li </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;nav-link&quot; </span><span class="s2">href</span><span class="s3">=&quot;index_login.html&quot;</span><span class="s0">&gt;</span><span class="s1">首页</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                    <span class="s0">&lt;li </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;nav-link&quot; </span><span class="s2">href</span><span class="s3">=&quot;story_login.html&quot;</span><span class="s0">&gt;</span><span class="s1">中国故事</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                    <span class="s0">&lt;li </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;nav-link&quot; </span><span class="s2">href</span><span class="s3">=&quot;education.html&quot;</span><span class="s0">&gt;</span><span class="s1">教育云</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                    <span class="s0">&lt;li </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;nav-link active&quot; </span><span class="s2">href</span><span class="s3">=&quot;service.html&quot;</span><span class="s0">&gt;</span><span class="s1">任务大厅</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                    <span class="s0">&lt;li </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;nav-link&quot; </span><span class="s2">href</span><span class="s3">=&quot;culture.html&quot;</span><span class="s0">&gt;</span><span class="s1">方言地图</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                <span class="s0">&lt;/ul&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center gap-3 mt-3 mt-lg-0&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;index_en.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;btn btn-light rounded-circle shadow-sm border&quot; </span><span class="s2">style</span><span class="s3">=&quot;width: 40px; height: 40px; display:flex; align-items:center; justify-content:center;&quot; </span><span class="s2">title</span><span class="s3">=&quot;Switch to English&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;span </span><span class="s2">style</span><span class="s3">=&quot;font-size:12px; font-weight:bold;&quot;</span><span class="s0">&gt;</span><span class="s1">EN</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;/a&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;dropdown&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot; </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center text-decoration-none dropdown-toggle hide-arrow&quot; </span><span class="s2">id</span><span class="s3">=&quot;userDropdown&quot; </span><span class="s2">data-bs-toggle</span><span class="s3">=&quot;dropdown&quot; </span><span class="s2">aria-expanded</span><span class="s3">=&quot;false&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=100&amp;q=80&quot;</span>
+                                 <span class="s2">alt</span><span class="s3">=&quot;User&quot; </span><span class="s2">class</span><span class="s3">=&quot;rounded-circle user-avatar shadow-sm&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;d-none d-md-inline ms-2 fw-bold text-dark&quot;</span><span class="s0">&gt;</span><span class="s1">李言禾</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;/a&gt;</span>
+                        <span class="s0">&lt;ul </span><span class="s2">class</span><span class="s3">=&quot;dropdown-menu dropdown-menu-end dropdown-menu-custom&quot; </span><span class="s2">aria-labelledby</span><span class="s3">=&quot;userDropdown&quot;</span><span class="s0">&gt;</span>
+                             <span class="s0">&lt;li </span><span class="s2">class</span><span class="s3">=&quot;px-3 py-2 border-bottom mb-2&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-dark&quot;</span><span class="s0">&gt;</span><span class="s1">李言禾</span><span class="s0">&lt;/div&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">学生认证用户</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;/li&gt;</span>
+                            <span class="s0">&lt;li&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;dropdown-item&quot; </span><span class="s2">href</span><span class="s3">=&quot;profile.html&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-person-badge&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">个人主页</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                            <span class="s0">&lt;li&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;dropdown-item&quot; </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-wallet2&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">我的钱包</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                            <span class="s0">&lt;li&gt;&lt;hr </span><span class="s2">class</span><span class="s3">=&quot;dropdown-divider&quot;</span><span class="s0">&gt;&lt;/li&gt;</span>
+                            <span class="s0">&lt;li&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;dropdown-item text-danger&quot; </span><span class="s2">href</span><span class="s3">=&quot;index.html&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-box-arrow-right&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">退出登录</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                        <span class="s0">&lt;/ul&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/nav&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;service-hero&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;role-switch-container&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;role-btn active&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;switchView('creator', this)&quot;</span><span class="s0">&gt;</span><span class="s1">我是创作者 (接单)</span><span class="s0">&lt;/button&gt;</span>
+                <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;role-btn&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;switchView('client', this)&quot;</span><span class="s0">&gt;</span><span class="s1">我是需求方 (发单)</span><span class="s0">&lt;/button&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;search-box-custom&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">class</span><span class="s3">=&quot;search-input&quot; </span><span class="s2">id</span><span class="s3">=&quot;searchInput&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;搜索任务：法律翻译、方言录音、文书润色...&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-primary rounded-pill search-btn&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;location.href='search_result.html'&quot;</span><span class="s0">&gt;</span><span class="s1">搜索</span><span class="s0">&lt;/button&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container pb-5 mt-4&quot;</span><span class="s0">&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;creator-view&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-lg-8&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex justify-content-between align-items-center mb-3&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;h5 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold m-0&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-briefcase-fill text-primary&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">推荐任务</span><span class="s0">&lt;/h5&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;dropdown&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-light btn-sm rounded-pill dropdown-toggle&quot; </span><span class="s2">type</span><span class="s3">=&quot;button&quot;</span><span class="s0">&gt;</span><span class="s1">排序：最新发布</span><span class="s0">&lt;/button&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;task-card&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;location.href='task_detail.html?type=task'&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex justify-content-between align-items-start&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div&gt;</span>
+                                <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;badge bg-danger bg-opacity-10 text-danger mb-2&quot;</span><span class="s0">&gt;</span><span class="s1">企业商单</span><span class="s0">&lt;/span&gt;</span>
+                                <span class="s0">&lt;h5 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-1&quot;</span><span class="s0">&gt;</span><span class="s1">《国际商法》合同条款英译中</span><span class="s0">&lt;/h5&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-muted small mb-2&quot;</span><span class="s0">&gt;</span><span class="s1">需要有法律背景的同学，准确翻译术语。</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-end&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;price-tag&quot;</span><span class="s0">&gt;</span><span class="s1">¥ 500</span><span class="s0">&lt;/div&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">/ 千字</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center justify-content-between mt-3 pt-3 border-top&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center gap-2&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;https://api.dicebear.com/7.x/avataaars/svg?seed=LawFirm&quot; </span><span class="s2">class</span><span class="s3">=&quot;rounded-circle&quot; </span><span class="s2">width</span><span class="s3">=&quot;24&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;small fw-bold text-secondary&quot;</span><span class="s0">&gt;</span><span class="s1">锦天城律师事务所</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center gap-2 small&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-end&quot;</span><span class="s0">&gt;</span>
+                                    <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;text-success fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">招募中</span><span class="s0">&lt;/span&gt;</span>
+                                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-muted&quot; </span><span class="s2">style</span><span class="s3">=&quot;font-size:10px;&quot;</span><span class="s0">&gt;</span><span class="s1">已招 3/5 人</span><span class="s0">&lt;/div&gt;</span>
+                                <span class="s0">&lt;/div&gt;</span>
+                                <span class="s0">&lt;div&gt;</span>
+                                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;limit-bar-bg&quot;</span><span class="s0">&gt;&lt;div </span><span class="s2">class</span><span class="s3">=&quot;limit-bar-fill&quot; </span><span class="s2">style</span><span class="s3">=&quot;width: 60%&quot;</span><span class="s0">&gt;&lt;/div&gt;&lt;/div&gt;</span>
+                                <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;task-card&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;location.href='task_detail.html?type=task'&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex justify-content-between align-items-start&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div&gt;</span>
+                                <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;badge bg-warning bg-opacity-10 text-dark mb-2&quot;</span><span class="s0">&gt;</span><span class="s1">方言采集</span><span class="s0">&lt;/span&gt;</span>
+                                <span class="s0">&lt;h5 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-1&quot;</span><span class="s0">&gt;</span><span class="s1">录制 50 句苏州话日常用语</span><span class="s0">&lt;/h5&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-muted small mb-2&quot;</span><span class="s0">&gt;</span><span class="s1">用于完善言禾语料库，要求发音地道。</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-end&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;price-tag&quot;</span><span class="s0">&gt;</span><span class="s1">¥ 120</span><span class="s0">&lt;/div&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">/ 组</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center justify-content-between mt-3 pt-3 border-top&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center gap-2&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;https://api.dicebear.com/7.x/avataaars/svg?seed=YanHe&quot; </span><span class="s2">class</span><span class="s3">=&quot;rounded-circle&quot; </span><span class="s2">width</span><span class="s3">=&quot;24&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;small fw-bold text-secondary&quot;</span><span class="s0">&gt;</span><span class="s1">言禾官方</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">长期招募 • 不限人数</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;task-card&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;location.href='.html?type=task'&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex justify-content-between align-items-start&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div&gt;</span>
+                                <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;badge bg-dark text-white mb-2&quot;</span><span class="s0">&gt;</span><span class="s1">急单</span><span class="s0">&lt;/span&gt;</span>
+                                <span class="s0">&lt;h5 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-1&quot;</span><span class="s0">&gt;</span><span class="s1">留学文书 PS 深度润色</span><span class="s0">&lt;/h5&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-muted small mb-2&quot;</span><span class="s0">&gt;</span><span class="s1">申请英国G5，需要地道的英式表达。</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-end&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;price-tag&quot;</span><span class="s0">&gt;</span><span class="s1">¥ 300</span><span class="s0">&lt;/div&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">一口价</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center justify-content-between mt-3 pt-3 border-top&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center gap-2&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;https://api.dicebear.com/7.x/avataaars/svg?seed=Student&quot; </span><span class="s2">class</span><span class="s3">=&quot;rounded-circle&quot; </span><span class="s2">width</span><span class="s3">=&quot;24&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;small fw-bold text-secondary&quot;</span><span class="s0">&gt;</span><span class="s1">个人雇主</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;small text-danger fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">剩 4 小时截止</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-lg-4&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;sidebar-card text-center bg-primary text-white&quot; </span><span class="s2">style</span><span class="s3">=&quot;background: linear-gradient(135deg, var(--primary), var(--accent));&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mb-2&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-mortarboard-fill fs-1&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+                        <span class="s0">&lt;h6 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">高校语言人才认证</span><span class="s0">&lt;/h6&gt;</span>
+                        <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;small opacity-75 mb-3&quot;</span><span class="s0">&gt;</span><span class="s1">认证 BSU / 北外 等高校身份，解锁高薪商单，免除平台佣金。</span><span class="s0">&lt;/p&gt;</span>
+                        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-sm btn-light text-primary rounded-pill w-100 fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">立即认证</span><span class="s0">&lt;/button&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;sidebar-card&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;h6 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-3&quot;</span><span class="s0">&gt;</span><span class="s1">🏆 本周接单榜 (高校区)</span><span class="s0">&lt;/h6&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;rank-item&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;rank-num&quot;</span><span class="s0">&gt;</span><span class="s1">1</span><span class="s0">&lt;/div&gt;</span>
+                                <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;https://api.dicebear.com/7.x/avataaars/svg?seed=Jack&quot; </span><span class="s2">class</span><span class="s3">=&quot;rounded-circle me-2&quot; </span><span class="s2">width</span><span class="s3">=&quot;30&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;span&gt;</span><span class="s1">英语系·张同学</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-danger&quot;</span><span class="s0">&gt;</span><span class="s1">¥ 3,200</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;rank-item&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;rank-num&quot;</span><span class="s0">&gt;</span><span class="s1">2</span><span class="s0">&lt;/div&gt;</span>
+                                <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;https://api.dicebear.com/7.x/avataaars/svg?seed=Lily&quot; </span><span class="s2">class</span><span class="s3">=&quot;rounded-circle me-2&quot; </span><span class="s2">width</span><span class="s3">=&quot;30&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;span&gt;</span><span class="s1">德语系·李同学</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-danger&quot;</span><span class="s0">&gt;</span><span class="s1">¥ 1,850</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;rank-item&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;rank-num&quot;</span><span class="s0">&gt;</span><span class="s1">3</span><span class="s0">&lt;/div&gt;</span>
+                                <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;https://api.dicebear.com/7.x/avataaars/svg?seed=Mike&quot; </span><span class="s2">class</span><span class="s3">=&quot;rounded-circle me-2&quot; </span><span class="s2">width</span><span class="s3">=&quot;30&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;span&gt;</span><span class="s1">俄语系·王同学</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-danger&quot;</span><span class="s0">&gt;</span><span class="s1">¥ 980</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;sidebar-card border-success border-opacity-25 bg-success bg-opacity-10&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;h6 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-success&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-heart-fill me-1&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">语言扶贫计划</span><span class="s0">&lt;/h6&gt;</span>
+                        <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;small text-muted mb-2&quot;</span><span class="s0">&gt;</span><span class="s1">每完成一笔订单，我们将捐赠 1% 用于乡村儿童普通话推广。</span><span class="s0">&lt;/p&gt;</span>
+                        <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot; </span><span class="s2">class</span><span class="s3">=&quot;small text-success fw-bold text-decoration-underline&quot;</span><span class="s0">&gt;</span><span class="s1">查看公益报告 &gt;</span><span class="s0">&lt;/a&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;client-view&quot; </span><span class="s2">class</span><span class="s3">=&quot;d-none-custom&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row g-4 mb-5&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-6&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;client-action-card bg-primary bg-opacity-10&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;location.href='task_publish.html?type=task'&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;action-icon-lg bg-primary text-white shadow-sm&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-pencil-square&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+                        <span class="s0">&lt;h3 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-primary&quot;</span><span class="s0">&gt;</span><span class="s1">发布高薪悬赏</span><span class="s0">&lt;/h3&gt;</span>
+                        <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;text-muted mt-3&quot;</span><span class="s0">&gt;</span>
+                            <span class="s1">针对复杂、专业的语言需求。</span><span class="s0">&lt;br&gt;</span>
+                            <span class="s1">连接 BSU 等高校 12,000+ 专业人才。</span><span class="s0">&lt;br&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;badge bg-primary mt-2&quot;</span><span class="s0">&gt;</span><span class="s1">资金托管</span><span class="s0">&lt;/span&gt; &lt;span </span><span class="s2">class</span><span class="s3">=&quot;badge bg-primary mt-2&quot;</span><span class="s0">&gt;</span><span class="s1">双向盲审</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;/p&gt;</span>
+                        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-primary rounded-pill px-5 mt-3 fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">立即发布需求</span><span class="s0">&lt;/button&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-6&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;client-action-card bg-warning bg-opacity-10&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;alert('AI服务已启动')&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;action-icon-lg bg-warning text-white shadow-sm&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-robot&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+                        <span class="s0">&lt;h3 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-dark&quot;</span><span class="s0">&gt;</span><span class="s1">AI 智能极速服务</span><span class="s0">&lt;/h3&gt;</span>
+                        <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;text-muted mt-3&quot;</span><span class="s0">&gt;</span>
+                            <span class="s1">针对日常、简单的翻译与润色。</span><span class="s0">&lt;br&gt;</span>
+                            <span class="s1">言禾自研大模型，秒级响应，低成本。</span><span class="s0">&lt;br&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;badge bg-warning text-dark mt-2&quot;</span><span class="s0">&gt;</span><span class="s1">24h 在线</span><span class="s0">&lt;/span&gt; &lt;span </span><span class="s2">class</span><span class="s3">=&quot;badge bg-warning text-dark mt-2&quot;</span><span class="s0">&gt;</span><span class="s1">立等可取</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;/p&gt;</span>
+                        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-warning text-white rounded-pill px-5 mt-3 fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">试用 AI 助手</span><span class="s0">&lt;/button&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;sidebar-card mx-auto&quot; </span><span class="s2">style</span><span class="s3">=&quot;max-width: 800px;&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;h5 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-3 text-center&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-graph-up-arrow text-success&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">近期市场成交行情参考</span><span class="s0">&lt;/h5&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;market-row&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;span&gt;&lt;span </span><span class="s2">class</span><span class="s3">=&quot;badge bg-light text-dark border me-2&quot;</span><span class="s0">&gt;</span><span class="s1">法律</span><span class="s0">&lt;/span&gt; </span><span class="s1">合同翻译 (英译中)</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-dark&quot;</span><span class="s0">&gt;</span><span class="s1">¥ 180 - 260 / 千字</span><span class="s0">&lt;/span&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;market-row&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;span&gt;&lt;span </span><span class="s2">class</span><span class="s3">=&quot;badge bg-light text-dark border me-2&quot;</span><span class="s0">&gt;</span><span class="s1">口译</span><span class="s0">&lt;/span&gt; </span><span class="s1">陪同翻译 (日语)</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-dark&quot;</span><span class="s0">&gt;</span><span class="s1">¥ 800 - 1500 / 天</span><span class="s0">&lt;/span&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;market-row&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;span&gt;&lt;span </span><span class="s2">class</span><span class="s3">=&quot;badge bg-light text-dark border me-2&quot;</span><span class="s0">&gt;</span><span class="s1">配音</span><span class="s0">&lt;/span&gt; </span><span class="s1">方言录音 (短句)</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-dark&quot;</span><span class="s0">&gt;</span><span class="s1">¥ 50 - 100 / 组</span><span class="s0">&lt;/span&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;market-row&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;span&gt;&lt;span </span><span class="s2">class</span><span class="s3">=&quot;badge bg-light text-dark border me-2&quot;</span><span class="s0">&gt;</span><span class="s1">文书</span><span class="s0">&lt;/span&gt; </span><span class="s1">留学文书润色</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-dark&quot;</span><span class="s0">&gt;</span><span class="s1">¥ 300 - 800 / 篇</span><span class="s0">&lt;/span&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;text-center text-muted small mt-3 mb-0&quot;</span><span class="s0">&gt;</span><span class="s1">* 数据基于平台过去 30 天成交均价，仅供参考。</span><span class="s0">&lt;/p&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;footer </span><span class="s2">class</span><span class="s3">=&quot;bg-dark text-white py-4 mt-auto text-center small&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;mb-1 fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">言禾 YanHe International Education © 2026</span><span class="s0">&lt;/p&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-white-50&quot;</span><span class="s0">&gt;</span>
+                <span class="s1">京ICP备12345678号 | </span><span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot; </span><span class="s2">class</span><span class="s3">=&quot;text-white-50 text-decoration-underline&quot;</span><span class="s0">&gt;</span><span class="s1">下载2025年度社会责任报告</span><span class="s0">&lt;/a&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/footer&gt;</span>
+
+    <span class="s0">&lt;script </span><span class="s2">src</span><span class="s3">=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js&quot;</span><span class="s0">&gt;&lt;/script&gt;</span>
+    <span class="s0">&lt;script&gt;</span>
+        <span class="s1">function switchView(role, btn) {</span>
+            <span class="s1">// 切换按钮状态</span>
+            <span class="s1">document.querySelectorAll('.role-btn').forEach(b =&gt; b.classList.remove('active'));</span>
+            <span class="s1">btn.classList.add('active');</span>
+
+            <span class="s1">// 切换搜索框提示</span>
+            <span class="s1">const searchInput = document.getElementById('searchInput');</span>
+            <span class="s1">if (role === 'creator') {</span>
+                <span class="s1">searchInput.placeholder = &quot;搜索任务：法律翻译、方言录音、文书润色...&quot;;</span>
+                <span class="s1">document.getElementById('creator-view').classList.remove('d-none-custom');</span>
+                <span class="s1">document.getElementById('client-view').classList.add('d-none-custom');</span>
+            <span class="s1">} else {</span>
+                <span class="s1">searchInput.placeholder = &quot;搜索人才：英语八级、同声传译、粤语母语...&quot;;</span>
+                <span class="s1">document.getElementById('creator-view').classList.add('d-none-custom');</span>
+                <span class="s1">document.getElementById('client-view').classList.remove('d-none-custom');</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s0">&lt;/script&gt;</span>
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span></pre>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<html>
+<head>
+<title>login_en.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bababa;}
+.s3 { color: #6aab73;}
+.s4 { color: #56a8f5;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+login_en.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;en&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">name</span><span class="s3">=&quot;viewport&quot; </span><span class="s2">content</span><span class="s3">=&quot;width=device-width, initial-scale=1.0&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;title&gt;</span><span class="s1">Log in to YanHe</span><span class="s0">&lt;/title&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&amp;display=swap&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;style&gt;</span>
+        <span class="s1">:root { --primary: #0052cc; --dark: #091e42; --bg-light: #ffffff; }</span>
+        <span class="s1">body {</span>
+            <span class="s1">font-family: 'Inter', sans-serif;</span>
+            <span class="s1">height: 100vh; overflow: hidden;</span>
+            <span class="s1">background: #fff;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* Layout: Split Screen */</span>
+        <span class="s1">.split-screen { height: 100vh; display: flex; }</span>
+
+        <span class="s1">/* Left: Brand Side */</span>
+        <span class="s1">.brand-side {</span>
+            <span class="s1">flex: 1; position: relative;</span>
+            <span class="s1">background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&amp;q=80'); /* Corporate Vibe */</span>
+            <span class="s1">background-size: cover; background-position: center;</span>
+            <span class="s1">display: flex; flex-direction: column; justify-content: flex-end;</span>
+            <span class="s1">color: #fff; padding: 60px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.brand-overlay {</span>
+            <span class="s1">position: absolute; inset: 0;</span>
+            <span class="s1">background: linear-gradient(to bottom, rgba(9, 30, 66, 0.4), rgba(9, 30, 66, 0.95));</span>
+        <span class="s1">}</span>
+        <span class="s1">.brand-content { position: relative; z-index: 2; max-width: 500px; }</span>
+
+        <span class="s1">/* Right: Form Side */</span>
+        <span class="s1">.form-side {</span>
+            <span class="s1">width: 100%; max-width: 580px; background: #fff;</span>
+            <span class="s1">display: flex; flex-direction: column; justify-content: center; padding: 40px 60px;</span>
+            <span class="s1">position: relative; overflow-y: auto;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* Language Switcher */</span>
+        <span class="s1">.lang-switch { position: absolute; top: 30px; right: 40px; }</span>
+        <span class="s1">.btn-lang {</span>
+            <span class="s1">font-size: 0.9rem; font-weight: 600; color: #505f79; text-decoration: none;</span>
+            <span class="s1">display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 4px; transition: 0.2s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.btn-lang:hover { background: #f4f5f7; color: var(--primary); }</span>
+
+        <span class="s1">/* Auth Container */</span>
+        <span class="s1">.auth-container { width: 100%; max-width: 400px; margin: 0 auto; }</span>
+        <span class="s1">.logo-text { font-weight: 900; font-size: 1.8rem; color: var(--primary); margin-bottom: 20px; display: inline-block; text-decoration: none; }</span>
+        <span class="s1">.page-title { font-weight: 800; font-size: 2rem; color: var(--dark); margin-bottom: 10px; letter-spacing: -0.5px; }</span>
+        <span class="s1">.page-sub { color: #6b778c; margin-bottom: 25px; font-size: 1rem; }</span>
+
+        <span class="s1">/* Login Type Switcher (Individual vs Enterprise) */</span>
+        <span class="s1">.login-tabs {</span>
+            <span class="s1">display: flex; background: #f4f5f7; border-radius: 8px; padding: 4px; margin-bottom: 25px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.tab-btn {</span>
+            <span class="s1">flex: 1; text-align: center; padding: 8px; font-size: 0.9rem; font-weight: 600;</span>
+            <span class="s1">color: #6b778c; border-radius: 6px; cursor: pointer; transition: 0.2s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.tab-btn.active { background: #fff; color: var(--primary); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }</span>
+
+        <span class="s1">/* Form Controls */</span>
+        <span class="s1">.form-label { font-weight: 600; font-size: 0.9rem; color: #42526e; margin-bottom: 6px; }</span>
+        <span class="s1">.form-control {</span>
+            <span class="s1">padding: 12px 15px; border-radius: 6px; border: 1px solid #dfe1e6; font-size: 0.95rem; margin-bottom: 18px;</span>
+            <span class="s1">transition: 0.2s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.form-control:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(0, 82, 204, 0.1); outline: none; }</span>
+
+        <span class="s1">.btn-primary-custom {</span>
+            <span class="s1">width: 100%; background: var(--primary); border: none; padding: 12px;</span>
+            <span class="s1">font-weight: 600; border-radius: 6px; font-size: 1rem; color: #fff; cursor: pointer; transition: 0.2s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.btn-primary-custom:hover { background: #0747a6; transform: translateY(-1px); }</span>
+
+        <span class="s1">/* Role Grid (For Signup) */</span>
+        <span class="s1">.role-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 20px; }</span>
+        <span class="s1">.role-radio { display: none; }</span>
+        <span class="s1">.role-card {</span>
+            <span class="s1">border: 1px solid #dfe1e6; border-radius: 6px; padding: 10px 5px; text-align: center; cursor: pointer;</span>
+            <span class="s1">transition: 0.2s; font-size: 0.85rem; color: #505f79;</span>
+        <span class="s1">}</span>
+        <span class="s1">.role-card i { display: block; font-size: 1.2rem; margin-bottom: 5px; }</span>
+        <span class="s1">.role-card:hover { border-color: var(--primary); background: #f4f5f7; }</span>
+        <span class="s1">.role-radio:checked + .role-card { border-color: var(--primary); background: #deebff; color: var(--primary); font-weight: 700; }</span>
+
+        <span class="s1">/* Responsive */</span>
+        <span class="s1">@media (max-width: 992px) {</span>
+            <span class="s1">.brand-side { display: none; }</span>
+            <span class="s1">.form-side { max-width: 100%; padding: 30px; }</span>
+        <span class="s1">}</span>
+    <span class="s0">&lt;/style&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;split-screen&quot;</span><span class="s0">&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;brand-side&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;brand-overlay&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;brand-content&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-buildings-fill&quot; </span><span class="s2">style</span><span class="s3">=&quot;font-size: 2.5rem; opacity: 0.5; margin-bottom: 20px;&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">style</span><span class="s3">=&quot;font-size: 1.4rem; font-weight: 500; line-height: 1.5; margin-bottom: 30px;&quot;</span><span class="s0">&gt;</span>
+                    <span class="s1">&quot;YanHe Enterprise helps us scale our localization efforts across 20+ countries with verified talent.&quot;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">style</span><span class="s3">=&quot;display: flex; align-items: center; gap: 15px;&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;https://api.dicebear.com/7.x/avataaars/svg?seed=CEO&quot; </span><span class="s2">style</span><span class="s3">=&quot;width: 48px; height: 48px; border-radius: 50%;&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">David Chen</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small opacity-75&quot;</span><span class="s0">&gt;</span><span class="s1">Operations Director @ TechGlobal</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-side&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;lang-switch&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;login.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;btn-lang&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-translate&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">中文版</span><span class="s0">&lt;/a&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-container&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;index_en.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;logo-text&quot;</span><span class="s0">&gt;</span><span class="s1">YanHe</span><span class="s0">&lt;/a&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;loginView&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h1 </span><span class="s2">class</span><span class="s3">=&quot;page-title&quot;</span><span class="s0">&gt;</span><span class="s1">Welcome back</span><span class="s0">&lt;/h1&gt;</span>
+                    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;page-sub&quot;</span><span class="s0">&gt;</span><span class="s1">Access your personal or enterprise dashboard.</span><span class="s0">&lt;/p&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;login-tabs&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;tab-btn active&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;switchLoginType('individual', this)&quot;</span><span class="s0">&gt;</span><span class="s1">Individual</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;tab-btn&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;switchLoginType('enterprise', this)&quot;</span><span class="s0">&gt;</span><span class="s1">Enterprise</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;form </span><span class="s2">onsubmit</span><span class="s3">=&quot;event.preventDefault(); handleAuth('index_en.html');&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div&gt;</span>
+                            <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label&quot; </span><span class="s2">id</span><span class="s3">=&quot;labelEmail&quot;</span><span class="s0">&gt;</span><span class="s1">Email</span><span class="s0">&lt;/label&gt;</span>
+                            <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;email&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">id</span><span class="s3">=&quot;inputEmail&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;name@example.com&quot; </span><span class="s2">value</span><span class="s3">=&quot;demo@yanhe.com&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex justify-content-between&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label&quot;</span><span class="s0">&gt;</span><span class="s1">Password</span><span class="s0">&lt;/label&gt;</span>
+                                <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot; </span><span class="s2">class</span><span class="s3">=&quot;text-decoration-none small&quot; </span><span class="s2">style</span><span class="s3">=&quot;color:var(--primary)&quot;</span><span class="s0">&gt;</span><span class="s1">Forgot?</span><span class="s0">&lt;/a&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;password&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">value</span><span class="s3">=&quot;123456&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+
+                        <span class="s0">&lt;button </span><span class="s2">type</span><span class="s3">=&quot;submit&quot; </span><span class="s2">class</span><span class="s3">=&quot;btn-primary-custom&quot; </span><span class="s2">id</span><span class="s3">=&quot;btnLogin&quot;</span><span class="s0">&gt;</span><span class="s1">Sign In</span><span class="s0">&lt;/button&gt;</span>
+                    <span class="s0">&lt;/form&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-center mt-4 text-muted small&quot;</span><span class="s0">&gt;</span>
+                        <span class="s1">New to YanHe? </span><span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;toggleView()&quot; </span><span class="s2">style</span><span class="s3">=&quot;color:var(--primary); font-weight:700; text-decoration:none;&quot;</span><span class="s0">&gt;</span><span class="s1">Create account</span><span class="s0">&lt;/a&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;signupView&quot; </span><span class="s2">style</span><span class="s3">=&quot;display: none;&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h1 </span><span class="s2">class</span><span class="s3">=&quot;page-title&quot;</span><span class="s0">&gt;</span><span class="s1">Join YanHe</span><span class="s0">&lt;/h1&gt;</span>
+                    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;page-sub&quot;</span><span class="s0">&gt;</span><span class="s1">Select your account type to get started.</span><span class="s0">&lt;/p&gt;</span>
+
+                    <span class="s0">&lt;form </span><span class="s2">onsubmit</span><span class="s3">=&quot;event.preventDefault(); handleAuth('index_en.html');&quot;</span><span class="s0">&gt;</span>
+
+                        <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label&quot;</span><span class="s0">&gt;</span><span class="s1">I am a...</span><span class="s0">&lt;/label&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;role-grid&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;label&gt;</span>
+                                <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;radio&quot; </span><span class="s2">name</span><span class="s3">=&quot;role&quot; </span><span class="s2">class</span><span class="s3">=&quot;role-radio&quot; </span><span class="s2">checked</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;role-card&quot;</span><span class="s0">&gt;</span>
+                                    <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-mortarboard&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                                    <span class="s1">Learner</span>
+                                <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;/label&gt;</span>
+                            <span class="s0">&lt;label&gt;</span>
+                                <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;radio&quot; </span><span class="s2">name</span><span class="s3">=&quot;role&quot; </span><span class="s2">class</span><span class="s3">=&quot;role-radio&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;role-card&quot;</span><span class="s0">&gt;</span>
+                                    <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-translate&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                                    <span class="s1">Expert</span>
+                                <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;/label&gt;</span>
+                            <span class="s0">&lt;label&gt;</span>
+                                <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;radio&quot; </span><span class="s2">name</span><span class="s3">=&quot;role&quot; </span><span class="s2">class</span><span class="s3">=&quot;role-radio&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;role-card&quot;</span><span class="s0">&gt;</span>
+                                    <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-building&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                                    <span class="s1">Company</span>
+                                <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;/label&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-6&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label&quot;</span><span class="s0">&gt;</span><span class="s1">First Name</span><span class="s0">&lt;/label&gt;</span>
+                                <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;Jane&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-6&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label&quot;</span><span class="s0">&gt;</span><span class="s1">Last Name</span><span class="s0">&lt;/label&gt;</span>
+                                <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;Doe&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+
+                        <span class="s0">&lt;div&gt;</span>
+                            <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label&quot;</span><span class="s0">&gt;</span><span class="s1">Work Email</span><span class="s0">&lt;/label&gt;</span>
+                            <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;email&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;name@company.com&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+
+                        <span class="s0">&lt;div&gt;</span>
+                            <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label&quot;</span><span class="s0">&gt;</span><span class="s1">Password</span><span class="s0">&lt;/label&gt;</span>
+                            <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;password&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;Min. 8 characters&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+
+                        <span class="s0">&lt;button </span><span class="s2">type</span><span class="s3">=&quot;submit&quot; </span><span class="s2">class</span><span class="s3">=&quot;btn-primary-custom&quot; </span><span class="s2">id</span><span class="s3">=&quot;btnSignup&quot;</span><span class="s0">&gt;</span><span class="s1">Create Account</span><span class="s0">&lt;/button&gt;</span>
+                    <span class="s0">&lt;/form&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-center mt-4 text-muted small&quot;</span><span class="s0">&gt;</span>
+                        <span class="s1">Already have an account? </span><span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;toggleView()&quot; </span><span class="s2">style</span><span class="s3">=&quot;color:var(--primary); font-weight:700; text-decoration:none;&quot;</span><span class="s0">&gt;</span><span class="s1">Log in</span><span class="s0">&lt;/a&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-center mt-auto pt-4 text-muted small opacity-50&quot;</span><span class="s0">&gt;</span>
+                <span class="s4">&amp;copy; </span><span class="s1">2026 YanHe Inc. All rights reserved.</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;script&gt;</span>
+        <span class="s1">function toggleView() {</span>
+            <span class="s1">const login = document.getElementById('loginView');</span>
+            <span class="s1">const signup = document.getElementById('signupView');</span>
+
+            <span class="s1">if (login.style.display === 'none') {</span>
+                <span class="s1">login.style.display = 'block';</span>
+                <span class="s1">signup.style.display = 'none';</span>
+            <span class="s1">} else {</span>
+                <span class="s1">login.style.display = 'none';</span>
+                <span class="s1">signup.style.display = 'block';</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">// Switch between Individual and Enterprise Login</span>
+        <span class="s1">function switchLoginType(type, btn) {</span>
+            <span class="s1">// UI Toggle</span>
+            <span class="s1">document.querySelectorAll('.tab-btn').forEach(el =&gt; el.classList.remove('active'));</span>
+            <span class="s1">btn.classList.add('active');</span>
+
+            <span class="s1">// Logic Changes</span>
+            <span class="s1">const label = document.getElementById('labelEmail');</span>
+            <span class="s1">const input = document.getElementById('inputEmail');</span>
+
+            <span class="s1">if (type === 'enterprise') {</span>
+                <span class="s1">label.innerText = 'Work Email (SSO)';</span>
+                <span class="s1">input.placeholder = 'name@company.com';</span>
+                <span class="s1">// You could also hide &quot;Forgot Password&quot; for SSO logic here</span>
+            <span class="s1">} else {</span>
+                <span class="s1">label.innerText = 'Email';</span>
+                <span class="s1">input.placeholder = 'name@example.com';</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">function handleAuth(targetUrl) {</span>
+            <span class="s1">const isLogin = document.getElementById('loginView').style.display !== 'none';</span>
+            <span class="s1">const btn = isLogin ? document.getElementById('btnLogin') : document.getElementById('btnSignup');</span>
+
+            <span class="s1">btn.innerHTML = '&lt;span class=&quot;spinner-border spinner-border-sm&quot;&gt;&lt;/span&gt; Verifying...';</span>
+            <span class="s1">btn.style.opacity = '0.7';</span>
+            <span class="s1">btn.disabled = true;</span>
+
+            <span class="s1">setTimeout(() =&gt; {</span>
+                <span class="s1">window.location.href = targetUrl;</span>
+            <span class="s1">}, 1000);</span>
+        <span class="s1">}</span>
+    <span class="s0">&lt;/script&gt;</span>
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span></pre>
+</body>
+</html>

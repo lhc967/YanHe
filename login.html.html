@@ -1,0 +1,401 @@
+<html>
+<head>
+<title>login.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bababa;}
+.s3 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+login.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;zh-CN&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">name</span><span class="s3">=&quot;viewport&quot; </span><span class="s2">content</span><span class="s3">=&quot;width=device-width, initial-scale=1.0&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;title&gt;</span><span class="s1">言禾通行证 - 统一身份认证</span><span class="s0">&lt;/title&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;style&gt;</span>
+        <span class="s1">:root { --primary: #004aad; --accent: #ff6b00; --bg-light: #f0f7ff; }</span>
+        <span class="s1">body {</span>
+            <span class="s1">font-family: -apple-system, &quot;PingFang SC&quot;, sans-serif;</span>
+            <span class="s1">background: var(--bg-light); height: 100vh; overflow: hidden;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* --- 极简顶部导航 --- */</span>
+        <span class="s1">.navbar-custom {</span>
+            <span class="s1">position: absolute; top: 0; left: 0; width: 100%; z-index: 100;</span>
+            <span class="s1">padding: 20px 40px; background: transparent; pointer-events: none; /* 让鼠标能穿透点击下面的元素 */</span>
+        <span class="s1">}</span>
+        <span class="s1">.navbar-custom a { pointer-events: auto; } /* 恢复链接点击 */</span>
+        <span class="s1">.navbar-brand {</span>
+            <span class="s1">font-weight: 900; font-size: 1.6rem;</span>
+            <span class="s1">background: linear-gradient(135deg, #004aad 0%, #0078ff 100%);</span>
+            <span class="s1">-webkit-background-clip: text; -webkit-text-fill-color: transparent;</span>
+        <span class="s1">}</span>
+        <span class="s1">.back-link {</span>
+            <span class="s1">text-decoration: none; color: #666; font-weight: 600; font-size: 14px;</span>
+            <span class="s1">display: flex; align-items: center; gap: 5px; transition: 0.3s;</span>
+            <span class="s1">background: rgba(255,255,255,0.8); padding: 8px 16px; border-radius: 20px; backdrop-filter: blur(5px);</span>
+        <span class="s1">}</span>
+        <span class="s1">.back-link:hover { color: var(--primary); background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }</span>
+
+        <span class="s1">/* --- 布局容器 --- */</span>
+        <span class="s1">.split-container { display: flex; height: 100%; }</span>
+
+        <span class="s1">/* --- 左侧：动态品牌区 --- */</span>
+        <span class="s1">.brand-section {</span>
+            <span class="s1">flex: 1.2; background: linear-gradient(135deg, #004aad 0%, #002a5c 100%);</span>
+            <span class="s1">position: relative; overflow: hidden; display: flex; flex-direction: column;</span>
+            <span class="s1">justify-content: center; padding: 0 80px; color: #fff;</span>
+            <span class="s1">transition: all 0.5s ease;</span>
+        <span class="s1">}</span>
+        <span class="s1">/* 个人版背景色变种 (通过JS切换类名) */</span>
+        <span class="s1">.brand-section.individual-mode {</span>
+            <span class="s1">background: linear-gradient(135deg, #ff6b00 0%, #cc5500 100%);</span>
+        <span class="s1">}</span>
+
+        <span class="s1">.brand-content { position: relative; z-index: 2; transition: all 0.5s ease; }</span>
+
+        <span class="s1">/* 装饰圆动画 */</span>
+        <span class="s1">.brand-circle {</span>
+            <span class="s1">position: absolute; border-radius: 50%; background: rgba(255,255,255,0.05);</span>
+            <span class="s1">animation: float 8s infinite ease-in-out; pointer-events: none;</span>
+        <span class="s1">}</span>
+        <span class="s1">@keyframes float { 0%,100%{transform:translate(0,0);} 50%{transform:translate(20px,-20px);} }</span>
+
+        <span class="s1">/* --- 右侧：表单交互区 --- */</span>
+        <span class="s1">.form-section {</span>
+            <span class="s1">flex: 1; display: flex; align-items: center; justify-content: center;</span>
+            <span class="s1">background: #fff; position: relative; padding: 20px;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">.auth-card {</span>
+            <span class="s1">width: 100%; max-width: 420px;</span>
+            <span class="s1">animation: fadeIn 0.5s ease-out;</span>
+        <span class="s1">}</span>
+        <span class="s1">@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }</span>
+
+        <span class="s1">/* 顶部身份切换 Tab (Pills) */</span>
+        <span class="s1">.role-pills {</span>
+            <span class="s1">background: #f1f3f5; padding: 5px; border-radius: 12px; display: flex; margin-bottom: 30px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.role-item {</span>
+            <span class="s1">flex: 1; text-align: center; padding: 10px; font-size: 14px; font-weight: 700;</span>
+            <span class="s1">color: #666; cursor: pointer; border-radius: 8px; transition: 0.3s; user-select: none;</span>
+        <span class="s1">}</span>
+        <span class="s1">.role-item.active { background: #fff; color: var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }</span>
+        <span class="s1">.role-item.active.individual { color: var(--accent); } /* 个人版激活色 */</span>
+
+        <span class="s1">/* 标题区 */</span>
+        <span class="s1">.auth-header { margin-bottom: 25px; }</span>
+        <span class="s1">.auth-title { font-size: 26px; font-weight: 800; color: #333; margin-bottom: 5px; }</span>
+        <span class="s1">.auth-subtitle { color: #888; font-size: 14px; }</span>
+
+        <span class="s1">/* 表单控件 */</span>
+        <span class="s1">.form-floating &gt; .form-control {</span>
+            <span class="s1">border-radius: 12px; border: 1px solid #eee; background: #f8faff;</span>
+        <span class="s1">}</span>
+        <span class="s1">.form-floating &gt; .form-control:focus {</span>
+            <span class="s1">border-color: var(--primary); box-shadow: 0 0 0 4px rgba(0, 74, 173, 0.1);</span>
+        <span class="s1">}</span>
+        <span class="s1">/* 个人版聚焦颜色 */</span>
+        <span class="s1">.form-control.individual-focus:focus {</span>
+            <span class="s1">border-color: var(--accent); box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.1);</span>
+        <span class="s1">}</span>
+
+        <span class="s1">.btn-submit {</span>
+            <span class="s1">background: var(--primary); border: none; height: 48px; font-size: 16px; font-weight: 700;</span>
+            <span class="s1">border-radius: 12px; width: 100%; color: #fff; margin-top: 20px; transition: 0.3s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.btn-submit:hover { opacity: 0.9; transform: translateY(-1px); }</span>
+        <span class="s1">.btn-submit.individual-btn { background: var(--accent); }</span>
+
+        <span class="s1">/* 底部切换链接 */</span>
+        <span class="s1">.auth-footer { text-align: center; margin-top: 30px; font-size: 14px; color: #666; }</span>
+        <span class="s1">.switch-link { color: var(--primary); font-weight: 700; cursor: pointer; text-decoration: none; }</span>
+        <span class="s1">.switch-link.individual-link { color: var(--accent); }</span>
+
+        <span class="s1">/* 视图切换辅助类 */</span>
+        <span class="s1">.view-hidden { display: none !important; }</span>
+
+        <span class="s1">/* 响应式 */</span>
+        <span class="s1">@media (max-width: 992px) {</span>
+            <span class="s1">.brand-section { display: none; }</span>
+            <span class="s1">.form-section { background: #f8faff; }</span>
+        <span class="s1">}</span>
+    <span class="s0">&lt;/style&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+
+    <span class="s0">&lt;nav </span><span class="s2">class</span><span class="s3">=&quot;navbar-custom d-flex justify-content-between align-items-center&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;a </span><span class="s2">class</span><span class="s3">=&quot;navbar-brand&quot; </span><span class="s2">href</span><span class="s3">=&quot;index.html&quot;</span><span class="s0">&gt;</span><span class="s1">言禾 YanHe</span><span class="s0">&lt;/a&gt;</span>
+        <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;index.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;back-link&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-house-door-fill&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">返回首页</span><span class="s0">&lt;/a&gt;</span>
+    <span class="s0">&lt;/nav&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;split-container&quot;</span><span class="s0">&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;brand-section&quot; </span><span class="s2">id</span><span class="s3">=&quot;brandSection&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;brand-circle&quot; </span><span class="s2">style</span><span class="s3">=&quot;width: 400px; height: 400px; top: -100px; right: -100px;&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;brand-circle&quot; </span><span class="s2">style</span><span class="s3">=&quot;width: 200px; height: 200px; bottom: 50px; left: 50px;&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;brand-content&quot; </span><span class="s2">id</span><span class="s3">=&quot;brandTextEnterprise&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mb-3&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-building fs-1 text-white opacity-50&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+                <span class="s0">&lt;h1 </span><span class="s2">class</span><span class="s3">=&quot;display-5 fw-bold mb-3&quot;</span><span class="s0">&gt;</span><span class="s1">连接全球</span><span class="s0">&lt;br&gt;</span><span class="s1">语言人才</span><span class="s0">&lt;/h1&gt;</span>
+                <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;h5 fw-light opacity-75 mb-4&quot;</span><span class="s0">&gt;</span><span class="s1">加入言禾企业生态，一键发布众包需求。</span><span class="s0">&lt;br&gt;</span><span class="s1">已赋能 1,200+ 合作伙伴。</span><span class="s0">&lt;/p&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;brand-content view-hidden&quot; </span><span class="s2">id</span><span class="s3">=&quot;brandTextIndividual&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mb-3&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-mortarboard fs-1 text-white opacity-50&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+                <span class="s0">&lt;h1 </span><span class="s2">class</span><span class="s3">=&quot;display-5 fw-bold mb-3&quot;</span><span class="s0">&gt;</span><span class="s1">知识变现</span><span class="s0">&lt;br&gt;</span><span class="s1">文化出海</span><span class="s0">&lt;/h1&gt;</span>
+                <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;h5 fw-light opacity-75 mb-4&quot;</span><span class="s0">&gt;</span><span class="s1">高校语言人才的专属平台。</span><span class="s0">&lt;br&gt;</span><span class="s1">让你的每一次翻译都有价值。</span><span class="s0">&lt;/p&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-section&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-card&quot;</span><span class="s0">&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;role-pills&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;role-item active&quot; </span><span class="s2">id</span><span class="s3">=&quot;tabEnterprise&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;switchRole('enterprise')&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-briefcase me-1&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">企业/机构</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;role-item&quot; </span><span class="s2">id</span><span class="s3">=&quot;tabIndividual&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;switchRole('individual')&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-person me-1&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">个人/学生</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;viewLogin&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-header&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-title&quot;</span><span class="s0">&gt;</span><span class="s1">欢迎回来</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-subtitle&quot; </span><span class="s2">id</span><span class="s3">=&quot;loginSubtitle&quot;</span><span class="s0">&gt;</span><span class="s1">使用企业认证账号登录工作台</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;form&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;fieldsLoginEnterprise&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-floating mb-3&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;企业ID&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;label&gt;</span><span class="s1">统一社会信用代码 / 企业邮箱</span><span class="s0">&lt;/label&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+
+                        <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;fieldsLoginIndividual&quot; </span><span class="s2">class</span><span class="s3">=&quot;view-hidden&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-floating mb-3&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control individual-focus&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;手机号&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;label&gt;</span><span class="s1">手机号 / 学号 (高校认证)</span><span class="s0">&lt;/label&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-floating mb-3&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;password&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">id</span><span class="s3">=&quot;loginPwd&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;密码&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;label&gt;</span><span class="s1">登录密码</span><span class="s0">&lt;/label&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex justify-content-between align-items-center mb-4&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-check&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;input </span><span class="s2">class</span><span class="s3">=&quot;form-check-input&quot; </span><span class="s2">type</span><span class="s3">=&quot;checkbox&quot; </span><span class="s2">id</span><span class="s3">=&quot;rememberMe&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-check-label small text-muted&quot; </span><span class="s2">for</span><span class="s3">=&quot;rememberMe&quot;</span><span class="s0">&gt;</span><span class="s1">记住我</span><span class="s0">&lt;/label&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot; </span><span class="s2">class</span><span class="s3">=&quot;small text-decoration-none text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">忘记密码?</span><span class="s0">&lt;/a&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+
+                        <span class="s0">&lt;button </span><span class="s2">type</span><span class="s3">=&quot;button&quot; </span><span class="s2">class</span><span class="s3">=&quot;btn-submit&quot; </span><span class="s2">id</span><span class="s3">=&quot;btnLogin&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;handleLogin()&quot;</span><span class="s0">&gt;</span>
+                            <span class="s1">安全登录</span>
+                        <span class="s0">&lt;/button&gt;</span>
+                    <span class="s0">&lt;/form&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-footer&quot;</span><span class="s0">&gt;</span>
+                        <span class="s1">还没有账号？ </span><span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;switch-link&quot; </span><span class="s2">id</span><span class="s3">=&quot;linkToReg&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;toggleView('register')&quot;</span><span class="s0">&gt;</span><span class="s1">立即注册入驻</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-center mt-4&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;small text-muted mb-3&quot;</span><span class="s0">&gt;</span><span class="s1">或通过以下方式登录</span><span class="s0">&lt;/p&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex justify-content-center gap-3&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-light rounded-circle border&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-wechat text-success&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/button&gt;</span>
+                            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-light rounded-circle border&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-alipay text-primary&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/button&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;viewRegister&quot; </span><span class="s2">class</span><span class="s3">=&quot;view-hidden&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-header&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-title&quot;</span><span class="s0">&gt;</span><span class="s1">创建账号</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-subtitle&quot; </span><span class="s2">id</span><span class="s3">=&quot;regSubtitle&quot;</span><span class="s0">&gt;</span><span class="s1">提交企业资质，开启众包之旅</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;form&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;fieldsRegEnterprise&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-floating mb-3&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;企业全称&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;label&gt;</span><span class="s1">企业全称 (需与执照一致)</span><span class="s0">&lt;/label&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-floating mb-3&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;联系人&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;label&gt;</span><span class="s1">商务对接人姓名</span><span class="s0">&lt;/label&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+
+                        <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;fieldsRegIndividual&quot; </span><span class="s2">class</span><span class="s3">=&quot;view-hidden&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-floating mb-3&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control individual-focus&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;学校&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;label&gt;</span><span class="s1">所在高校名称</span><span class="s0">&lt;/label&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-floating mb-3&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control individual-focus&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;专业&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;label&gt;</span><span class="s1">专业 (例如：汉语国际教育)</span><span class="s0">&lt;/label&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-floating mb-3&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;email&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;邮箱&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;label&gt;</span><span class="s1">电子邮箱 / 手机号</span><span class="s0">&lt;/label&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-floating mb-3&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;password&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;设置密码&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;label&gt;</span><span class="s1">设置密码 (8位以上)</span><span class="s0">&lt;/label&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-check mb-4&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;input </span><span class="s2">class</span><span class="s3">=&quot;form-check-input&quot; </span><span class="s2">type</span><span class="s3">=&quot;checkbox&quot; </span><span class="s2">id</span><span class="s3">=&quot;agreeTerms&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-check-label small text-muted&quot; </span><span class="s2">for</span><span class="s3">=&quot;agreeTerms&quot;</span><span class="s0">&gt;</span>
+                                <span class="s1">我已阅读并同意 </span><span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot; </span><span class="s2">class</span><span class="s3">=&quot;text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">《用户协议》</span><span class="s0">&lt;/a&gt; </span><span class="s1">与 </span><span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot; </span><span class="s2">class</span><span class="s3">=&quot;text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">《隐私政策》</span><span class="s0">&lt;/a&gt;</span>
+                            <span class="s0">&lt;/label&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+
+                        <span class="s0">&lt;button </span><span class="s2">type</span><span class="s3">=&quot;button&quot; </span><span class="s2">class</span><span class="s3">=&quot;btn-submit&quot; </span><span class="s2">id</span><span class="s3">=&quot;btnRegister&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;handleRegister()&quot;</span><span class="s0">&gt;</span>
+                            <span class="s1">立即注册</span>
+                        <span class="s0">&lt;/button&gt;</span>
+                    <span class="s0">&lt;/form&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;auth-footer&quot;</span><span class="s0">&gt;</span>
+                        <span class="s1">已有账号？ </span><span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;switch-link&quot; </span><span class="s2">id</span><span class="s3">=&quot;linkToLogin&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;toggleView('login')&quot;</span><span class="s0">&gt;</span><span class="s1">返回登录</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;script&gt;</span>
+        <span class="s1">// 当前状态</span>
+        <span class="s1">let currentRole = 'enterprise'; // 'enterprise' or 'individual'</span>
+        <span class="s1">let currentView = 'login';      // 'login' or 'register'</span>
+
+        <span class="s1">// 1. 切换角色 (企业 vs 个人)</span>
+        <span class="s1">function switchRole(role) {</span>
+            <span class="s1">currentRole = role;</span>
+
+            <span class="s1">// UI 更新：Tab 样式</span>
+            <span class="s1">document.querySelectorAll('.role-item').forEach(el =&gt; el.classList.remove('active', 'individual'));</span>
+            <span class="s1">document.getElementById('tab' + capitalize(role)).classList.add('active');</span>
+            <span class="s1">if(role === 'individual') document.getElementById('tabIndividual').classList.add('individual');</span>
+
+            <span class="s1">// UI 更新：左侧品牌区</span>
+            <span class="s1">const brandSec = document.getElementById('brandSection');</span>
+            <span class="s1">const txtEnt = document.getElementById('brandTextEnterprise');</span>
+            <span class="s1">const txtInd = document.getElementById('brandTextIndividual');</span>
+
+            <span class="s1">if (role === 'individual') {</span>
+                <span class="s1">brandSec.classList.add('individual-mode');</span>
+                <span class="s1">txtEnt.classList.add('view-hidden');</span>
+                <span class="s1">txtInd.classList.remove('view-hidden');</span>
+            <span class="s1">} else {</span>
+                <span class="s1">brandSec.classList.remove('individual-mode');</span>
+                <span class="s1">txtEnt.classList.remove('view-hidden');</span>
+                <span class="s1">txtInd.classList.add('view-hidden');</span>
+            <span class="s1">}</span>
+
+            <span class="s1">// UI 更新：表单字段与颜色</span>
+            <span class="s1">updateFormVisibility();</span>
+        <span class="s1">}</span>
+
+        <span class="s1">// 2. 切换视图 (登录 vs 注册)</span>
+        <span class="s1">function toggleView(view) {</span>
+            <span class="s1">currentView = view;</span>
+
+            <span class="s1">// 简单的显隐切换</span>
+            <span class="s1">if(view === 'register') {</span>
+                <span class="s1">document.getElementById('viewLogin').classList.add('view-hidden');</span>
+                <span class="s1">document.getElementById('viewRegister').classList.remove('view-hidden');</span>
+            <span class="s1">} else {</span>
+                <span class="s1">document.getElementById('viewLogin').classList.remove('view-hidden');</span>
+                <span class="s1">document.getElementById('viewRegister').classList.add('view-hidden');</span>
+            <span class="s1">}</span>
+            <span class="s1">updateFormVisibility();</span>
+        <span class="s1">}</span>
+
+        <span class="s1">// 3. 更新表单字段显隐 (核心逻辑)</span>
+        <span class="s1">function updateFormVisibility() {</span>
+            <span class="s1">// 通用变量</span>
+            <span class="s1">const isIndividual = currentRole === 'individual';</span>
+            <span class="s1">const themeColor = isIndividual ? '#ff6b00' : '#004aad';</span>
+            <span class="s1">const themeBtnClass = isIndividual ? 'individual-btn' : '';</span>
+            <span class="s1">const themeLinkClass = isIndividual ? 'individual-link' : '';</span>
+
+            <span class="s1">// 按钮与链接颜色</span>
+            <span class="s1">document.querySelectorAll('.btn-submit').forEach(btn =&gt; {</span>
+                <span class="s1">btn.className = 'btn-submit ' + themeBtnClass; // 重置类名</span>
+            <span class="s1">});</span>
+            <span class="s1">document.querySelectorAll('.switch-link').forEach(link =&gt; {</span>
+                <span class="s1">link.className = 'switch-link ' + themeLinkClass;</span>
+            <span class="s1">});</span>
+
+            <span class="s1">// 输入框焦点颜色 (通过类名控制 CSS)</span>
+            <span class="s1">document.querySelectorAll('.form-control').forEach(input =&gt; {</span>
+                <span class="s1">if(isIndividual) input.classList.add('individual-focus');</span>
+                <span class="s1">else input.classList.remove('individual-focus');</span>
+            <span class="s1">});</span>
+
+            <span class="s1">// 字段显隐</span>
+            <span class="s1">if (currentView === 'login') {</span>
+                <span class="s1">document.getElementById('loginSubtitle').innerText = isIndividual ? '高校师生 / 个人创作者登录' : '使用企业认证账号登录工作台';</span>
+
+                <span class="s1">document.getElementById('fieldsLoginEnterprise').classList.toggle('view-hidden', isIndividual);</span>
+                <span class="s1">document.getElementById('fieldsLoginIndividual').classList.toggle('view-hidden', !isIndividual);</span>
+            <span class="s1">} else {</span>
+                <span class="s1">document.getElementById('regSubtitle').innerText = isIndividual ? '加入言禾人才库，开启兼职之旅' : '提交企业资质，发布语言需求';</span>
+
+                <span class="s1">document.getElementById('fieldsRegEnterprise').classList.toggle('view-hidden', isIndividual);</span>
+                <span class="s1">document.getElementById('fieldsRegIndividual').classList.toggle('view-hidden', !isIndividual);</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">// 模拟登录操作</span>
+        <span class="s1">function handleLogin() {</span>
+            <span class="s1">const btn = document.getElementById('btnLogin');</span>
+            <span class="s1">const originalText = btn.innerText;</span>
+            <span class="s1">btn.innerText = '验证中...';</span>
+            <span class="s1">btn.disabled = true;</span>
+
+            <span class="s1">setTimeout(() =&gt; {</span>
+                <span class="s1">if(currentRole === 'individual') {</span>
+                    <span class="s1">// 个人 -&gt; 去故事页或首页</span>
+                    <span class="s1">window.location.href = 'story.html';</span>
+                <span class="s1">} else {</span>
+                    <span class="s1">// 企业 -&gt; 去任务大厅发布任务</span>
+                    <span class="s1">window.location.href = 'service.html';</span>
+                <span class="s1">}</span>
+            <span class="s1">}, 1000);</span>
+        <span class="s1">}</span>
+
+        <span class="s1">// 模拟注册操作</span>
+        <span class="s1">function handleRegister() {</span>
+            <span class="s1">alert('注册申请已提交！\n我们会发送验证邮件到您的邮箱。');</span>
+            <span class="s1">toggleView('login');</span>
+        <span class="s1">}</span>
+
+        <span class="s1">// 辅助函数</span>
+        <span class="s1">function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }</span>
+
+    <span class="s0">&lt;/script&gt;</span>
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span></pre>
+</body>
+</html>

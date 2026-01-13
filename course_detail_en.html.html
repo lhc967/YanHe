@@ -1,0 +1,395 @@
+<html>
+<head>
+<title>course_detail_en.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bababa;}
+.s3 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+course_detail_en.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;en&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">name</span><span class="s3">=&quot;viewport&quot; </span><span class="s2">content</span><span class="s3">=&quot;width=device-width, initial-scale=1.0&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;title&gt;</span><span class="s1">Business Chinese - Course Detail</span><span class="s0">&lt;/title&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&amp;display=swap&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;style&gt;</span>
+        <span class="s1">:root { --primary: #0052cc; --accent: #ffab00; --dark: #091e42; --bg-light: #f4f5f7; }</span>
+        <span class="s1">body {</span>
+            <span class="s1">font-family: 'Inter', sans-serif;</span>
+            <span class="s1">background: var(--bg-light);</span>
+            <span class="s1">padding-top: 76px;</span>
+            <span class="s1">color: var(--dark);</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* Navbar */</span>
+        <span class="s1">.navbar-custom { background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.05); height: 76px; z-index: 1000; }</span>
+        <span class="s1">.navbar-brand { font-weight: 900; font-size: 1.6rem; color: var(--primary) !important; letter-spacing: -0.5px; }</span>
+        <span class="s1">.nav-link { font-weight: 600; color: #505f79 !important; padding: 8px 15px !important; }</span>
+        <span class="s1">.nav-link:hover { color: var(--primary) !important; }</span>
+        <span class="s1">.btn-back { border: 1px solid #dfe1e6; color: #505f79; font-weight: 600; padding: 6px 16px; border-radius: 4px; transition: 0.2s; }</span>
+        <span class="s1">.btn-back:hover { background: #ebecf0; color: var(--dark); }</span>
+
+        <span class="s1">/* Breadcrumb */</span>
+        <span class="s1">.breadcrumb-bar { padding: 20px 0; font-size: 0.9rem; color: #6b778c; }</span>
+        <span class="s1">.breadcrumb-bar a { text-decoration: none; color: #6b778c; transition: 0.2s; }</span>
+        <span class="s1">.breadcrumb-bar a:hover { color: var(--primary); }</span>
+
+        <span class="s1">/* Video Player */</span>
+        <span class="s1">.video-wrapper {</span>
+            <span class="s1">background: #000; border-radius: 12px; overflow: hidden; position: relative;</span>
+            <span class="s1">aspect-ratio: 16/9; box-shadow: 0 8px 30px rgba(0,0,0,0.15);</span>
+        <span class="s1">}</span>
+        <span class="s1">.video-placeholder { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; transition: opacity 0.5s; }</span>
+
+        <span class="s1">.play-overlay {</span>
+            <span class="s1">position: absolute; inset: 0; display: flex; flex-direction: column;</span>
+            <span class="s1">align-items: center; justify-content: center; z-index: 10; transition: opacity 0.5s;</span>
+            <span class="s1">background: rgba(0,0,0,0.2);</span>
+        <span class="s1">}</span>
+        <span class="s1">.btn-play-big {</span>
+            <span class="s1">width: 80px; height: 80px; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px);</span>
+            <span class="s1">border-radius: 50%; display: flex; align-items: center; justify-content: center;</span>
+            <span class="s1">color: #fff; font-size: 32px; cursor: pointer; border: 2px solid rgba(255,255,255,0.6);</span>
+            <span class="s1">transition: all 0.3s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.btn-play-big:hover { transform: scale(1.1); background: var(--primary); border-color: var(--primary); }</span>
+
+        <span class="s1">.video-playing-state {</span>
+            <span class="s1">position: absolute; inset: 0; display: none; align-items: center; justify-content: center; color: #fff; background: #000;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* AI Tools (On Video) */</span>
+        <span class="s1">.ai-tools-overlay {</span>
+            <span class="s1">position: absolute; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 20;</span>
+        <span class="s1">}</span>
+        <span class="s1">.ai-tool-badge {</span>
+            <span class="s1">background: rgba(0,0,0,0.7); color: #fff; padding: 6px 14px; border-radius: 30px;</span>
+            <span class="s1">font-size: 0.8rem; font-weight: 600; cursor: pointer; backdrop-filter: blur(4px);</span>
+            <span class="s1">border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; gap: 6px; transition: 0.3s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.ai-tool-badge:hover { background: var(--primary); border-color: var(--primary); }</span>
+        <span class="s1">.ai-tool-badge.active { background: var(--primary); border-color: var(--primary); }</span>
+
+        <span class="s1">/* Course Info */</span>
+        <span class="s1">.course-header { margin-top: 30px; margin-bottom: 25px; }</span>
+        <span class="s1">.course-tag {</span>
+            <span class="s1">background: #deebff; color: var(--primary); padding: 4px 10px; border-radius: 4px;</span>
+            <span class="s1">font-size: 0.8rem; font-weight: 700; margin-right: 10px; text-transform: uppercase;</span>
+        <span class="s1">}</span>
+        <span class="s1">.course-title { font-size: 2rem; font-weight: 800; margin-top: 15px; margin-bottom: 15px; color: var(--dark); line-height: 1.2; }</span>
+        <span class="s1">.course-meta { font-size: 0.9rem; color: #6b778c; display: flex; gap: 25px; align-items: center; }</span>
+
+        <span class="s1">/* Tabs */</span>
+        <span class="s1">.nav-tabs-course { border-bottom: 1px solid #ebecf0; margin-bottom: 30px; display: flex; gap: 30px; }</span>
+        <span class="s1">.nav-link-course {</span>
+            <span class="s1">border: none; background: transparent; padding: 15px 0; font-weight: 600; color: #6b778c;</span>
+            <span class="s1">border-bottom: 3px solid transparent; cursor: pointer; font-size: 1rem;</span>
+        <span class="s1">}</span>
+        <span class="s1">.nav-link-course:hover { color: var(--primary); }</span>
+        <span class="s1">.nav-link-course.active { color: var(--primary); border-bottom-color: var(--primary); }</span>
+
+        <span class="s1">/* Syllabus List */</span>
+        <span class="s1">.chapter-item {</span>
+            <span class="s1">display: flex; justify-content: space-between; align-items: center; padding: 18px;</span>
+            <span class="s1">border: 1px solid #ebecf0; margin-bottom: -1px; transition: 0.2s; cursor: pointer; background: #fff;</span>
+        <span class="s1">}</span>
+        <span class="s1">.chapter-item:first-child { border-top-left-radius: 8px; border-top-right-radius: 8px; }</span>
+        <span class="s1">.chapter-item:last-child { border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }</span>
+        <span class="s1">.chapter-item:hover { background: #f4f5f7; }</span>
+        <span class="s1">.chapter-item.active { background: #e6effc; border-color: #b3d4ff; z-index: 1; }</span>
+        <span class="s1">.chapter-item.active .bi-play-circle { color: var(--primary); }</span>
+        <span class="s1">.chapter-title { font-weight: 600; color: var(--dark); }</span>
+
+        <span class="s1">/* Sidebar */</span>
+        <span class="s1">.sidebar-sticky { position: sticky; top: 100px; }</span>
+        <span class="s1">.enroll-card {</span>
+            <span class="s1">background: #fff; padding: 30px; border-radius: 8px;</span>
+            <span class="s1">border: 1px solid #ebecf0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center;</span>
+        <span class="s1">}</span>
+        <span class="s1">.price-free { font-size: 2.5rem; font-weight: 800; color: #36b37e; letter-spacing: -1px; }</span>
+
+        <span class="s1">.btn-enroll {</span>
+            <span class="s1">width: 100%; background: #36b37e; color: #fff; border: none; padding: 14px;</span>
+            <span class="s1">border-radius: 6px; font-weight: 700; font-size: 1rem; margin-top: 20px;</span>
+            <span class="s1">transition: 0.2s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.btn-enroll:hover { background: #2d9668; transform: translateY(-2px); }</span>
+        <span class="s1">.btn-enroll.enrolled { background: #ebecf0; color: #6b778c; cursor: default; transform: none; }</span>
+
+        <span class="s1">/* AI Note Card */</span>
+        <span class="s1">.ai-note-card {</span>
+            <span class="s1">background: linear-gradient(135deg, #fff 0%, #f4f5f7 100%); border: 1px solid #dfe1e6;</span>
+            <span class="s1">border-radius: 8px; padding: 25px; margin-top: 25px; position: relative;</span>
+        <span class="s1">}</span>
+        <span class="s1">.ai-note-badge {</span>
+            <span class="s1">position: absolute; top: -12px; right: 20px; background: var(--dark); color: var(--accent);</span>
+            <span class="s1">font-size: 0.75rem; padding: 4px 12px; border-radius: 20px; font-weight: 800; text-transform: uppercase;</span>
+        <span class="s1">}</span>
+    <span class="s0">&lt;/style&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+
+    <span class="s0">&lt;nav </span><span class="s2">class</span><span class="s3">=&quot;navbar navbar-expand-lg fixed-top navbar-custom&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container px-4&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;a </span><span class="s2">class</span><span class="s3">=&quot;navbar-brand&quot; </span><span class="s2">href</span><span class="s3">=&quot;index_en.html&quot;</span><span class="s0">&gt;</span><span class="s1">YanHe</span><span class="s0">&lt;/a&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center ms-auto&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;education_en.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;btn-back&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-arrow-left&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Back to Courses</span><span class="s0">&lt;/a&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/nav&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;breadcrumb-bar&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;index_en.html&quot;</span><span class="s0">&gt;</span><span class="s1">Home</span><span class="s0">&lt;/a&gt; &lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-chevron-right mx-2 small&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+            <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;education_en.html&quot;</span><span class="s0">&gt;</span><span class="s1">Edu Cloud</span><span class="s0">&lt;/a&gt; &lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-chevron-right mx-2 small&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;text-dark fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">Business Chinese</span><span class="s0">&lt;/span&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row g-5&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-lg-8&quot;</span><span class="s0">&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;video-wrapper&quot; </span><span class="s2">id</span><span class="s3">=&quot;videoArea&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;ai-tools-overlay&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;ai-tool-badge&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;toggleAI(this)&quot; </span><span class="s2">title</span><span class="s3">=&quot;Live Bilingual Subtitles&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-translate&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">AI Subtitles</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;ai-tool-badge&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;toggleAI(this)&quot; </span><span class="s2">title</span><span class="s3">=&quot;Auto-detect Key Terms&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-lightning-fill&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Smart Highlights</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;img </span><span class="s2">id</span><span class="s3">=&quot;videoCover&quot; </span><span class="s2">src</span><span class="s3">=&quot;https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&amp;q=80&quot; </span><span class="s2">class</span><span class="s3">=&quot;video-placeholder&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;playOverlay&quot; </span><span class="s2">class</span><span class="s3">=&quot;play-overlay&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;btn-play-big&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;playVideo()&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-play-fill&quot; </span><span class="s2">style</span><span class="s3">=&quot;margin-left: 5px;&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mt-3 text-white fw-bold&quot;</span><span class="s0">&gt;</span>
+                            <span class="s1">Lesson 1: Introduction</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;playingState&quot; </span><span class="s2">class</span><span class="s3">=&quot;video-playing-state&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-center&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;spinner-border text-primary&quot; </span><span class="s2">role</span><span class="s3">=&quot;status&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+                            <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;mt-3 font-monospace&quot;</span><span class="s0">&gt;</span><span class="s1">Loading Stream...</span><span class="s0">&lt;/p&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;course-header&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center mb-2&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;course-tag&quot;</span><span class="s0">&gt;</span><span class="s1">HSK Level 5</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;course-tag&quot; </span><span class="s2">style</span><span class="s3">=&quot;background:#fff3cd; color:#856404&quot;</span><span class="s0">&gt;</span><span class="s1">Business</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;h1 </span><span class="s2">class</span><span class="s3">=&quot;course-title&quot;</span><span class="s0">&gt;</span><span class="s1">Business Chinese: Negotiation Skills &amp; Etiquette</span><span class="s0">&lt;/h1&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;course-meta&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;span&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-star-fill text-warning&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">4.9 (1,208 reviews)</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;span&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-person-fill&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">35k Enrolled</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;span&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-clock&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">12h 30m Total</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;nav-tabs-course&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;nav-link-course active&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;switchTab('intro', this)&quot;</span><span class="s0">&gt;</span><span class="s1">Overview</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;nav-link-course&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;switchTab('catalog', this)&quot;</span><span class="s0">&gt;</span><span class="s1">Syllabus</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;nav-link-course&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;switchTab('ai', this)&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-stars&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">AI Tutor</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;tab-intro&quot; </span><span class="s2">class</span><span class="s3">=&quot;tab-pane d-block&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h4 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-3&quot;</span><span class="s0">&gt;</span><span class="s1">What you'll learn</span><span class="s0">&lt;/h4&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row g-3 mb-4&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-6&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-check-circle-fill text-success me-2&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Master 50+ negotiation terms</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-6&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-check-circle-fill text-success me-2&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Understanding &quot;Mianzi&quot; (Face)</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-6&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-check-circle-fill text-success me-2&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Drafting standard contracts</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-6&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-check-circle-fill text-success me-2&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Banquet etiquette &amp; seating</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;h4 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-3&quot;</span><span class="s0">&gt;</span><span class="s1">Description</span><span class="s0">&lt;/h4&gt;</span>
+                    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;text-muted&quot; </span><span class="s2">style</span><span class="s3">=&quot;line-height: 1.8;&quot;</span><span class="s0">&gt;</span>
+                        <span class="s1">Designed for advanced learners (HSK 4-5), this course bridges the gap between textbook Chinese and real-world business scenarios.</span>
+                        <span class="s0">&lt;br&gt;&lt;br&gt;</span>
+                        <span class="s1">Powered by </span><span class="s0">&lt;strong&gt;</span><span class="s1">YanHe AI</span><span class="s0">&lt;/strong&gt;</span><span class="s1">, you can simulate negotiations with a virtual partner to build confidence before your next meeting.</span>
+                    <span class="s0">&lt;/p&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;tab-catalog&quot; </span><span class="s2">class</span><span class="s3">=&quot;tab-pane d-none&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;chapter-item active&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;playChapter(this, 1)&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-play-circle fs-4 me-3 text-primary&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                            <span class="s0">&lt;div&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;chapter-title&quot;</span><span class="s0">&gt;</span><span class="s1">01. The Chinese Negotiation Mindset</span><span class="s0">&lt;/div&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">15:00 • Preview</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;badge bg-success text-white&quot;</span><span class="s0">&gt;</span><span class="s1">Playing</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;chapter-item&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;playChapter(this, 2)&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-play-circle fs-4 me-3 text-muted&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                            <span class="s0">&lt;div&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;chapter-title&quot;</span><span class="s0">&gt;</span><span class="s1">02. Core Vocab: Quoting &amp; Bargaining</span><span class="s0">&lt;/div&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">22:30</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;chapter-item&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;playChapter(this, 3)&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-play-circle fs-4 me-3 text-muted&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                            <span class="s0">&lt;div&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;chapter-title&quot;</span><span class="s0">&gt;</span><span class="s1">03. Culture: The Art of the Banquet</span><span class="s0">&lt;/div&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">18:45</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;tab-ai&quot; </span><span class="s2">class</span><span class="s3">=&quot;tab-pane d-none&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;bg-white border rounded-3 p-5 text-center&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-robot fs-1 text-primary mb-3 d-block&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                        <span class="s0">&lt;h5 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">AI Tutor Standby</span><span class="s0">&lt;/h5&gt;</span>
+                        <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;text-muted mb-4&quot;</span><span class="s0">&gt;</span><span class="s1">Complete the video lesson to unlock the AI Quiz and Roleplay mode.</span><span class="s0">&lt;/p&gt;</span>
+                        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-outline-primary rounded-pill px-4&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;alert('Please finish the video first.')&quot;</span><span class="s0">&gt;</span><span class="s1">Start Quiz</span><span class="s0">&lt;/button&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-lg-4&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;sidebar-sticky&quot;</span><span class="s0">&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;enroll-card&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;price-free&quot;</span><span class="s0">&gt;</span><span class="s1">Free</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-muted small text-decoration-line-through&quot;</span><span class="s0">&gt;</span><span class="s1">Original $49.99</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-success small fw-bold mb-3 mt-1&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-globe&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Education for All Initiative</span><span class="s0">&lt;/div&gt;</span>
+
+                        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn-enroll&quot; </span><span class="s2">id</span><span class="s3">=&quot;btnJoin&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;startLearning()&quot;</span><span class="s0">&gt;</span>
+                            <span class="s1">Enroll for Free</span>
+                        <span class="s0">&lt;/button&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mt-3 small text-muted&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-infinity me-1&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Full Lifetime Access</span><span class="s0">&lt;br&gt;</span>
+                            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-award me-1&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Certificate of Completion</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center gap-3 p-3 border rounded-3 bg-white mt-3&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;https://api.dicebear.com/7.x/avataaars/svg?seed=ProfWang&quot; </span><span class="s2">width</span><span class="s3">=&quot;50&quot; </span><span class="s2">class</span><span class="s3">=&quot;rounded-circle&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-dark&quot;</span><span class="s0">&gt;</span><span class="s1">Prof. Wang</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">PhD, Beijing Language Univ.</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;ai-note-card&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;ai-note-badge&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-lightning-fill&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">AI Generated</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;h6 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-3&quot;</span><span class="s0">&gt;</span><span class="s1">Key Takeaways</span><span class="s0">&lt;/h6&gt;</span>
+                        <span class="s0">&lt;ul </span><span class="s2">class</span><span class="s3">=&quot;small text-muted ps-3 mb-0&quot; </span><span class="s2">style</span><span class="s3">=&quot;line-height: 1.6;&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;li&gt;</span><span class="s1">3 Elements: Timing, Location, People</span><span class="s0">&lt;/li&gt;</span>
+                            <span class="s0">&lt;li&gt;</span><span class="s1">Key Phrase: &quot;Can you come down a bit?&quot;</span><span class="s0">&lt;/li&gt;</span>
+                            <span class="s0">&lt;li&gt;</span><span class="s1">Culture: &quot;Face&quot; engineering in deals</span><span class="s0">&lt;/li&gt;</span>
+                        <span class="s0">&lt;/ul&gt;</span>
+                        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-link btn-sm text-decoration-none p-0 mt-3 fw-bold&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;addNote()&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-plus-circle&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Add to Smart Review</span>
+                        <span class="s0">&lt;/button&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">style</span><span class="s3">=&quot;height: 100px;&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+
+    <span class="s0">&lt;script </span><span class="s2">src</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js&quot;</span><span class="s0">&gt;&lt;/script&gt;</span>
+    <span class="s0">&lt;script&gt;</span>
+        <span class="s1">// --- 1. Tab Logic ---</span>
+        <span class="s1">function switchTab(tabId, btn) {</span>
+            <span class="s1">document.querySelectorAll('.tab-pane').forEach(el =&gt; {</span>
+                <span class="s1">el.className = 'tab-pane d-none';</span>
+            <span class="s1">});</span>
+            <span class="s1">document.getElementById('tab-' + tabId).className = 'tab-pane d-block animation-fade';</span>
+
+            <span class="s1">document.querySelectorAll('.nav-link-course').forEach(el =&gt; el.classList.remove('active'));</span>
+            <span class="s1">btn.classList.add('active');</span>
+        <span class="s1">}</span>
+
+        <span class="s1">// --- 2. AI Toggle ---</span>
+        <span class="s1">function toggleAI(btn) {</span>
+            <span class="s1">btn.classList.toggle('active');</span>
+            <span class="s1">if(btn.classList.contains('active')){</span>
+                <span class="s1">const originalHTML = btn.innerHTML;</span>
+                <span class="s1">btn.innerHTML = '&lt;span class=&quot;spinner-grow spinner-grow-sm text-light&quot; style=&quot;width: 0.5rem; height: 0.5rem;&quot;&gt;&lt;/span&gt; Activating...';</span>
+                <span class="s1">setTimeout(() =&gt; {</span>
+                    <span class="s1">btn.innerHTML = originalHTML;</span>
+                <span class="s1">}, 800);</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">// --- 3. Enrollment (Free Flow) ---</span>
+        <span class="s1">function startLearning() {</span>
+            <span class="s1">const btn = document.getElementById('btnJoin');</span>
+            <span class="s1">btn.innerText = 'Processing...';</span>
+            <span class="s1">btn.disabled = true;</span>
+
+            <span class="s1">setTimeout(() =&gt; {</span>
+                <span class="s1">alert('🎉 Welcome Aboard!\nYou have successfully enrolled in this course.');</span>
+                <span class="s1">btn.innerText = 'Continue Learning';</span>
+                <span class="s1">btn.classList.add('enrolled');</span>
+                <span class="s1">btn.disabled = false;</span>
+            <span class="s1">}, 800);</span>
+        <span class="s1">}</span>
+
+        <span class="s1">// --- 4. Video Play Simulation ---</span>
+        <span class="s1">function playVideo() {</span>
+            <span class="s1">document.getElementById('videoCover').style.opacity = '0';</span>
+            <span class="s1">document.getElementById('playOverlay').style.opacity = '0';</span>
+            <span class="s1">setTimeout(() =&gt; {</span>
+                <span class="s1">document.getElementById('videoCover').style.display = 'none';</span>
+                <span class="s1">document.getElementById('playOverlay').style.display = 'none';</span>
+                <span class="s1">document.getElementById('playingState').style.display = 'flex';</span>
+            <span class="s1">}, 500);</span>
+        <span class="s1">}</span>
+
+        <span class="s1">// --- 5. Chapter Switch ---</span>
+        <span class="s1">function playChapter(item, index) {</span>
+            <span class="s1">document.querySelectorAll('.chapter-item').forEach(el =&gt; {</span>
+                <span class="s1">el.classList.remove('active');</span>
+                <span class="s1">el.querySelector('i').classList.remove('text-primary');</span>
+                <span class="s1">el.querySelector('i').classList.add('text-muted');</span>
+                <span class="s1">const badge = el.querySelector('.badge');</span>
+                <span class="s1">if(badge) badge.remove();</span>
+            <span class="s1">});</span>
+
+            <span class="s1">item.classList.add('active');</span>
+            <span class="s1">item.querySelector('i').classList.remove('text-muted');</span>
+            <span class="s1">item.querySelector('i').classList.add('text-primary');</span>
+
+            <span class="s1">const badge = document.createElement('span');</span>
+            <span class="s1">badge.className = 'badge bg-success text-white';</span>
+            <span class="s1">badge.innerText = 'Playing';</span>
+            <span class="s1">item.appendChild(badge);</span>
+
+            <span class="s1">playVideo();</span>
+        <span class="s1">}</span>
+
+        <span class="s1">// --- 6. AI Note ---</span>
+        <span class="s1">function addNote() {</span>
+            <span class="s1">alert('✅ Added!\nThis topic will appear in your &quot;Edu Cloud&quot; review dashboard.');</span>
+        <span class="s1">}</span>
+    <span class="s0">&lt;/script&gt;</span>
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span></pre>
+</body>
+</html>

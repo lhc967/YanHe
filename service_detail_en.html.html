@@ -1,0 +1,330 @@
+<html>
+<head>
+<title>service_detail_en.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bababa;}
+.s3 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+service_detail_en.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;en&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">name</span><span class="s3">=&quot;viewport&quot; </span><span class="s2">content</span><span class="s3">=&quot;width=device-width, initial-scale=1.0&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;title&gt;</span><span class="s1">Post a Job - YanHe</span><span class="s0">&lt;/title&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&amp;display=swap&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;style&gt;</span>
+        <span class="s1">:root { --primary: #0052cc; --dark: #091e42; --bg-light: #f4f5f7; }</span>
+        <span class="s1">body {</span>
+            <span class="s1">font-family: 'Inter', sans-serif;</span>
+            <span class="s1">background: var(--bg-light); padding-top: 76px; color: var(--dark);</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* Navbar */</span>
+        <span class="s1">.navbar-custom { background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.05); height: 76px; z-index: 1000; }</span>
+        <span class="s1">.navbar-brand { font-weight: 900; font-size: 1.6rem; color: var(--primary) !important; letter-spacing: -0.5px; }</span>
+
+        <span class="s1">/* Container */</span>
+        <span class="s1">.publish-container { max-width: 800px; margin: 40px auto; padding: 0 20px; }</span>
+
+        <span class="s1">/* Role Switcher (Client vs Freelancer) */</span>
+        <span class="s1">.role-switch-wrapper { display: flex; gap: 20px; margin-bottom: 30px; }</span>
+        <span class="s1">.role-card {</span>
+            <span class="s1">flex: 1; background: #fff; border: 2px solid transparent; border-radius: 12px;</span>
+            <span class="s1">padding: 20px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 15px;</span>
+            <span class="s1">box-shadow: 0 4px 10px rgba(0,0,0,0.03); opacity: 0.6; grayscale: 100%; position: relative;</span>
+        <span class="s1">}</span>
+        <span class="s1">.role-card:hover { transform: translateY(-3px); opacity: 0.8; }</span>
+        <span class="s1">.role-card.active {</span>
+            <span class="s1">border-color: var(--primary); opacity: 1; grayscale: 0%;</span>
+            <span class="s1">background: rgba(0, 82, 204, 0.03); box-shadow: 0 8px 20px rgba(0, 82, 204, 0.1);</span>
+        <span class="s1">}</span>
+        <span class="s1">.role-icon {</span>
+            <span class="s1">width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center;</span>
+            <span class="s1">font-size: 24px; color: #fff;</span>
+        <span class="s1">}</span>
+        <span class="s1">.bg-client { background: linear-gradient(135deg, #0052cc, #0747a6); }</span>
+        <span class="s1">.bg-freelancer { background: linear-gradient(135deg, #ffab00, #ff8b00); }</span>
+
+        <span class="s1">.check-icon { position: absolute; top: 15px; right: 15px; color: var(--primary); font-size: 1.2rem; display: none; }</span>
+        <span class="s1">.role-card.active .check-icon { display: block; }</span>
+
+        <span class="s1">/* Sub-Type Switcher (Company vs Individual) */</span>
+        <span class="s1">.sub-type-group { display: flex; gap: 15px; margin-bottom: 25px; }</span>
+        <span class="s1">.sub-type-label {</span>
+            <span class="s1">flex: 1; border: 1px solid #dfe1e6; border-radius: 8px; padding: 12px; text-align: center;</span>
+            <span class="s1">cursor: pointer; transition: 0.2s; font-size: 0.9rem; color: #505f79; background: #fff;</span>
+        <span class="s1">}</span>
+        <span class="s1">.sub-type-label:hover { background: #f4f5f7; }</span>
+        <span class="s1">.sub-type-input { display: none; }</span>
+        <span class="s1">.sub-type-input:checked + .sub-type-label {</span>
+            <span class="s1">background: #deebff; border-color: var(--primary); color: var(--primary); font-weight: 700;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* Form Card */</span>
+        <span class="s1">.form-card {</span>
+            <span class="s1">background: #fff; border-radius: 12px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #ebecf0;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">.form-label { font-weight: 600; font-size: 0.9rem; color: #42526e; margin-bottom: 8px; }</span>
+        <span class="s1">.form-control, .form-select {</span>
+            <span class="s1">padding: 12px; border-radius: 6px; border: 1px solid #dfe1e6; font-size: 0.95rem;</span>
+        <span class="s1">}</span>
+        <span class="s1">.form-control:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(0, 82, 204, 0.1); outline: none; }</span>
+
+        <span class="s1">/* AI Button */</span>
+        <span class="s1">.ai-btn {</span>
+            <span class="s1">font-size: 0.8rem; background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%);</span>
+            <span class="s1">color: #fff; border: none; padding: 5px 15px; border-radius: 20px;</span>
+            <span class="s1">display: inline-flex; align-items: center; gap: 5px; cursor: pointer; transition: 0.3s;</span>
+            <span class="s1">float: right; margin-top: -30px; position: relative; z-index: 5; font-weight: 600;</span>
+        <span class="s1">}</span>
+        <span class="s1">.ai-btn:hover { opacity: 0.9; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3); }</span>
+
+        <span class="s1">/* Footer */</span>
+        <span class="s1">.action-bar { margin-top: 30px; display: flex; justify-content: space-between; align-items: center; }</span>
+        <span class="s1">.btn-next {</span>
+            <span class="s1">background: var(--primary); color: #fff; padding: 12px 36px; border-radius: 50px;</span>
+            <span class="s1">font-weight: 700; border: none; transition: 0.2s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.btn-next:hover { background: #0747a6; transform: translateY(-1px); }</span>
+
+        <span class="s1">.d-none-custom { display: none; }</span>
+    <span class="s0">&lt;/style&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+
+    <span class="s0">&lt;nav </span><span class="s2">class</span><span class="s3">=&quot;navbar navbar-expand-lg fixed-top navbar-custom&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container-fluid px-4&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;a </span><span class="s2">class</span><span class="s3">=&quot;navbar-brand&quot; </span><span class="s2">href</span><span class="s3">=&quot;index_en.html&quot;</span><span class="s0">&gt;</span><span class="s1">YanHe</span><span class="s0">&lt;/a&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;ms-auto&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;service_en.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;btn btn-outline-secondary btn-sm rounded-pill px-3&quot;</span><span class="s0">&gt;</span><span class="s1">Cancel</span><span class="s0">&lt;/a&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/nav&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;publish-container&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;h2 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-4 text-center&quot;</span><span class="s0">&gt;</span><span class="s1">Create New Post</span><span class="s0">&lt;/h2&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;role-switch-wrapper&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;role-card active&quot; </span><span class="s2">id</span><span class="s3">=&quot;roleClient&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;switchRole('client')&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;role-icon bg-client&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-briefcase&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+                <span class="s0">&lt;div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">I want to Hire</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">Post a Job</span><span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-check-circle-fill check-icon&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;role-card&quot; </span><span class="s2">id</span><span class="s3">=&quot;roleFreelancer&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;switchRole('freelancer')&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;role-icon bg-freelancer&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-person-workspace&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+                <span class="s0">&lt;div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">I want to Work</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">Post a Service</span><span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-check-circle-fill check-icon&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-card&quot;</span><span class="s0">&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;formClient&quot;</span><span class="s0">&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mb-4&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label&quot;</span><span class="s0">&gt;</span><span class="s1">Hiring As</span><span class="s0">&lt;/label&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;sub-type-group&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;flex-fill&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;radio&quot; </span><span class="s2">name</span><span class="s3">=&quot;clientType&quot; </span><span class="s2">class</span><span class="s3">=&quot;sub-type-input&quot; </span><span class="s2">checked onchange</span><span class="s3">=&quot;toggleCompanyFields(true)&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;sub-type-label&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-building me-2&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Company (B2B)</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/label&gt;</span>
+                        <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;flex-fill&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;radio&quot; </span><span class="s2">name</span><span class="s3">=&quot;clientType&quot; </span><span class="s2">class</span><span class="s3">=&quot;sub-type-input&quot; </span><span class="s2">onchange</span><span class="s3">=&quot;toggleCompanyFields(false)&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;sub-type-label&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-person me-2&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Individual</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/label&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;companyFields&quot; </span><span class="s2">class</span><span class="s3">=&quot;mb-4&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label&quot;</span><span class="s0">&gt;</span><span class="s1">Company Name </span><span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;text-danger&quot;</span><span class="s0">&gt;</span><span class="s1">*</span><span class="s0">&lt;/span&gt;&lt;/label&gt;</span>
+                    <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;e.g. YanHe Tech Global Ltd.&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mb-4&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label&quot;</span><span class="s0">&gt;</span><span class="s1">Job Title</span><span class="s0">&lt;/label&gt;</span>
+                    <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">id</span><span class="s3">=&quot;taskTitle&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;e.g. Legal Contract Translation (English to Chinese)&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row mb-4&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-6&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label&quot;</span><span class="s0">&gt;</span><span class="s1">Category</span><span class="s0">&lt;/label&gt;</span>
+                        <span class="s0">&lt;select </span><span class="s2">class</span><span class="s3">=&quot;form-select&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;option&gt;</span><span class="s1">Translation</span><span class="s0">&lt;/option&gt;</span>
+                            <span class="s0">&lt;option&gt;</span><span class="s1">Interpretation</span><span class="s0">&lt;/option&gt;</span>
+                            <span class="s0">&lt;option&gt;</span><span class="s1">Localization</span><span class="s0">&lt;/option&gt;</span>
+                            <span class="s0">&lt;option&gt;</span><span class="s1">Tutoring</span><span class="s0">&lt;/option&gt;</span>
+                        <span class="s0">&lt;/select&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-6&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label&quot;</span><span class="s0">&gt;</span><span class="s1">Turnaround Time</span><span class="s0">&lt;/label&gt;</span>
+                        <span class="s0">&lt;select </span><span class="s2">class</span><span class="s3">=&quot;form-select&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;option&gt;</span><span class="s1">Less than 3 days (Urgent)</span><span class="s0">&lt;/option&gt;</span>
+                            <span class="s0">&lt;option&gt;</span><span class="s1">1 week</span><span class="s0">&lt;/option&gt;</span>
+                            <span class="s0">&lt;option&gt;</span><span class="s1">Long-term</span><span class="s0">&lt;/option&gt;</span>
+                        <span class="s0">&lt;/select&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mb-4 position-relative&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label&quot;</span><span class="s0">&gt;</span><span class="s1">Description</span><span class="s0">&lt;/label&gt;</span>
+                    <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;ai-btn&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;aiGenerateDesc()&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-stars&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">AI Copilot</span><span class="s0">&lt;/button&gt;</span>
+                    <span class="s0">&lt;textarea </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">id</span><span class="s3">=&quot;taskDesc&quot; </span><span class="s2">rows</span><span class="s3">=&quot;6&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;Describe your project, required skills, and deliverables...&quot;</span><span class="s0">&gt;&lt;/textarea&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mb-4&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label&quot;</span><span class="s0">&gt;</span><span class="s1">Budget (USD)</span><span class="s0">&lt;/label&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;input-group&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;input-group-text&quot;</span><span class="s0">&gt;</span><span class="s1">$</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;number&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">id</span><span class="s3">=&quot;budgetInput&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;0.00&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mt-2 small text-muted&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-shield-check text-success&quot;</span><span class="s0">&gt;&lt;/i&gt; &lt;span </span><span class="s2">id</span><span class="s3">=&quot;budgetTip&quot;</span><span class="s0">&gt;</span><span class="s1">Corporate payment (Invoice available).</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;formFreelancer&quot; </span><span class="s2">class</span><span class="s3">=&quot;d-none-custom&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;alert alert-warning border-0 small mb-4 bg-light text-dark&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-info-circle-fill me-2&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Please ensure your profile and skills are verified before posting.</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mb-4&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label&quot;</span><span class="s0">&gt;</span><span class="s1">Service Title</span><span class="s0">&lt;/label&gt;</span>
+                    <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;e.g. Professional Legal Translator (5 Yrs Exp)&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mb-4&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label&quot;</span><span class="s0">&gt;</span><span class="s1">Skills (Tags)</span><span class="s0">&lt;/label&gt;</span>
+                    <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;e.g. HSK 6, CATTI, Trados&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row mb-4&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-6&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label&quot;</span><span class="s0">&gt;</span><span class="s1">Rate / Price</span><span class="s0">&lt;/label&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;input-group&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;input-group-text&quot;</span><span class="s0">&gt;</span><span class="s1">$</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;number&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;0.00&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-6&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label&quot;</span><span class="s0">&gt;</span><span class="s1">Unit</span><span class="s0">&lt;/label&gt;</span>
+                        <span class="s0">&lt;select </span><span class="s2">class</span><span class="s3">=&quot;form-select&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;option&gt;</span><span class="s1">per Hour</span><span class="s0">&lt;/option&gt;</span>
+                            <span class="s0">&lt;option&gt;</span><span class="s1">per 1000 Words</span><span class="s0">&lt;/option&gt;</span>
+                            <span class="s0">&lt;option&gt;</span><span class="s1">Fixed Project</span><span class="s0">&lt;/option&gt;</span>
+                        <span class="s0">&lt;/select&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mb-4 position-relative&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label&quot;</span><span class="s0">&gt;</span><span class="s1">Overview</span><span class="s0">&lt;/label&gt;</span>
+                    <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;ai-btn&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;alert('AI has imported data from your profile.')&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-magic&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Import Resume</span><span class="s0">&lt;/button&gt;</span>
+                    <span class="s0">&lt;textarea </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">rows</span><span class="s3">=&quot;6&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;Highlight your expertise and past projects...&quot;</span><span class="s0">&gt;&lt;/textarea&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;hr </span><span class="s2">class</span><span class="s3">=&quot;my-4&quot;</span><span class="s0">&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;action-bar&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-muted small&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;text-primary fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">Step 1: Details</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-chevron-right mx-2&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                    <span class="s0">&lt;span&gt;</span><span class="s1">Step 2: Review</span><span class="s0">&lt;/span&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn-next&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;handleSubmit()&quot;</span><span class="s0">&gt;</span><span class="s1">Next Step </span><span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-arrow-right&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/button&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;script&gt;</span>
+        <span class="s1">let currentRole = 'client';</span>
+        <span class="s1">let isCompany = true;</span>
+
+        <span class="s1">function switchRole(role) {</span>
+            <span class="s1">currentRole = role;</span>
+            <span class="s1">document.querySelectorAll('.role-card').forEach(el =&gt; el.classList.remove('active'));</span>
+            <span class="s1">document.getElementById('role' + capitalize(role)).classList.add('active');</span>
+
+            <span class="s1">if (role === 'client') {</span>
+                <span class="s1">document.getElementById('formClient').classList.remove('d-none-custom');</span>
+                <span class="s1">document.getElementById('formFreelancer').classList.add('d-none-custom');</span>
+            <span class="s1">} else {</span>
+                <span class="s1">document.getElementById('formClient').classList.add('d-none-custom');</span>
+                <span class="s1">document.getElementById('formFreelancer').classList.remove('d-none-custom');</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">function toggleCompanyFields(val) {</span>
+            <span class="s1">isCompany = val;</span>
+            <span class="s1">const field = document.getElementById('companyFields');</span>
+            <span class="s1">const tip = document.getElementById('budgetTip');</span>
+
+            <span class="s1">if (isCompany) {</span>
+                <span class="s1">field.style.display = 'block';</span>
+                <span class="s1">tip.innerText = 'Corporate payment (Invoice available).';</span>
+            <span class="s1">} else {</span>
+                <span class="s1">field.style.display = 'none';</span>
+                <span class="s1">tip.innerText = 'Funds secured in Escrow. Released upon approval.';</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">function aiGenerateDesc() {</span>
+            <span class="s1">const btn = document.querySelector('.ai-btn');</span>
+            <span class="s1">const textarea = document.getElementById('taskDesc');</span>
+            <span class="s1">btn.innerHTML = '&lt;span class=&quot;spinner-border spinner-border-sm&quot;&gt;&lt;/span&gt; Generating...';</span>
+
+            <span class="s1">setTimeout(() =&gt; {</span>
+                <span class="s1">const text = isCompany</span>
+                    <span class="s1">? &quot;[Project Scope]\nWe are looking for a certified interpreter for an upcoming business delegation from Germany.\n\n[Responsibilities]\n- Consecutive interpretation during meetings.\n- Drafting meeting minutes.\n\n[Requirements]\n- Native Chinese, fluent in German.\n- 3+ years experience in the Automotive sector.&quot;</span>
+                    <span class="s1">: &quot;[Personal Request]\nI need someone to translate a 500-word abstract for my Architecture thesis.\n\n[Requirements]\n- Must be familiar with academic terminology.\n- Need it delivered within 48 hours.&quot;;</span>
+
+                <span class="s1">textarea.value = text;</span>
+                <span class="s1">btn.innerHTML = '&lt;i class=&quot;bi bi-check&quot;&gt;&lt;/i&gt; Generated';</span>
+                <span class="s1">btn.classList.add('btn-success');</span>
+
+                <span class="s1">// Auto fill budget</span>
+                <span class="s1">document.getElementById('budgetInput').value = isCompany ? 500 : 50;</span>
+            <span class="s1">}, 800);</span>
+        <span class="s1">}</span>
+
+        <span class="s1">function handleSubmit() {</span>
+            <span class="s1">const btn = document.querySelector('.btn-next');</span>
+            <span class="s1">btn.innerText = 'Processing...';</span>
+            <span class="s1">setTimeout(() =&gt; {</span>
+                <span class="s1">if(currentRole === 'client') {</span>
+                    <span class="s1">// Redirect to Checkout</span>
+                    <span class="s1">window.location.href = 'checkout_en.html';</span>
+                <span class="s1">} else {</span>
+                    <span class="s1">alert('🎉 Service Posted! Pending review.');</span>
+                    <span class="s1">window.location.href = 'service_en.html';</span>
+                <span class="s1">}</span>
+            <span class="s1">}, 1000);</span>
+        <span class="s1">}</span>
+
+        <span class="s1">function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }</span>
+    <span class="s0">&lt;/script&gt;</span>
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span></pre>
+</body>
+</html>

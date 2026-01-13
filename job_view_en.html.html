@@ -1,0 +1,388 @@
+<html>
+<head>
+<title>job_view_en.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bababa;}
+.s3 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+job_view_en.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;en&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">name</span><span class="s3">=&quot;viewport&quot; </span><span class="s2">content</span><span class="s3">=&quot;width=device-width, initial-scale=1.0&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;title&gt;</span><span class="s1">Job #88392 - YanHe</span><span class="s0">&lt;/title&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;style&gt;</span>
+        <span class="s1">:root { --primary: #0052cc; --dark: #091e42; --bg-light: #f4f5f7; --success: #36b37e; --text-gray: #5e6c84; }</span>
+        <span class="s1">body {</span>
+            <span class="s1">font-family: 'Inter', sans-serif;</span>
+            <span class="s1">padding-top: 76px;</span>
+            <span class="s1">background: var(--bg-light);</span>
+            <span class="s1">color: var(--dark);</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* Navbar */</span>
+        <span class="s1">.navbar-custom { background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.05); height: 76px; z-index: 1000; }</span>
+        <span class="s1">.navbar-brand { font-weight: 900; font-size: 1.6rem; color: var(--primary) !important; letter-spacing: -0.5px; }</span>
+        <span class="s1">.nav-link { font-weight: 600; color: #505f79 !important; padding: 8px 15px !important; }</span>
+        <span class="s1">.btn-nav-action { background: var(--primary); color: #fff; padding: 8px 20px; border-radius: 4px; font-weight: 600; text-decoration: none; }</span>
+
+        <span class="s1">/* Sub-header */</span>
+        <span class="s1">.sub-header { background: #fff; border-bottom: 1px solid #ebecf0; padding: 20px 0; }</span>
+        <span class="s1">.breadcrumb-item a { text-decoration: none; color: var(--primary); font-weight: 500; }</span>
+
+        <span class="s1">/* Main Layout */</span>
+        <span class="s1">.main-content { padding: 30px 0 60px; }</span>
+
+        <span class="s1">/* Job Card Structure */</span>
+        <span class="s1">.content-card {</span>
+            <span class="s1">background: #fff; border: 1px solid #ebecf0; border-radius: 12px;</span>
+            <span class="s1">margin-bottom: 25px; overflow: hidden;</span>
+        <span class="s1">}</span>
+        <span class="s1">.card-header-custom { padding: 30px 30px 20px; border-bottom: 1px solid #ebecf0; }</span>
+        <span class="s1">.card-body-custom { padding: 30px; }</span>
+
+        <span class="s1">/* Typography */</span>
+        <span class="s1">.job-title { font-size: 1.8rem; font-weight: 800; color: var(--dark); margin-bottom: 10px; line-height: 1.3; }</span>
+        <span class="s1">.job-meta-row { display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-gray); align-items: center; margin-bottom: 20px; }</span>
+        <span class="s1">.section-heading { font-size: 1.1rem; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: var(--dark); }</span>
+        <span class="s1">.text-body-lg { font-size: 1rem; line-height: 1.7; color: #42526e; }</span>
+
+        <span class="s1">/* Badges &amp; Tags */</span>
+        <span class="s1">.skill-badge {</span>
+            <span class="s1">background: #f4f5f7; color: #42526e; padding: 6px 14px; border-radius: 20px;</span>
+            <span class="s1">font-size: 0.9rem; font-weight: 500; margin-right: 8px; margin-bottom: 8px; display: inline-block;</span>
+        <span class="s1">}</span>
+        <span class="s1">.status-badge {</span>
+            <span class="s1">background: #e3fcef; color: var(--success); padding: 4px 10px;</span>
+            <span class="s1">border-radius: 4px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* Sidebar */</span>
+        <span class="s1">.sidebar-card {</span>
+            <span class="s1">background: #fff; border: 1px solid #ebecf0; border-radius: 12px;</span>
+            <span class="s1">padding: 25px; margin-bottom: 20px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.btn-apply {</span>
+            <span class="s1">width: 100%; background: var(--success); color: #fff; border: none; padding: 14px;</span>
+            <span class="s1">border-radius: 50px; font-weight: 700; font-size: 1.1rem; transition: 0.2s;</span>
+            <span class="s1">box-shadow: 0 4px 12px rgba(54, 179, 126, 0.2);</span>
+        <span class="s1">}</span>
+        <span class="s1">.btn-apply:hover { background: #228c60; transform: translateY(-2px); }</span>
+        <span class="s1">.btn-save {</span>
+            <span class="s1">width: 100%; background: #fff; color: var(--primary); border: 2px solid #ebecf0; padding: 12px;</span>
+            <span class="s1">border-radius: 50px; font-weight: 700; margin-top: 10px; transition: 0.2s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.btn-save:hover { border-color: var(--primary); background: #f4f5f7; }</span>
+
+        <span class="s1">/* Client Stats List */</span>
+        <span class="s1">.client-stat-item { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; font-size: 0.95rem; color: #42526e; }</span>
+        <span class="s1">.client-stat-icon { color: var(--success); font-size: 1.1rem; width: 20px; text-align: center; }</span>
+
+        <span class="s1">/* Similar Jobs */</span>
+        <span class="s1">.similar-job-item { padding: 15px 0; border-bottom: 1px solid #ebecf0; }</span>
+        <span class="s1">.similar-job-item:last-child { border-bottom: none; }</span>
+        <span class="s1">.similar-link { font-weight: 700; color: var(--primary); text-decoration: none; display: block; margin-bottom: 4px; }</span>
+        <span class="s1">.similar-meta { font-size: 0.85rem; color: var(--text-gray); }</span>
+
+        <span class="s1">/* Attachments */</span>
+        <span class="s1">.attachment-box {</span>
+            <span class="s1">display: flex; align-items: center; gap: 12px; padding: 15px;</span>
+            <span class="s1">border: 1px solid #ebecf0; border-radius: 8px; max-width: 400px;</span>
+            <span class="s1">background: #fafbfc; transition: 0.2s; cursor: pointer;</span>
+        <span class="s1">}</span>
+        <span class="s1">.attachment-box:hover { border-color: var(--primary); background: #fff; }</span>
+    <span class="s0">&lt;/style&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+
+    <span class="s0">&lt;nav </span><span class="s2">class</span><span class="s3">=&quot;navbar navbar-expand-lg fixed-top navbar-custom&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container-fluid px-4&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;a </span><span class="s2">class</span><span class="s3">=&quot;navbar-brand&quot; </span><span class="s2">href</span><span class="s3">=&quot;index_en.html&quot;</span><span class="s0">&gt;</span><span class="s1">YanHe</span><span class="s0">&lt;/a&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;collapse navbar-collapse&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;ul </span><span class="s2">class</span><span class="s3">=&quot;navbar-nav mx-auto&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;li </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;nav-link&quot; </span><span class="s2">href</span><span class="s3">=&quot;service_en.html&quot;</span><span class="s0">&gt;</span><span class="s1">Find Work</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                    <span class="s0">&lt;li </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;nav-link&quot; </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">My Jobs</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                    <span class="s0">&lt;li </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;nav-link&quot; </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">Reports</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                <span class="s0">&lt;/ul&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center gap-3&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-none d-md-block text-end&quot; </span><span class="s2">style</span><span class="s3">=&quot;line-height:1.2&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold&quot; </span><span class="s2">style</span><span class="s3">=&quot;font-size:0.9rem&quot;</span><span class="s0">&gt;</span><span class="s1">Alex Doe</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">Freelancer</span><span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;https://api.dicebear.com/7.x/avataaars/svg?seed=Alex&quot; </span><span class="s2">width</span><span class="s3">=&quot;40&quot; </span><span class="s2">class</span><span class="s3">=&quot;rounded-circle border&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/nav&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;sub-header&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;nav </span><span class="s2">aria-label</span><span class="s3">=&quot;breadcrumb&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;ol </span><span class="s2">class</span><span class="s3">=&quot;breadcrumb mb-0 small&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;li </span><span class="s2">class</span><span class="s3">=&quot;breadcrumb-item&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;service_en.html&quot;</span><span class="s0">&gt;</span><span class="s1">Task Hub</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                    <span class="s0">&lt;li </span><span class="s2">class</span><span class="s3">=&quot;breadcrumb-item&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">Translation</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                    <span class="s0">&lt;li </span><span class="s2">class</span><span class="s3">=&quot;breadcrumb-item active&quot; </span><span class="s2">aria-current</span><span class="s3">=&quot;page&quot;</span><span class="s0">&gt;</span><span class="s1">Job #88392</span><span class="s0">&lt;/li&gt;</span>
+                <span class="s0">&lt;/ol&gt;</span>
+            <span class="s0">&lt;/nav&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container main-content&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row&quot;</span><span class="s0">&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-lg-8&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;content-card&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card-header-custom&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;h1 </span><span class="s2">class</span><span class="s3">=&quot;job-title&quot;</span><span class="s0">&gt;</span><span class="s1">Legal Contract Translation &amp; Localization for SaaS Platform</span><span class="s0">&lt;/h1&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;job-meta-row&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;status-badge&quot;</span><span class="s0">&gt;</span><span class="s1">Payment Verified</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;span&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-clock&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Posted 2 hours ago</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;span&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-geo-alt&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Worldwide</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;span&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-tag&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">ID: 88392</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card-body-custom&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;text-body-lg&quot;</span><span class="s0">&gt;</span>
+                            <span class="s1">We are a Singapore-based FinTech company expanding into the Chinese market. We require a </span><span class="s0">&lt;strong&gt;</span><span class="s1">native Chinese translator</span><span class="s0">&lt;/strong&gt; </span><span class="s1">with a strong legal background to translate our Terms of Service and Privacy Policy (approx. 8,000 words).</span>
+                        <span class="s0">&lt;/p&gt;</span>
+                        <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;text-body-lg&quot;</span><span class="s0">&gt;</span>
+                            <span class="s1">The translation must be legally accurate for the Mainland China jurisdiction while maintaining a user-friendly tone consistent with our brand voice.</span>
+                        <span class="s0">&lt;/p&gt;</span>
+
+                        <span class="s0">&lt;h4 </span><span class="s2">class</span><span class="s3">=&quot;section-heading&quot;</span><span class="s0">&gt;</span><span class="s1">Responsibilities</span><span class="s0">&lt;/h4&gt;</span>
+                        <span class="s0">&lt;ul </span><span class="s2">class</span><span class="s3">=&quot;text-body-lg ps-3&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;li&gt;</span><span class="s1">Translate legal documents from English to Simplified Chinese.</span><span class="s0">&lt;/li&gt;</span>
+                            <span class="s0">&lt;li&gt;</span><span class="s1">Ensure compliance with PRC Cybersecurity Law terminology.</span><span class="s0">&lt;/li&gt;</span>
+                            <span class="s0">&lt;li&gt;</span><span class="s1">Create a glossary of key terms for future consistency.</span><span class="s0">&lt;/li&gt;</span>
+                            <span class="s0">&lt;li&gt;</span><span class="s1">Collaborate with our legal counsel for final review.</span><span class="s0">&lt;/li&gt;</span>
+                        <span class="s0">&lt;/ul&gt;</span>
+
+                        <span class="s0">&lt;h4 </span><span class="s2">class</span><span class="s3">=&quot;section-heading&quot;</span><span class="s0">&gt;</span><span class="s1">Required Skills</span><span class="s0">&lt;/h4&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mb-4&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;skill-tag&quot;</span><span class="s0">&gt;</span><span class="s1">Legal Translation</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;skill-tag&quot;</span><span class="s0">&gt;</span><span class="s1">Localization</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;skill-tag&quot;</span><span class="s0">&gt;</span><span class="s1">FinTech</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;skill-tag&quot;</span><span class="s0">&gt;</span><span class="s1">Simplified Chinese</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;skill-tag&quot;</span><span class="s0">&gt;</span><span class="s1">CAT Tools (Trados)</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+
+                        <span class="s0">&lt;h4 </span><span class="s2">class</span><span class="s3">=&quot;section-heading&quot;</span><span class="s0">&gt;</span><span class="s1">Screening Questions</span><span class="s0">&lt;/h4&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;alert alert-light border small text-muted&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;ol </span><span class="s2">class</span><span class="s3">=&quot;mb-0 ps-3&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;li&gt;</span><span class="s1">Do you have experience translating FinTech user agreements?</span><span class="s0">&lt;/li&gt;</span>
+                                <span class="s0">&lt;li&gt;</span><span class="s1">Which CAT tool do you primarily use?</span><span class="s0">&lt;/li&gt;</span>
+                                <span class="s0">&lt;li&gt;</span><span class="s1">Are you available for a 30-min Zoom kickoff call?</span><span class="s0">&lt;/li&gt;</span>
+                            <span class="s0">&lt;/ol&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+
+                        <span class="s0">&lt;h4 </span><span class="s2">class</span><span class="s3">=&quot;section-heading&quot;</span><span class="s0">&gt;</span><span class="s1">Attachments</span><span class="s0">&lt;/h4&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;attachment-box&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-file-earmark-pdf-fill text-danger fs-3&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                            <span class="s0">&lt;div&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold small&quot;</span><span class="s0">&gt;</span><span class="s1">ToS_Draft_v1.2.pdf</span><span class="s0">&lt;/div&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-muted small&quot;</span><span class="s0">&gt;</span><span class="s1">2.4 MB · PDF Document</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-download ms-auto text-primary&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;content-card p-4&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h5 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-3&quot;</span><span class="s0">&gt;</span><span class="s1">Activity on this Job</span><span class="s0">&lt;/h5&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row g-3 text-muted small&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-6 col-md-3&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-dark fs-5&quot;</span><span class="s0">&gt;</span><span class="s1">5-10</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;div&gt;</span><span class="s1">Proposals</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-6 col-md-3&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-dark fs-5&quot;</span><span class="s0">&gt;</span><span class="s1">24h</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;div&gt;</span><span class="s1">Last viewed by client</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-6 col-md-3&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-dark fs-5&quot;</span><span class="s0">&gt;</span><span class="s1">1</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;div&gt;</span><span class="s1">Interviewing</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-6 col-md-3&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-dark fs-5&quot;</span><span class="s0">&gt;</span><span class="s1">0</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;div&gt;</span><span class="s1">Invites sent</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-lg-4&quot;</span><span class="s0">&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;sidebar-card text-center sticky-top&quot; </span><span class="s2">style</span><span class="s3">=&quot;top: 100px; z-index: 10;&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mb-3&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted fw-bold text-uppercase&quot;</span><span class="s0">&gt;</span><span class="s1">Budget (Fixed Price)</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fs-2 fw-bold text-dark&quot;</span><span class="s0">&gt;</span><span class="s1">$800.00</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn-apply&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;openApplyModal()&quot;</span><span class="s0">&gt;</span><span class="s1">Submit Proposal</span><span class="s0">&lt;/button&gt;</span>
+                    <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn-save&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-heart&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Save Job</span><span class="s0">&lt;/button&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mt-3 small text-muted&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-flag&quot;</span><span class="s0">&gt;&lt;/i&gt; &lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot; </span><span class="s2">class</span><span class="s3">=&quot;text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">Report this job</span><span class="s0">&lt;/a&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;sidebar-card&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h5 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-4&quot;</span><span class="s0">&gt;</span><span class="s1">About the Client</span><span class="s0">&lt;/h5&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;client-stat-item&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;client-stat-icon&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-patch-check-fill&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+                        <span class="s0">&lt;div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-dark&quot;</span><span class="s0">&gt;</span><span class="s1">Payment Verified</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">Client has verified payment method</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;client-stat-item&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;client-stat-icon&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-star-fill text-warning&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+                        <span class="s0">&lt;div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-dark&quot;</span><span class="s0">&gt;</span><span class="s1">4.95 Rating</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">based on 24 reviews</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;client-stat-item&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;client-stat-icon&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-geo-alt-fill text-secondary&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+                        <span class="s0">&lt;div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-dark&quot;</span><span class="s0">&gt;</span><span class="s1">Singapore</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">10:45 AM Local Time</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;client-stat-item&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;client-stat-icon&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-briefcase-fill text-secondary&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+                        <span class="s0">&lt;div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-dark&quot;</span><span class="s0">&gt;</span><span class="s1">28 Jobs Posted</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">65% Hire Rate</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;client-stat-item&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;client-stat-icon&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-cash-stack text-secondary&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+                        <span class="s0">&lt;div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold text-dark&quot;</span><span class="s0">&gt;</span><span class="s1">$15k+ Total Spent</span><span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">Tech &amp; Legal Category</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;hr&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">Member since Jan 2024</span><span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;sidebar-card&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h6 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-3&quot;</span><span class="s0">&gt;</span><span class="s1">Similar Jobs</span><span class="s0">&lt;/h6&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;similar-job-item&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot; </span><span class="s2">class</span><span class="s3">=&quot;similar-link&quot;</span><span class="s0">&gt;</span><span class="s1">English Interpreter for Business Meeting</span><span class="s0">&lt;/a&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;similar-meta&quot;</span><span class="s0">&gt;</span><span class="s1">Hourly: $40-$60 • Remote</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;similar-job-item&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot; </span><span class="s2">class</span><span class="s3">=&quot;similar-link&quot;</span><span class="s0">&gt;</span><span class="s1">Translate Marketing Brochure</span><span class="s0">&lt;/a&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;similar-meta&quot;</span><span class="s0">&gt;</span><span class="s1">Fixed: $200 • 2 days left</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;similar-job-item&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot; </span><span class="s2">class</span><span class="s3">=&quot;similar-link&quot;</span><span class="s0">&gt;</span><span class="s1">Website Localization (EN to CN)</span><span class="s0">&lt;/a&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;similar-meta&quot;</span><span class="s0">&gt;</span><span class="s1">Fixed: $1,200 • High Budget</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;modal fade&quot; </span><span class="s2">id</span><span class="s3">=&quot;applyModal&quot; </span><span class="s2">tabindex</span><span class="s3">=&quot;-1&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;modal-dialog modal-lg modal-dialog-centered&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;modal-content&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;modal-header&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h5 </span><span class="s2">class</span><span class="s3">=&quot;modal-title fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">Submit a Proposal</span><span class="s0">&lt;/h5&gt;</span>
+                    <span class="s0">&lt;button </span><span class="s2">type</span><span class="s3">=&quot;button&quot; </span><span class="s2">class</span><span class="s3">=&quot;btn-close&quot; </span><span class="s2">data-bs-dismiss</span><span class="s3">=&quot;modal&quot;</span><span class="s0">&gt;&lt;/button&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;modal-body p-4&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h6 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-3&quot;</span><span class="s0">&gt;</span><span class="s1">Proposal Details</span><span class="s0">&lt;/h6&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row mb-4&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-6&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label small fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">Your Bid ($)</span><span class="s0">&lt;/label&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;input-group&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;input-group-text&quot;</span><span class="s0">&gt;</span><span class="s1">$</span><span class="s0">&lt;/span&gt;</span>
+                                <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;number&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">value</span><span class="s3">=&quot;800.00&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-text small&quot;</span><span class="s0">&gt;</span><span class="s1">YanHe Service Fee: $80.00 (-10%)</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-md-6&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label small fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">How long will this take?</span><span class="s0">&lt;/label&gt;</span>
+                            <span class="s0">&lt;select </span><span class="s2">class</span><span class="s3">=&quot;form-select&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;option&gt;</span><span class="s1">Less than 1 week</span><span class="s0">&lt;/option&gt;</span>
+                                <span class="s0">&lt;option&gt;</span><span class="s1">1 to 2 weeks</span><span class="s0">&lt;/option&gt;</span>
+                            <span class="s0">&lt;/select&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mb-4&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label small fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">Cover Letter</span><span class="s0">&lt;/label&gt;</span>
+                        <span class="s0">&lt;textarea </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot; </span><span class="s2">rows</span><span class="s3">=&quot;5&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;Highlight your relevant experience...&quot;</span><span class="s0">&gt;&lt;/textarea&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex justify-content-end mt-2&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-sm btn-outline-primary rounded-pill&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-stars&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">AI Improve</span><span class="s0">&lt;/button&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mb-3&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;label </span><span class="s2">class</span><span class="s3">=&quot;form-label small fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">Attachments</span><span class="s0">&lt;/label&gt;</span>
+                        <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;file&quot; </span><span class="s2">class</span><span class="s3">=&quot;form-control&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;modal-footer bg-light&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;button </span><span class="s2">type</span><span class="s3">=&quot;button&quot; </span><span class="s2">class</span><span class="s3">=&quot;btn btn-secondary&quot; </span><span class="s2">data-bs-dismiss</span><span class="s3">=&quot;modal&quot;</span><span class="s0">&gt;</span><span class="s1">Cancel</span><span class="s0">&lt;/button&gt;</span>
+                    <span class="s0">&lt;button </span><span class="s2">type</span><span class="s3">=&quot;button&quot; </span><span class="s2">class</span><span class="s3">=&quot;btn btn-success fw-bold px-4&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;submitSuccess()&quot;</span><span class="s0">&gt;</span><span class="s1">Send Proposal</span><span class="s0">&lt;/button&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;script </span><span class="s2">src</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js&quot;</span><span class="s0">&gt;&lt;/script&gt;</span>
+    <span class="s0">&lt;script&gt;</span>
+        <span class="s1">function openApplyModal() {</span>
+            <span class="s1">var myModal = new bootstrap.Modal(document.getElementById('applyModal'));</span>
+            <span class="s1">myModal.show();</span>
+        <span class="s1">}</span>
+
+        <span class="s1">function submitSuccess() {</span>
+            <span class="s1">// Close modal</span>
+            <span class="s1">const modalEl = document.getElementById('applyModal');</span>
+            <span class="s1">const modal = bootstrap.Modal.getInstance(modalEl);</span>
+            <span class="s1">modal.hide();</span>
+
+            <span class="s1">// Simulate loading state on button</span>
+            <span class="s1">const btn = document.querySelector('.btn-apply');</span>
+            <span class="s1">btn.innerHTML = '&lt;span class=&quot;spinner-border spinner-border-sm&quot;&gt;&lt;/span&gt; Sending...';</span>
+            <span class="s1">btn.classList.remove('btn-success');</span>
+            <span class="s1">btn.classList.add('btn-secondary');</span>
+
+            <span class="s1">setTimeout(() =&gt; {</span>
+                <span class="s1">alert('✅ Proposal Submitted Successfully!\nYou will be notified if the client shortlists you.');</span>
+                <span class="s1">btn.innerText = 'Proposal Sent';</span>
+                <span class="s1">btn.disabled = true;</span>
+            <span class="s1">}, 1000);</span>
+        <span class="s1">}</span>
+    <span class="s0">&lt;/script&gt;</span>
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span></pre>
+</body>
+</html>

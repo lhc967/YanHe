@@ -1,0 +1,323 @@
+<html>
+<head>
+<title>education_en.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bababa;}
+.s3 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+education_en.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;en&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">name</span><span class="s3">=&quot;viewport&quot; </span><span class="s2">content</span><span class="s3">=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;title&gt;</span><span class="s1">Edu Cloud - YanHe Learning Hub</span><span class="s0">&lt;/title&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&amp;display=swap&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;style&gt;</span>
+        <span class="s1">:root { --primary: #0052cc; --accent: #ffab00; --dark: #172b4d; --bg-light: #f4f5f7; }</span>
+        <span class="s1">body {</span>
+            <span class="s1">font-family: 'Inter', sans-serif;</span>
+            <span class="s1">padding-top: 80px;</span>
+            <span class="s1">background: var(--bg-light);</span>
+            <span class="s1">color: var(--dark);</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* --- Navbar (Consistent with Index_EN) --- */</span>
+        <span class="s1">.navbar-custom {</span>
+            <span class="s1">background: rgba(255,255,255,0.98); border-bottom: 1px solid #eaeaea; height: 80px; box-shadow: none;</span>
+        <span class="s1">}</span>
+        <span class="s1">.navbar-brand {</span>
+            <span class="s1">font-weight: 800; font-size: 1.5rem; color: var(--primary) !important; letter-spacing: -0.5px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.nav-link { font-weight: 500; color: #505f79 !important; padding: 8px 15px !important; }</span>
+        <span class="s1">.nav-link:hover { color: var(--primary) !important; }</span>
+        <span class="s1">.nav-link.active { color: var(--primary) !important; font-weight: 700; }</span>
+
+        <span class="s1">/* --- 1. Memory Dashboard (Hero) --- */</span>
+        <span class="s1">.memory-dashboard {</span>
+            <span class="s1">background: #fff; border-bottom: 1px solid #eaeaea; padding: 40px 0; margin-bottom: 30px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.dashboard-card {</span>
+            <span class="s1">background: linear-gradient(135deg, #0052cc 0%, #0747a6 100%);</span>
+            <span class="s1">color: #fff; border-radius: 12px; padding: 30px; position: relative; overflow: hidden;</span>
+            <span class="s1">box-shadow: 0 10px 30px rgba(0, 82, 204, 0.2);</span>
+        <span class="s1">}</span>
+        <span class="s1">.dashboard-card::after {</span>
+            <span class="s1">content: ''; position: absolute; right: -20px; top: -20px; width: 150px; height: 150px;</span>
+            <span class="s1">background: rgba(255,255,255,0.1); border-radius: 50%;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* Battery Widget */</span>
+        <span class="s1">.retention-meter {</span>
+            <span class="s1">background: rgba(255,255,255,0.2); border-radius: 8px; padding: 4px; height: 24px; width: 100%; margin-top: 10px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.meter-fill {</span>
+            <span class="s1">height: 100%; border-radius: 6px; background: #36b37e; width: 72%; /* Green for success */</span>
+            <span class="s1">transition: width 1s ease;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* --- 2. Filter Bar --- */</span>
+        <span class="s1">.filter-bar { margin-bottom: 30px; overflow-x: auto; white-space: nowrap; padding-bottom: 10px; }</span>
+        <span class="s1">.filter-chip {</span>
+            <span class="s1">display: inline-block; padding: 8px 20px; border-radius: 50px; background: #fff; border: 1px solid #dfe1e6;</span>
+            <span class="s1">color: #505f79; font-weight: 600; font-size: 0.9rem; margin-right: 10px; cursor: pointer; transition: 0.2s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.filter-chip:hover { border-color: var(--primary); color: var(--primary); }</span>
+        <span class="s1">.filter-chip.active { background: var(--primary); color: #fff; border-color: var(--primary); }</span>
+
+        <span class="s1">/* --- 3. Course Cards --- */</span>
+        <span class="s1">.course-card {</span>
+            <span class="s1">background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid #eaeaea;</span>
+            <span class="s1">transition: transform 0.2s, box-shadow 0.2s; height: 100%; cursor: pointer;</span>
+        <span class="s1">}</span>
+        <span class="s1">.course-card:hover { transform: translateY(-5px); box-shadow: 0 12px 24px rgba(0,0,0,0.08); }</span>
+
+        <span class="s1">.card-img-wrap { height: 180px; position: relative; overflow: hidden; }</span>
+        <span class="s1">.card-img-top { width: 100%; height: 100%; object-fit: cover; }</span>
+        <span class="s1">.source-badge {</span>
+            <span class="s1">position: absolute; top: 12px; right: 12px; font-size: 0.75rem; font-weight: 700;</span>
+            <span class="s1">background: rgba(255,255,255,0.9); padding: 4px 10px; border-radius: 4px; color: var(--dark);</span>
+            <span class="s1">box-shadow: 0 2px 4px rgba(0,0,0,0.1);</span>
+        <span class="s1">}</span>
+
+        <span class="s1">.card-body { padding: 20px; }</span>
+        <span class="s1">.course-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; line-height: 1.4; color: var(--dark); }</span>
+        <span class="s1">.course-meta { font-size: 0.85rem; color: #6b778c; display: flex; justify-content: space-between; align-items: center; }</span>
+
+        <span class="s1">.progress-slim { height: 6px; background: #ebecf0; border-radius: 3px; margin-top: 15px; }</span>
+        <span class="s1">.progress-bar { background: var(--primary); border-radius: 3px; }</span>
+
+        <span class="s1">/* --- AI Assistant --- */</span>
+        <span class="s1">.ai-fab {</span>
+            <span class="s1">position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;</span>
+            <span class="s1">background: var(--accent); color: #172b4d; border-radius: 50%;</span>
+            <span class="s1">display: flex; align-items: center; justify-content: center; font-size: 28px;</span>
+            <span class="s1">box-shadow: 0 8px 20px rgba(255, 171, 0, 0.4); cursor: pointer; transition: 0.2s; z-index: 100;</span>
+        <span class="s1">}</span>
+        <span class="s1">.ai-fab:hover { transform: scale(1.1); }</span>
+        <span class="s1">.ai-tooltip {</span>
+            <span class="s1">position: fixed; bottom: 100px; right: 30px; background: #fff; padding: 15px; border-radius: 8px;</span>
+            <span class="s1">box-shadow: 0 5px 20px rgba(0,0,0,0.1); font-size: 0.9rem; max-width: 250px;</span>
+            <span class="s1">animation: fadeIn 0.5s; display: none;</span>
+        <span class="s1">}</span>
+    <span class="s0">&lt;/style&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+
+    <span class="s0">&lt;nav </span><span class="s2">class</span><span class="s3">=&quot;navbar navbar-expand-lg fixed-top navbar-custom&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;a </span><span class="s2">class</span><span class="s3">=&quot;navbar-brand&quot; </span><span class="s2">href</span><span class="s3">=&quot;index_en.html&quot;</span><span class="s0">&gt;</span><span class="s1">YanHe</span><span class="s0">&lt;/a&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;navbar-toggler&quot; </span><span class="s2">type</span><span class="s3">=&quot;button&quot; </span><span class="s2">data-bs-toggle</span><span class="s3">=&quot;collapse&quot; </span><span class="s2">data-bs-target</span><span class="s3">=&quot;#navEn&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;navbar-toggler-icon&quot;</span><span class="s0">&gt;&lt;/span&gt;</span>
+            <span class="s0">&lt;/button&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;collapse navbar-collapse&quot; </span><span class="s2">id</span><span class="s3">=&quot;navEn&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;ul </span><span class="s2">class</span><span class="s3">=&quot;navbar-nav mx-auto&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;li </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;nav-link active&quot; </span><span class="s2">href</span><span class="s3">=&quot;education_en.html&quot;</span><span class="s0">&gt;</span><span class="s1">Courses</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                    <span class="s0">&lt;li </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;nav-link&quot; </span><span class="s2">href</span><span class="s3">=&quot;service_en.html&quot;</span><span class="s0">&gt;</span><span class="s1">Task Hub</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                    <span class="s0">&lt;li </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;nav-link&quot; </span><span class="s2">href</span><span class="s3">=&quot;story_en.html&quot;</span><span class="s0">&gt;</span><span class="s1">Community</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                    <span class="s0">&lt;li </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;nav-link&quot; </span><span class="s2">href</span><span class="s3">=&quot;culture_en.html&quot;</span><span class="s0">&gt;</span><span class="s1">Map</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                <span class="s0">&lt;/ul&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center gap-2&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;login_en.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;btn btn-outline-secondary btn-sm rounded-pill px-3 fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">Login</span><span class="s0">&lt;/a&gt;</span>
+                    <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;education.html&quot; </span><span class="s2">class</span><span class="s3">=&quot;btn btn-primary btn-sm rounded-pill px-3 fw-bold&quot; </span><span class="s2">style</span><span class="s3">=&quot;background:var(--primary);border:none;&quot;</span><span class="s0">&gt;</span><span class="s1">中文版</span><span class="s0">&lt;/a&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/nav&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;memory-dashboard&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row align-items-center&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-lg-5 mb-4 mb-lg-0&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h1 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-2&quot;</span><span class="s0">&gt;</span><span class="s1">My Learning Path</span><span class="s0">&lt;/h1&gt;</span>
+                    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">Track your progress and retention with our AI engine.</span><span class="s0">&lt;/p&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col-lg-7&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;dashboard-card&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex justify-content-between align-items-end mb-2&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div&gt;</span>
+                                <span class="s0">&lt;h5 </span><span class="s2">class</span><span class="s3">=&quot;mb-1&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-cpu-fill&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Smart Retention Tracker</span><span class="s0">&lt;/h5&gt;</span>
+                                <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;small opacity-75&quot;</span><span class="s0">&gt;</span><span class="s1">Based on Ebbinghaus Forgetting Curve</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-end&quot;</span><span class="s0">&gt;</span>
+                                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;h4 fw-bold mb-0&quot;</span><span class="s0">&gt;</span><span class="s1">72%</span><span class="s0">&lt;/div&gt;</span>
+                                <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;small opacity-75&quot;</span><span class="s0">&gt;</span><span class="s1">Retention Score</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;retention-meter&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;meter-fill&quot; </span><span class="s2">style</span><span class="s3">=&quot;width: 72%&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mt-3 d-flex justify-content-between align-items-center&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;small&quot;</span><span class="s0">&gt;</span><span class="s1">12 words to review today</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-sm btn-light text-primary fw-bold rounded-pill px-3&quot;</span><span class="s0">&gt;</span><span class="s1">Review Now</span><span class="s0">&lt;/button&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container pb-5&quot;</span><span class="s0">&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;filter-bar&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;filter-chip active&quot;</span><span class="s0">&gt;</span><span class="s1">All Courses</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;filter-chip&quot;</span><span class="s0">&gt;</span><span class="s1">HSK 1-3 (Beginner)</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;filter-chip&quot;</span><span class="s0">&gt;</span><span class="s1">HSK 4-6 (Advanced)</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;filter-chip&quot;</span><span class="s0">&gt;</span><span class="s1">Business Chinese</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;filter-chip&quot;</span><span class="s0">&gt;</span><span class="s1">Travel Survival</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;filter-chip&quot;</span><span class="s0">&gt;</span><span class="s1">Dialects</span><span class="s0">&lt;/span&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+        <span class="s0">&lt;h4 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-4&quot;</span><span class="s0">&gt;</span><span class="s1">Recommended for You</span><span class="s0">&lt;/h4&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4&quot;</span><span class="s0">&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;course-card&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;alert('Redirecting to Course Detail...')&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card-img-wrap&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&amp;q=80&quot; </span><span class="s2">class</span><span class="s3">=&quot;card-img-top&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;source-badge text-primary&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-patch-check-fill&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">YanHe Original</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card-body&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;course-title&quot;</span><span class="s0">&gt;</span><span class="s1">Zero to Hero: HSK 3 Conversational</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;course-meta&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;span&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-person&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">BSU Team</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;text-success fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">Free</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;progress-slim&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;progress-bar&quot; </span><span class="s2">style</span><span class="s3">=&quot;width: 40%&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex justify-content-between mt-2 text-muted&quot; </span><span class="s2">style</span><span class="s3">=&quot;font-size: 0.75rem;&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;span&gt;</span><span class="s1">40% Completed</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;span&gt;</span><span class="s1">1.2k Students</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;course-card&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card-img-wrap&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;https://images.unsplash.com/photo-1523730205978-59fd1b2965e3?w=500&amp;q=80&quot; </span><span class="s2">class</span><span class="s3">=&quot;card-img-top&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;source-badge&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-link-45deg&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">From MOOC</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card-body&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;course-title&quot;</span><span class="s0">&gt;</span><span class="s1">Ancient Chinese Architecture &amp; History</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;course-meta&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;span&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-building&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Tsinghua Univ.</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;text-warning&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-star-fill&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">4.9</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-outline-primary btn-sm w-100 mt-3 rounded-pill fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">Add to List</span><span class="s0">&lt;/button&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;course-card&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card-img-wrap&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=500&amp;q=80&quot; </span><span class="s2">class</span><span class="s3">=&quot;card-img-top&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;source-badge text-danger&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-fire&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Popular</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card-body&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;course-title&quot;</span><span class="s0">&gt;</span><span class="s1">Business Chinese: Email &amp; Negotiation</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;course-meta&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;span&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-briefcase&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Prof. Wang</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">$19.99</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mt-2 text-muted&quot; </span><span class="s2">style</span><span class="s3">=&quot;font-size: 0.8rem;&quot;</span><span class="s0">&gt;</span><span class="s1">Level: B1-B2 • 20 Hours</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;course-card&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card-img-wrap&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;https://images.unsplash.com/photo-1533669955142-6a73332af4db?w=500&amp;q=80&quot; </span><span class="s2">class</span><span class="s3">=&quot;card-img-top&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;source-badge text-success&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-map-fill&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Dialect</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card-body&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;course-title&quot;</span><span class="s0">&gt;</span><span class="s1">Sichuanese 101: Spicy Language</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;course-meta&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;span&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-geo-alt&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Chengdu</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;span&gt;</span><span class="s1">8k+ learners</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-outline-success btn-sm w-100 mt-3 rounded-pill fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">Explore Map</span><span class="s0">&lt;/button&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;course-card&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card-img-wrap&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500&amp;q=80&quot; </span><span class="s2">class</span><span class="s3">=&quot;card-img-top&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;source-badge&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-youtube&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">From Bilibili</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card-body&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;course-title&quot;</span><span class="s0">&gt;</span><span class="s1">30-Day Oral Practice Challenge</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;course-meta&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;span&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-play-btn&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Channel X</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;text-success fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">Free</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;btn btn-outline-dark btn-sm w-100 mt-3 rounded-pill fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">Watch Video</span><span class="s0">&lt;/button&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;col&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;course-card&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card-img-wrap&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;https://images.unsplash.com/photo-1513258496099-48168024aec0?w=500&amp;q=80&quot; </span><span class="s2">class</span><span class="s3">=&quot;card-img-top&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;source-badge text-primary&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-book&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">YanHe Original</span><span class="s0">&lt;/span&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;card-body&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;course-title&quot;</span><span class="s0">&gt;</span><span class="s1">Modern Literature: Mo Yan &amp; Yu Hua</span><span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;course-meta&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;span&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-pen&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">Lit Dept.</span><span class="s0">&lt;/span&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">$29.99</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mt-2 text-muted&quot; </span><span class="s2">style</span><span class="s3">=&quot;font-size: 0.8rem;&quot;</span><span class="s0">&gt;</span><span class="s1">E-Book Included</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;ai-fab&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;toggleTooltip()&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-robot&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;ai-tooltip&quot; </span><span class="s2">id</span><span class="s3">=&quot;aiTooltip&quot;</span><span class="s0">&gt;</span>
+        <span class="s1">👋 Hi! I'm your AI tutor. </span><span class="s0">&lt;br&gt;</span><span class="s1">Need help picking a course based on your HSK level?</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;script </span><span class="s2">src</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js&quot;</span><span class="s0">&gt;&lt;/script&gt;</span>
+    <span class="s0">&lt;script&gt;</span>
+        <span class="s1">// AI Tooltip Toggle</span>
+        <span class="s1">function toggleTooltip() {</span>
+            <span class="s1">const tooltip = document.getElementById('aiTooltip');</span>
+            <span class="s1">tooltip.style.display = tooltip.style.display === 'block' ? 'none' : 'block';</span>
+        <span class="s1">}</span>
+
+        <span class="s1">// Filter Chip Interaction</span>
+        <span class="s1">document.querySelectorAll('.filter-chip').forEach(chip =&gt; {</span>
+            <span class="s1">chip.addEventListener('click', function() {</span>
+                <span class="s1">document.querySelectorAll('.filter-chip').forEach(c =&gt; c.classList.remove('active'));</span>
+                <span class="s1">this.classList.add('active');</span>
+            <span class="s1">});</span>
+        <span class="s1">});</span>
+    <span class="s0">&lt;/script&gt;</span>
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span></pre>
+</body>
+</html>

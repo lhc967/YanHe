@@ -1,0 +1,220 @@
+<html>
+<head>
+<title>culture_vip.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bababa;}
+.s3 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+culture_vip.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;zh-CN&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">name</span><span class="s3">=&quot;viewport&quot; </span><span class="s2">content</span><span class="s3">=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;title&gt;</span><span class="s1">方言文化地图 Pro - 言禾 YanHe</span><span class="s0">&lt;/title&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">href</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;script </span><span class="s2">src</span><span class="s3">=&quot;https://cdn.bootcdn.net/ajax/libs/echarts/5.4.3/echarts.min.js&quot;</span><span class="s0">&gt;&lt;/script&gt;</span>
+    <span class="s0">&lt;script </span><span class="s2">src</span><span class="s3">=&quot;https://assets.pyecharts.org/assets/maps/china.js&quot;</span><span class="s0">&gt;&lt;/script&gt;</span>
+
+    <span class="s0">&lt;style&gt;</span>
+        <span class="s1">/* Pro 配色 */</span>
+        <span class="s1">:root { --primary: #004aad; --gold: #d4af37; --dark-bg: #1a1a1a; }</span>
+        <span class="s1">body { font-family: -apple-system, sans-serif; padding-top: 70px; background: #f8faff; overflow: hidden; height: 100vh; transition: background 0.5s; }</span>
+
+        <span class="s1">/* Pro 模式下的 Body 背景 */</span>
+        <span class="s1">body.pro-mode { background: #111; }</span>
+
+        <span class="s1">/* 导航栏 */</span>
+        <span class="s1">.navbar-custom { background: rgba(255,255,255,0.98); box-shadow: 0 2px 10px rgba(0,0,0,0.05); height: 70px; z-index: 1000; }</span>
+        <span class="s1">.navbar-brand { font-weight: 900; color: var(--primary); }</span>
+
+        <span class="s1">/* Pro 切换器 (可用) */</span>
+        <span class="s1">.mode-switch-container {</span>
+            <span class="s1">position: absolute; top: 90px; left: 50%; transform: translateX(-50%); z-index: 50;</span>
+            <span class="s1">background: #fff; padding: 4px; border-radius: 30px;</span>
+            <span class="s1">box-shadow: 0 5px 20px rgba(0,0,0,0.1); display: flex; gap: 4px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.mode-btn {</span>
+            <span class="s1">border: none; padding: 6px 20px; border-radius: 25px; font-weight: 700; font-size: 13px;</span>
+            <span class="s1">background: transparent; color: #666; transition: 0.3s;</span>
+        <span class="s1">}</span>
+        <span class="s1">.mode-btn.active { background: #eee; color: #333; }</span>
+        <span class="s1">/* Pro 激活样式 */</span>
+        <span class="s1">.mode-btn.pro-active {</span>
+            <span class="s1">background: linear-gradient(135deg, #111, #333); color: #ffd700;</span>
+            <span class="s1">box-shadow: 0 4px 12px rgba(0,0,0,0.3);</span>
+        <span class="s1">}</span>
+
+        <span class="s1">.map-container { width: 100%; height: 100%; }</span>
+
+        <span class="s1">/* 抽屉 */</span>
+        <span class="s1">.content-drawer {</span>
+            <span class="s1">position: absolute; bottom: 0; left: 0; right: 0;</span>
+            <span class="s1">background: #fff; border-radius: 24px 24px 0 0;</span>
+            <span class="s1">box-shadow: 0 -10px 40px rgba(0,0,0,0.2);</span>
+            <span class="s1">transform: translateY(110%); transition: transform 0.4s; z-index: 100; height: 70vh; display: flex; flex-direction: column;</span>
+        <span class="s1">}</span>
+        <span class="s1">.content-drawer.show { transform: translateY(0); }</span>
+        <span class="s1">.drawer-hero { height: 120px; background-size: cover; position: relative; color: #fff; padding: 20px; display: flex; align-items: flex-end; }</span>
+        <span class="s1">.btn-close-custom { position: absolute; top: 15px; right: 15px; z-index: 10; color: #fff; cursor: pointer; background: rgba(0,0,0,0.3); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }</span>
+
+        <span class="s1">.nav-tabs-custom { display: flex; border-bottom: 1px solid #eee; padding: 0 10px; }</span>
+        <span class="s1">.tab-link { padding: 15px; font-weight: 600; color: #888; cursor: pointer; flex: 1; text-align: center; border-bottom: 3px solid transparent; }</span>
+        <span class="s1">.tab-link.active { color: var(--primary); border-bottom-color: var(--primary); }</span>
+        <span class="s1">.tab-link.pro-active { color: var(--gold); border-bottom-color: var(--gold); }</span>
+
+        <span class="s1">.drawer-body { flex: 1; overflow-y: auto; padding: 20px; }</span>
+        <span class="s1">.tab-pane { display: none; }</span>
+        <span class="s1">.tab-pane.active { display: block; }</span>
+
+        <span class="s1">/* 聊天气泡 */</span>
+        <span class="s1">.chat-bubble { padding: 10px 15px; border-radius: 12px; margin-bottom: 10px; font-size: 14px; max-width: 80%; }</span>
+        <span class="s1">.chat-left { background: #f0f0f0; align-self: flex-start; }</span>
+        <span class="s1">.chat-right { background: #e3f2fd; color: #004aad; align-self: flex-end; margin-left: auto; }</span>
+
+        <span class="s1">/* 录音按钮 */</span>
+        <span class="s1">.mic-btn-lg { width: 60px; height: 60px; background: var(--primary); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 20px auto 0; box-shadow: 0 5px 15px rgba(0, 74, 173, 0.3); cursor: pointer; transition: 0.2s; }</span>
+        <span class="s1">.mic-btn-lg:active { transform: scale(0.95); }</span>
+    <span class="s0">&lt;/style&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+
+    <span class="s0">&lt;nav </span><span class="s2">class</span><span class="s3">=&quot;navbar navbar-expand-lg fixed-top navbar-custom&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container-fluid px-4&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;a </span><span class="s2">class</span><span class="s3">=&quot;navbar-brand&quot; </span><span class="s2">href</span><span class="s3">=&quot;index_login.html&quot;</span><span class="s0">&gt;</span><span class="s1">言禾 YanHe</span><span class="s0">&lt;/a&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center gap-3&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;dropdown&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot; </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center text-decoration-none&quot; </span><span class="s2">data-bs-toggle</span><span class="s3">=&quot;dropdown&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;div </span><span class="s2">style</span><span class="s3">=&quot;position: relative;&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&quot; </span><span class="s2">class</span><span class="s3">=&quot;rounded-circle&quot; </span><span class="s2">width</span><span class="s3">=&quot;35&quot; </span><span class="s2">height</span><span class="s3">=&quot;35&quot; </span><span class="s2">style</span><span class="s3">=&quot;border: 2px solid var(--gold);&quot;</span><span class="s0">&gt;</span>
+                            <span class="s0">&lt;span </span><span class="s2">style</span><span class="s3">=&quot;position: absolute; bottom: -2px; right: -2px; background: var(--gold); color: #000; font-size: 8px; padding: 1px 3px; border-radius: 4px; font-weight: bold;&quot;</span><span class="s0">&gt;</span><span class="s1">PRO</span><span class="s0">&lt;/span&gt;</span>
+                        <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;/a&gt;</span>
+                    <span class="s0">&lt;ul </span><span class="s2">class</span><span class="s3">=&quot;dropdown-menu dropdown-menu-end&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;li&gt;&lt;div </span><span class="s2">class</span><span class="s3">=&quot;dropdown-header&quot;</span><span class="s0">&gt;</span><span class="s1">Pro 会员有效期至 2027-01</span><span class="s0">&lt;/div&gt;&lt;/li&gt;</span>
+                        <span class="s0">&lt;li&gt;&lt;a </span><span class="s2">class</span><span class="s3">=&quot;dropdown-item text-danger&quot; </span><span class="s2">href</span><span class="s3">=&quot;index.html&quot;</span><span class="s0">&gt;</span><span class="s1">退出</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+                    <span class="s0">&lt;/ul&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/nav&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mode-switch-container&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;mode-btn active&quot; </span><span class="s2">id</span><span class="s3">=&quot;btnStd&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;toggleMode('std')&quot;</span><span class="s0">&gt;</span><span class="s1">探索模式</span><span class="s0">&lt;/button&gt;</span>
+        <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;mode-btn&quot; </span><span class="s2">id</span><span class="s3">=&quot;btnPro&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;toggleMode('pro')&quot;</span><span class="s0">&gt;</span>
+            <span class="s1">Pro 挑战 </span><span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;badge bg-warning text-dark&quot; </span><span class="s2">style</span><span class="s3">=&quot;font-size: 8px;&quot;</span><span class="s0">&gt;</span><span class="s1">VIP</span><span class="s0">&lt;/span&gt;</span>
+        <span class="s0">&lt;/button&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;map-container&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;china-map&quot; </span><span class="s2">style</span><span class="s3">=&quot;width: 100%; height: 100%;&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;content-drawer&quot; </span><span class="s2">id</span><span class="s3">=&quot;drawer&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;drawer-hero&quot; </span><span class="s2">style</span><span class="s3">=&quot;background-image: url('https://images.unsplash.com/photo-1596797038530-2c107229654b?w=600');&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;btn-close-custom&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;document.getElementById('drawer').classList.remove('show')&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-x-lg&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">style</span><span class="s3">=&quot;position:relative; z-index:2;&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;h3 </span><span class="s2">class</span><span class="s3">=&quot;fw-bold mb-0&quot;</span><span class="s0">&gt;</span><span class="s1">四川 · 成都</span><span class="s0">&lt;/h3&gt;</span>
+                <span class="s0">&lt;small </span><span class="s2">class</span><span class="s3">=&quot;opacity-75&quot;</span><span class="s0">&gt;</span><span class="s1">Pro 模式已解锁全境</span><span class="s0">&lt;/small&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;nav-tabs-custom&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;tab-link active&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;switchTab('culture', this)&quot;</span><span class="s0">&gt;</span><span class="s1">文化词汇</span><span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;tab-link&quot; </span><span class="s2">id</span><span class="s3">=&quot;tabLinkScenario&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;switchTab('scenario', this)&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-trophy-fill text-warning&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">生存挑战</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;drawer-body&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;tab-culture&quot; </span><span class="s2">class</span><span class="s3">=&quot;tab-pane active&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;text-muted small&quot;</span><span class="s0">&gt;</span><span class="s1">点击右上角“Pro 挑战”可开启暗黑沉浸模式。</span><span class="s0">&lt;/p&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;d-flex align-items-center gap-3 mb-3 p-2 border rounded&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;bg-primary text-white rounded p-2 fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">巴适</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div&gt;&lt;div </span><span class="s2">class</span><span class="s3">=&quot;fw-bold&quot;</span><span class="s0">&gt;</span><span class="s1">Ba Shi</span><span class="s0">&lt;/div&gt;&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted&quot;</span><span class="s0">&gt;</span><span class="s1">舒服</span><span class="s0">&lt;/div&gt;&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;tab-scenario&quot; </span><span class="s2">class</span><span class="s3">=&quot;tab-pane&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;alert alert-warning small border-0 bg-warning bg-opacity-10 text-dark mb-3&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-robot&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">AI NPC 正在与您对话...</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;chat-container&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;chat-bubble chat-left&quot;</span><span class="s0">&gt;</span><span class="s1">老板，来二两小面！</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;chat-bubble chat-right&quot;</span><span class="s0">&gt;</span><span class="s1">要得，要啥子辣度？</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;chat-bubble chat-left&quot;</span><span class="s0">&gt;</span><span class="s1">微辣，多放葱花。</span><span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;chat-bubble chat-right&quot;</span><span class="s0">&gt;</span><span class="s1">好嘞！几号桌？</span><span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text-center mt-4&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;p </span><span class="s2">class</span><span class="s3">=&quot;small text-primary fw-bold mb-2&quot;</span><span class="s0">&gt;</span><span class="s1">请用四川话回答：“坐外面。”</span><span class="s0">&lt;/p&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mic-btn-lg&quot; </span><span class="s2">onclick</span><span class="s3">=&quot;alert('AI 正在评分：98分！发音非常地道！')&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;bi bi-mic-fill fs-4&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;small text-muted mt-2&quot;</span><span class="s0">&gt;</span><span class="s1">按住说话</span><span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;script&gt;</span>
+        <span class="s1">var myChart = echarts.init(document.getElementById('china-map'));</span>
+        <span class="s1">// 普通地图样式</span>
+        <span class="s1">var stdOption = {</span>
+            <span class="s1">geo: { map: 'china', roam: true, zoom: 1.2, label: {show:false}, itemStyle: { areaColor: '#e0eaff', borderColor: '#fff' } },</span>
+            <span class="s1">series: [{ type: 'effectScatter', coordinateSystem: 'geo', data: [{name:'成都',value:[104.06,30.67]}], symbolSize: 15, itemStyle: { color: '#004aad' } }]</span>
+        <span class="s1">};</span>
+        <span class="s1">// Pro 黑金地图样式</span>
+        <span class="s1">var proOption = {</span>
+            <span class="s1">geo: { map: 'china', roam: true, zoom: 1.2, label: {show:false}, itemStyle: { areaColor: '#2a2a2a', borderColor: '#444' } },</span>
+            <span class="s1">series: [{ type: 'effectScatter', coordinateSystem: 'geo', data: [{name:'成都',value:[104.06,30.67]}], symbolSize: 20, itemStyle: { color: '#ffd700' }, rippleEffect: { color: '#ffd700' } }]</span>
+        <span class="s1">};</span>
+
+        <span class="s1">myChart.setOption(stdOption);</span>
+        <span class="s1">myChart.on('click', function() { document.getElementById('drawer').classList.add('show'); });</span>
+
+        <span class="s1">function toggleMode(mode) {</span>
+            <span class="s1">if(mode === 'pro') {</span>
+                <span class="s1">document.getElementById('btnStd').classList.remove('active');</span>
+                <span class="s1">document.getElementById('btnPro').classList.add('pro-active');</span>
+                <span class="s1">document.body.classList.add('pro-mode');</span>
+                <span class="s1">myChart.setOption(proOption);</span>
+                <span class="s1">// 自动切换到挑战Tab</span>
+                <span class="s1">switchTab('scenario', document.getElementById('tabLinkScenario'));</span>
+                <span class="s1">document.getElementById('drawer').classList.add('show');</span>
+            <span class="s1">} else {</span>
+                <span class="s1">document.getElementById('btnStd').classList.add('active');</span>
+                <span class="s1">document.getElementById('btnPro').classList.remove('pro-active');</span>
+                <span class="s1">document.body.classList.remove('pro-mode');</span>
+                <span class="s1">myChart.setOption(stdOption);</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">function switchTab(id, btn) {</span>
+            <span class="s1">document.querySelectorAll('.tab-pane').forEach(el =&gt; el.classList.remove('active'));</span>
+            <span class="s1">document.getElementById('tab-'+id).classList.add('active');</span>
+            <span class="s1">if(btn) {</span>
+                <span class="s1">document.querySelectorAll('.tab-link').forEach(el =&gt; {</span>
+                    <span class="s1">el.classList.remove('active');</span>
+                    <span class="s1">el.classList.remove('pro-active');</span>
+                <span class="s1">});</span>
+                <span class="s1">btn.classList.add(id === 'scenario' ? 'pro-active' : 'active');</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s0">&lt;/script&gt;</span>
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span></pre>
+</body>
+</html>
